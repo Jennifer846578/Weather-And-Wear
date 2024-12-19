@@ -9,3 +9,11 @@ Route::get('/', function () {
 Route::get('/homepage', function () {
     return view('homepage');
 });
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+Route::get('/profile1', function () {
+    return view('profile1');
+});
