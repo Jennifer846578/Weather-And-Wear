@@ -1,0 +1,151 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.phone-card {
+    width: 412px;
+    min-height: 100vh;
+    background-color: #B2D3FF;
+}
+
+.weatherName-box{
+    margin: 60px 0 0 0;
+    text-align: center;
+}
+
+.weatherName-dynamic img{
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-box{
+    margin: 60px 0 0 0;
+    text-align: center;
+}
+
+.weather-dynamic img{
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* otherinfo */
+.weather-detail-box {
+    display: flex;
+    justify-content: center;
+}
+.weather-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 390px;
+    padding: 20px;
+    border-radius: 44px;
+    background: linear-gradient(135deg, #91cfff, #bfdfff);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.weather-details {
+    text-align: center;
+}
+
+.weather-details .date {
+    font-size: 14px;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.weather-details .location {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.weather-details .temp-range {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.weather-temp {
+    font-size: 48px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Hourly Forecast */
+
+.forecast-box{
+    display: flex;
+    justify-content: center;
+}
+
+.forecast-container {
+    display: flex;
+    width: 390px;
+    margin: 30px 0 0 0;
+    justify-content: center;
+    background-color: #c1dcf0;
+    border-radius: 44px;
+    padding: 20px;
+    gap: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.forecast-card {
+    background-color: #46b2e0;
+    border-radius: 30px;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    width: 60px;
+}
+
+.forecast-card.now {
+    background-color: #1b3c61;
+}
+
+.forecast-card img {
+    width: 30px;
+    height: 30px;
+}
+
+.forecast-card .time {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.forecast-card .temp {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+@media screen {
+
+}
+
+/* .profile-header {
+    background-color: #3926A6;
+    height: 450px;
+    width: 100%;
+}
+
+.profile-header img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #4caf50;
+    display: block;
+    margin: 0 auto 10px;
+} */

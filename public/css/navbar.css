@@ -1,0 +1,30 @@
+.navbar-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-main {
+    position: fixed; /* Membuat navbar tetap di tempat */
+    bottom: 20px; /* Menempel pada bagian bawah layar */
+    width: 380px;
+    background-color: white; /* Warna latar belakang */
+    display: flex; /* Menggunakan flexbox untuk pengaturan item */
+    justify-content: center; /* Item berada di tengah secara horizontal */
+    align-items: center; /* Item berada di tengah secara vertikal */
+    padding: 20px 0; /* Memberikan jarak vertikal */
+    border-radius: 20px; /* Membuat ujung navbar melengkung */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.nav-item {
+    margin: 0 30px; /* Memberikan jarak antar item */
+    text-align: center; /* Pusatkan konten dalam setiap item */
+}
+
+.nav-icon {
+    width: 30px; /* Ukuran ikon */
+    height: 30px; /* Tinggi ikon */
+    display: block; /* Memastikan ikon adalah blok untuk properti centering */
+}
