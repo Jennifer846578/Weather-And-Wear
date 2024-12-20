@@ -11,3 +11,6 @@ Route::get('/profile', function () {
 });
 
 abc
+Route::get('/push', function () {
+    return view('profile');
+});
