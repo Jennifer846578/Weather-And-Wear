@@ -9,8 +9,3 @@ Route::get('/', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
-
-abc
-Route::get('/push', function () {
-    return view('profile');
-});
