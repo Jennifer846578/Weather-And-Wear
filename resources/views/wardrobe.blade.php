@@ -7,6 +7,6 @@
     <title>Wardrobe</title>
 </head>
 <body>
-    
+    <h1>Ini halaman wardrobe</h1>
 </body>
 </html>
