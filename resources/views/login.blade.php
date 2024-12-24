@@ -32,4 +32,5 @@
         <p class="dvnNoAcc">Don't have an account ? <a href="register">Register here</a></p>
     </div>
 </body>
+<script src="js/login.js"></script>
 </html>
