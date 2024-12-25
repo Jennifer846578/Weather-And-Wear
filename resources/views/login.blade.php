@@ -15,8 +15,8 @@
 
         <!-- composer require laravel/socialite -->
          <div class="dvnsocialLogin">
-            <a href="{{ url('auth/google') }}"><img src="Asset/login/dvngoogle.png" alt="google" width="30px"></a>
-            <a href="{{ url('auth/google') }}"><img src="Asset/login/dvnfacebook.png" alt="fb" width="30px"></a>
+            <a href="{{ route('redirect') }}"><img src="Asset/login/dvngoogle.png" alt="google" width="30px"></a>
+            <a href="{{ route('redirect') }}"><img src="Asset/login/dvnfacebook.png" alt="fb" width="30px"></a>
          </div>
         
         <div class="dvnloginform">
