@@ -16,7 +16,7 @@
         <!-- composer require laravel/socialite -->
          <div class="dvnsocialLogin">
             <a href="{{ route('redirect') }}"><img src="Asset/login/dvngoogle.png" alt="google" width="30px"></a>
-            <a href="{{ route('redirect') }}"><img src="Asset/login/dvnfacebook.png" alt="fb" width="30px"></a>
+            <a href="{{ route('auth/facebook') }}"><img src="Asset/login/dvnfacebook.png" alt="fb" width="30px"></a>
          </div>
         
         <div class="dvnloginform">
@@ -34,3 +34,5 @@
 </body>
 <script src="js/login.js"></script>
 </html>
+
+<!-- note : kalau login facebook ubah 127.0.0.1:8000 jadi localhost:8000 -->

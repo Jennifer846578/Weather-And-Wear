@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FacebookController;
 
 Route::get('/', function () {
     return view('homepage');
@@ -27,3 +28,5 @@ Route::get('/redirect',[SocialiteController::class, 'redirect'])->name('redirect
 Route::get('/callback',[SocialiteController::class, 'callback'])->name('callback')->middleware('guest');
 Route::get('/logout',[SocialiteController::class, 'logout'])->name('logout')->middleware('guest');
 
+Route::get('/auth/facebook', [FacebookController::class, 'facebookpage'])->name('auth/facebook');
+Route::get('/auth/facebook/callback', [FacebookController::class, 'facebookredirect'])->name('auth/facebook/callback');
