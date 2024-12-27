@@ -11,7 +11,7 @@
 
         <img src="Asset/login/dvnLogoWW.png" alt="WnW" class="dvnLogo">
 
-        <p class="dvnText">Login to your account</p>
+        <p class="dvnText">Create New Account</p>
 
         <!-- composer require laravel/socialite -->
          <div class="dvnsocialLogin">
@@ -23,13 +23,14 @@
             <p >or use your email account</p>
             <form method="post" action="homepage">
                 @csrf
+                <input type="text" name="dvnusername" class="dvnusername" placeholder="username" required><br>
                 <input type="text" name="dvnemail" class="dvnemail" placeholder="email or phone number" required><br>
                 <input type="password" name="dvnpassword" class="dvnpassword" placeholder="password (8 characters)" required><br>
-                <input type="submit" value="Login" class="dvnlogin" id="dvnlogin">
+                <input type="submit" value="Register" class="dvnlogin" id="dvnlogin">
             </form>
         </div>
 
-        <p class="dvnNoAcc">Don't have an account ? <a href="register">Register here</a></p>
+        <p class="dvnNoAcc">Already have an account ? <a href="login">Login here</a></p>
     </div>
 </body>
 <script src="js/login.js"></script>
