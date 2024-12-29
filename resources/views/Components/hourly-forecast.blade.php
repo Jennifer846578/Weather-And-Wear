@@ -1,7 +1,6 @@
-{{-- <link rel="stylesheet" href="css/homepage.css"> --}}
-
-<div class="forecast-box">
-    <div class="forecast-container">
+<div class="forecast-container">
+    <div class="forecast-title">Hourly Forecast</div>
+    <div class="card-box">
         <div class="forecast-card">
             <div class="time">3 AM</div>
             <img src="build\assets\homepage\rain.png" alt="Cloudy">
