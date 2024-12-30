@@ -24,6 +24,11 @@ Route::get('/register', function () {
     return view('register');
 });
 
+Route::get('/history', function () {
+    return view('history');
+});
+
+
 Route::get('/redirect',[SocialiteController::class, 'redirect'])->name('redirect')->middleware('guest');
 Route::get('/callback',[SocialiteController::class, 'callback'])->name('callback')->middleware('guest');
 Route::get('/logout',[SocialiteController::class, 'logout'])->name('logout')->middleware('guest');
