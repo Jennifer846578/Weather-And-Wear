@@ -23,7 +23,7 @@ body {
 .profile-header {
     background-color: rgb(57, 38, 166);
     width: 100%;
-    height: 310px;
+    height: 350px;
     border-bottom-right-radius: 7%;
     border-bottom-left-radius: 7%;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 8px;
@@ -41,7 +41,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 50px;
+    padding-top: 65px;
 }
 
 .camera-icon-image {
@@ -71,13 +71,13 @@ body {
 }
 
 .profile-form {
-    padding-top: 18px;
+    padding-top: 30px;
     padding-left: 30px;
     padding-right: 30px;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .form-group label {

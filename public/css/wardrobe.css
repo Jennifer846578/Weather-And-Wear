@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.phone-card {
+    width: 412px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    min-height: 100vh;
+    background-color: rgb(178, 211, 255);
+}
+
+.wardrobe-header{
+    position: fixed;
+    width: 412px;
+    padding-bottom: 20px;
+    background-color: rgb(178, 211, 255);
+    z-index: 1;
+}
+
+.wardrobe-header h1 {
+    color: #6583AB;
+    padding-top: 15px;
+    padding-left: 20px;
+}
+
+.add-clothes-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.add-clothes{
+    background-color: #ffffffaf;
+    width: 90%;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 3px;
+    /* border-style: dashed; */
+    /* border-color: #6583AB; */
+    /* border-radius: 5%; */
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%236583ABFF' stroke-width='4' stroke-dasharray='6%2c 10' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    border-radius: 10px;
+}
+
+.add-clothes p{
+    color: #6583AB;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+.categories-wrapper-luar{
+    /* background-color: aquamarine; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    margin-top: 155px;
+    margin-bottom: 90px;
+}
+
+.categories-wrapper{
+    /* background-color: red; */
+    width: 90%;
+    height: fit-content;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.two-category-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.category{
+    background-color: #ffffffaf;
+    width: 175px;
+    height: 175px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.2) 4px 4px 8px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.category p{
+    color: #6583AB;
+}
+
+.category-icon-image{
+    width: 120px;
+    height: 127px;
+    padding-bottom: 7px;
+}
