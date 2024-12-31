@@ -10,16 +10,20 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0;
 }
 
 .phone-card {
     width: 412px;
     min-height: 100vh;
     background-color: #B2D3FF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .weatherName-box{
-    margin: 60px 0 0 0;
+    margin: 50px 0 0 0;
     text-align: center;
 }
 
@@ -30,12 +34,12 @@ body {
 }
 
 .weather-box{
-    margin: 60px 0 0 0;
+    margin: 10px 0 0 0;
     text-align: center;
 }
 
 .weather-dynamic img{
-    width: 70%;
+    width: 60%;
     justify-content: center;
     align-items: center;
 }
@@ -47,13 +51,15 @@ body {
 }
 .weather-card {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 390px;
     padding: 20px;
+    border: 1px solid white;
     border-radius: 44px;
-    background: linear-gradient(135deg, #91cfff, #bfdfff);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: rgba(74, 74, 74, 0.241); /* Warna putih transparan */
+    backdrop-filter: blur(10px); /* Efek kaca buram */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan */
 }
 
 .weather-details {
@@ -86,30 +92,31 @@ body {
 
 /* Hourly Forecast */
 
-.forecast-box{
-    display: flex;
-    justify-content: center;
-}
-
 .forecast-container {
+    border: 1px solid white;
     display: flex;
+    flex-direction: column;
     width: 390px;
     margin: 30px 0 0 0;
     justify-content: center;
-    background-color: #c1dcf0;
     border-radius: 44px;
     padding: 20px;
-    gap: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    gap: 0px;
+    background: rgba(74, 74, 74, 0.241); /* Warna putih transparan */
+    backdrop-filter: blur(10px); /* Efek kaca buram */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan */
 }
 
 .forecast-card {
+    border: 1px solid white;
     background-color: #46b2e0;
     border-radius: 30px;
     color: white;
     text-align: center;
     padding: 15px;
     width: 60px;
+    display: grid;
+    gap: 20px;
 }
 
 .forecast-card.now {
@@ -130,6 +137,21 @@ body {
     font-size: 16px;
     font-weight: bold;
 }
+
+.forecast-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.card-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
 
 @media screen {
 

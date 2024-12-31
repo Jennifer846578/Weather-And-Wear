@@ -24,14 +24,6 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/wardrobe', function () {
-    return view('wardrobe');
-});
-
-Route::get('/wardrobe/blazer', function () {
-    return view('blazer');
-})->name('wardrobe.blazer');
-
 Route::get('/redirect',[SocialiteController::class, 'redirect'])->name('redirect')->middleware('guest');
 Route::get('/callback',[SocialiteController::class, 'callback'])->name('callback')->middleware('guest');
 Route::get('/logout',[SocialiteController::class, 'logout'])->name('logout')->middleware('guest');

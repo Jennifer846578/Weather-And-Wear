@@ -9,15 +9,13 @@
 </head>
 <body>
     <div class="phone-card">
-        <div class="profile-header">
-            <body>
-                <x-navbar></x-navbar>
-                <x-weather-name>build\assets\homepage\wn-rain.png</x-weather-name>
-                <x-weather>build\assets\homepage\rain.png</x-weather>
-                <x-otherinfo></x-otherinfo>
-                <x-hourly-forecast></x-hourly-forecast>
-            </body>
-        </div>
+        <body>
+            <x-navbar></x-navbar>
+            <x-weather-name>build\assets\homepage\wn-rain.png</x-weather-name>
+            <x-weather>build\assets\homepage\rain.png</x-weather>
+            <x-otherinfo></x-otherinfo>
+            <x-hourly-forecast></x-hourly-forecast>
+        </body>
     </div>
 </body>
 </html>
