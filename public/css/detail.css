@@ -1,0 +1,205 @@
+body
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #B2D3FF;
+}
+
+h1{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: #6583AB;
+}
+
+.dvnbackbutton
+{
+  display: flex;
+  width: 36px;
+  height: 36px;
+  border-radius: 30px;
+  background-color: #6583AB;
+  margin-left: -340px;
+  margin-top: 10px;
+  margin-bottom: -10px;
+  justify-content: center;
+  align-items: center;
+}
+.dvnbackbutton img
+{
+  margin-right: 4px;
+  margin-top: 2px;
+}
+
+.dvnpickcolor
+{
+    width: 363px;
+    height: 232px;
+    background-color: rgb(255, 255, 255, 0.5);
+    margin-top: 13px;
+    border-radius: 30px;
+    border: 1px solid white;
+}
+
+.dvnbottomtop
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 363px;
+    height: 232px;
+    background-color: rgb(255, 255, 255, 0.5);
+    margin-top: 13px;
+    border-radius: 30px;
+    border: 1px solid white;
+}
+
+.dvnbottomtop p
+{
+    margin-top: -25px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    color: #6583AB;
+}
+
+.dvncontinue button
+{
+    margin-top: 10px;
+    width: 300px;
+    height: 34px;
+    border: none;
+    border-radius: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    color: #6583AB;
+    font-size: 20px;
+
+}
+
+.dvnpicktopbot
+{
+    display: flex;
+    justify-content: center;
+}
+
+.dvnpicktopbot label {
+  display: inline-block; 
+  width: 136px; 
+  height: auto; 
+  text-align: center;
+}
+
+.dvnlabeltop
+{
+  margin-right: 25px;
+}
+
+.dvnpicktopbot label img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dvnbottom
+{
+    width: 136px;
+    height: auto;
+    background-color: rgb(0, 0, 0, 0.05);
+    border-radius: 5px;
+    /* display: block; */
+}
+
+.dvnpicktopbot input
+{
+  display: none;
+}
+
+.dvntop
+{
+    width: 136px;
+    height: auto;
+    background-color: rgb(0, 0, 0, 0.05);
+    border-radius: 5px;
+    /* display: block; */
+}
+
+.dvnpicktopbot input:checked + img {
+  border: 2px solid #6583AB; /* Border biru saat dipilih */
+  border-radius: 5px; /* Tambahkan sudut melengkung (opsional) */
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Tambahkan efek bayangan */
+}
+
+
+.dvn-color-picker-container {
+    margin-top: 15px;
+    background-color: rgb(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 320px;
+  }
+  .dvn-color-picker-container h2 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    color: #6583AB;
+    margin-top: -13px;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+  .dvn-color-area {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(to right, white, rgba(255, 255, 255, 0)),
+                linear-gradient(to top, black, rgba(0, 0, 0, 0));
+    margin: 0 auto;
+    cursor: crosshair;
+  }
+  .dvn-color-slider {
+    margin-top: 20px;
+    width: 250px;
+    appearance: none;
+    height: 20px;
+    border-radius: 15px;
+    background: linear-gradient(to right, red, yellow, lime, cyan, blue, magenta, red);
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+  .dvn-color-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    position: relative;
+  }
+  .dvn-color-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid #ccc;
+    cursor: pointer;
+  }
+  .dvn-color-display {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 15px auto;
+    border: 1px solid #ccc;
+  }
+  .dvn-hex-display {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-top: 10px;
+    font-size: 15px;
+    color: #6583AB;
+  }

@@ -28,6 +28,10 @@ Route::get('/wardrobe', function () {
     return view('wardrobe');
 });
 
+Route::get('/details', function () {
+    return view('details');
+});
+
 Route::get('/wardrobe/blazer', function () {
     return view('blazer');
 })->name('wardrobe.blazer');
