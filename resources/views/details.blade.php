@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="dvnbackbutton">
-        <a href="addFile.html">
+        <a href="wardrobe">
             <img src="asset/detail/back.png" alt="Back" width="36px">
         </a>
     </div>
