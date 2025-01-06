@@ -32,6 +32,10 @@ Route::get('/details', function () {
     return view('details');
 });
 
+Route::get('/history', function () {
+    return view('history');
+});
+
 Route::get('/wardrobe/blazer', function () {
     return view('blazer');
 })->name('wardrobe.blazer');

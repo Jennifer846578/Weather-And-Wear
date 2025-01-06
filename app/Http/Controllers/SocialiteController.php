@@ -33,7 +33,7 @@ class SocialiteController extends Controller
 
             auth('web')->login($userFromDb);
             session()->regenerate();
-            return redirect('/');
+            return redirect('/')->with('user', $userFromDb);
         }
     }
 
