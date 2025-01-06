@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="phone-card">
-        {{-- <x-navbar></x-navbar> --}}
+        <x-navbar></x-navbar>
         <!-- Tombol Back -->
         <div class="back-button" onclick="goBack()">
             <img src="{{ asset('Asset/Wardrobe/Blazer/back-arrow.png') }}" alt="Back">
@@ -48,7 +48,7 @@
                             </div>
                             <img src="{{ asset('Asset/Wardrobe/Blazer/Blazer.png') }}" class="category-icon-image">
                         </div>
-        
+
                         <div class="category">
                             <div class="btn-fav-clothes">
                                 <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
@@ -66,7 +66,7 @@
                             </div>
                             <img src="{{ asset('Asset/Wardrobe/Blazer/blazer2.png') }}" class="category-icon-image">
                         </div>
-        
+
                         <div class="category">
                             <div class="btn-fav-clothes">
                                 <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
@@ -84,7 +84,7 @@
                             </div>
                             <img src="{{ asset('Asset/Wardrobe/Blazer/blazer4.png') }}" class="category-icon-image">
                         </div>
-        
+
                         <div class="category">
                             <div class="btn-fav-clothes">
                                 <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
@@ -102,7 +102,7 @@
                             </div>
                             <img src="{{ asset('Asset/Wardrobe/Blazer/blazer6.png') }}" class="category-icon-image">
                         </div>
-        
+
                         <div class="category">
                             <div class="btn-fav-clothes">
                                 <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
