@@ -6,7 +6,7 @@
     <title>Details Page</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css" />
     <link rel="stylesheet" href="css/detail.css"">
-    
+
 </head>
 <body>
     <div class="backbutton">
@@ -42,18 +42,20 @@
                     <img src="Asset/detail/bot.png" alt="Bottom" class="bottom">
                 </label>
             </form>
-            
         </div>
     </div>
 
+    {{-- <div class="continue">
+        <button type="submit" onclick="window.location.href='detailsTop'">Continue</button>
+    </div> --}}
     <div class="continue">
-        <button type="submit" onclick="window.location.href='wardrobe'">Continue</button>
+        <button type="button" onclick="redirectToPage()">Continue</button>
     </div>
 
     </form>
     <script src="js/details.js"></script>
     <script src="js/color.js"></script>
-    
-    
+
+
 </body>
 </html>
