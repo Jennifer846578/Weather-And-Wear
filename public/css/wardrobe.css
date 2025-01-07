@@ -43,6 +43,7 @@ body {
     width: 378px;
     height: 72px;
     background-color: rgb(255, 255, 255, 0.5);
+    cursor: pointer;
 }
 
 .phone-card {
@@ -57,7 +58,7 @@ body {
 .wardrobe-header{
     position: fixed;
     width: 412px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     background-color: rgb(178, 211, 255);
     z-index: 1;
 }
@@ -73,7 +74,6 @@ body {
     align-items: center;
     justify-content: center;
     padding-top: 10px;
-    cursor: pointer;
 }
 
 .add-clothes{
