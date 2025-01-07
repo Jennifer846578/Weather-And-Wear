@@ -49,11 +49,12 @@ body {
     justify-content: center;
 }
 .weather-card {
+    margin-top: 15px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 390px;
-    padding: 20px;
+    padding: 10px;
     border: 1px solid white;
     border-radius: 44px;
     background: rgba(74, 74, 74, 0.241); /* Warna putih transparan */
@@ -96,10 +97,10 @@ body {
     display: flex;
     flex-direction: column;
     width: 390px;
-    margin: 30px 0 0 0;
+    margin: 20px 0 0 0;
     justify-content: center;
     border-radius: 44px;
-    padding: 20px;
+    padding: 12px;
     gap: 0px;
     background: rgba(74, 74, 74, 0.241); /* Warna putih transparan */
     backdrop-filter: blur(10px); /* Efek kaca buram */
@@ -115,7 +116,7 @@ body {
     padding: 15px;
     width: 60px;
     display: grid;
-    gap: 20px;
+    gap: 15px;
 }
 
 .forecast-card.now {
