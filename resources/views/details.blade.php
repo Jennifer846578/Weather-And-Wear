@@ -18,7 +18,7 @@
 
     <!-- Pratinjau gambar -->
     <div id="PreviewContainer">
-        <img id="PreviewImage" alt="Preview Image" style="width: 300px; height: auto;">
+        <img id="PreviewImage" class="PreviewImage" alt="Preview Image" style="width: 250px;">
     </div>
 
     <div class="-color-picker-container">
