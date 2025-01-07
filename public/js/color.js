@@ -1,77 +1,79 @@
 const ColorArea = document.getElementById('ColorArea');
-    const ColorSlider = document.getElementById('ColorSlider');
-    const ColorDisplay = document.getElementById('ColorDisplay');
-    const HexDisplay = document.getElementById('HexDisplay');
+const ColorSlider = document.getElementById('ColorSlider');
+const ColorDisplay = document.getElementById('ColorDisplay');
+const HexDisplay = document.getElementById('HexDisplay');
 
-    let hue = 360; // Default slider value (set to the far right)
-    let saturation = 100;
-    let lightness = 50;
-    let selectedColor = '#FF0000';
+// Penanda klik
+const marker = document.createElement('div');
+marker.style.position = 'absolute';
+marker.style.width = '10px';
+marker.style.height = '10px';
+marker.style.border = '2px solid white';
+marker.style.borderRadius = '50%';
+marker.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
+marker.style.transform = 'translate(-50%, -50%)';
+marker.style.pointerEvents = 'none';
+ColorArea.appendChild(marker);
 
-    // Convert HSL to HEX
-    function hslToHex(h, s, l) {
-      h /= 360;
-      s /= 100;
-      l /= 100;
-      let r, g, b;
-      if (s === 0) {
-        r = g = b = l; // Achromatic
-      } else {
-        const hue2rgb = (p, q, t) => {
-          if (t < 0) t += 1;
-          if (t > 1) t -= 1;
-          if (t < 1 / 6) return p + (q - p) * 6 * t;
-          if (t < 1 / 2) return q;
-          if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
-          return p;
-        };
-        const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-        const p = 2 * l - q;
-        r = hue2rgb(p, q, h + 1 / 3);
-        g = hue2rgb(p, q, h);
-        b = hue2rgb(p, q, h - 1 / 3);
-      }
-      return (
-        "#" +
-        [r, g, b]
-          .map((x) => {
-            const hex = Math.round(x * 255).toString(16);
-            return hex.length === 1 ? "0" + hex : hex;
-          })
-          .join("")
-      );
-    }
+let hue = 0;
+let saturation = 100;
+let brightness = 50;
 
-    // Update gradient on the color area
-    function updateColorArea() {
-      const gradient = `linear-gradient(to right, white, hsl(${hue}, 100%, 50%))`;
-      ColorArea.style.background = `linear-gradient(to top, black, rgba(0, 0, 0, 0)), ${gradient}`;
-    }
+// Fungsi konversi HSB ke RGB
+function hsbToHex(h, s, b) {
+  s /= 100;
+  b /= 100;
+  const k = (n) => (n + h / 60) % 6;
+  const f = (n) => b * (1 - s * Math.max(0, Math.min(k(n), 4 - k(n), 1)));
+  const r = Math.round(255 * f(5));
+  const g = Math.round(255 * f(3));
+  const bVal = Math.round(255 * f(1));
+  return (
+    '#' +
+    [r, g, bVal]
+      .map((x) => {
+        const hex = x.toString(16);
+        return hex.length === 1 ? '0' + hex : hex;
+      })
+      .join('')
+  );
+}
 
-    // Update the selected color display
-    function updateColorDisplay() {
-      selectedColor = hslToHex(hue, saturation, lightness);
-      ColorDisplay.style.backgroundColor = selectedColor;
-      HexDisplay.textContent = `HEX: ${selectedColor.toUpperCase()}`;
-    }
+// Fungsi memperbarui warna area
+function updateColorArea() {
+  ColorArea.style.background = `linear-gradient(to top, black, transparent), linear-gradient(to right, white, hsl(${hue}, 100%, 50%))`;
+}
 
-    // Handle color selection on the color area
-    ColorArea.addEventListener('click', (event) => {
-      const rect = ColorArea.getBoundingClientRect();
-      const x = event.clientX - rect.left; // X position in the color area
-      const y = event.clientY - rect.top; // Y position in the color area
-      saturation = Math.round((x / rect.width) * 100);
-      lightness = 100 - Math.round((y / rect.height) * 100);
-      updateColorDisplay();
-    });
+// Fungsi memperbarui tampilan warna
+function updateColorDisplay() {
+  const selectedColor = hsbToHex(hue, saturation, brightness);
+  ColorDisplay.style.backgroundColor = selectedColor;
+  HexDisplay.textContent = `HEX: ${selectedColor.toUpperCase()}`;
+}
 
-    // Handle slider input
-    ColorSlider.addEventListener('input', (event) => {
-      hue = event.target.value;
-      updateColorArea();
-      updateColorDisplay();
-    });
+// Event handler untuk klik di area warna
+ColorArea.addEventListener('click', (event) => {
+  const rect = ColorArea.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
 
-    // Initialize
-    updateColorArea();
-    updateColorDisplay();
+  saturation = Math.round((x / rect.width) * 100);
+  brightness = 100 - Math.round((y / rect.height) * 100);
+
+  // Memindahkan penanda ke posisi klik
+  marker.style.left = `${x}px`;
+  marker.style.top = `${y}px`;
+
+  updateColorDisplay();
+});
+
+// Event handler untuk slider warna
+ColorSlider.addEventListener('input', (event) => {
+  hue = event.target.value;
+  updateColorArea();
+  updateColorDisplay();
+});
+
+// Inisialisasi awal
+updateColorArea();
+updateColorDisplay();
