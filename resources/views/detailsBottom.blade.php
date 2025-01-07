@@ -23,19 +23,18 @@
     <div class="categoryBox">
         <h2>What are your clothes categories?</h2>
         <div class="categories">
-          <button class="category-btn">🕶️ Blazer</button>
-          <button class="category-btn">🧥 Coat</button>
-          <button class="category-btn">👗 Dress</button>
-          <button class="category-btn">🧥 Hoodie</button>
-          <button class="category-btn">🧥 Jacket</button>
-          <button class="category-btn">👔 Shirt</button>
-          <button class="category-btn">🧶 Sweater</button>
-          <button class="category-btn">👕 T-Shirt</button>
+            <button class="category-btn">👷 Cargo</button>
+            <button class="category-btn">👖 Jeans</button>
+            <button class="category-btn">🏃 Jogger</button>
+            <button class="category-btn">🦵 Legging</button>
+            <button class="category-btn">🩳 Shorts</button>
+            <button class="category-btn">🌹 Skirt</button>
+            <button class="category-btn">🕶️ Trousers</button>
         </div>
         <div class="continue">
             <button type="button" id="continue-btn" disabled onclick="redirectToPageStyle()">Continue</button>
-          </div>
-      </div>
+        </div>
+    </div>
 
 </form>
 <script src="js/details.js"></script>

@@ -20,6 +20,20 @@
         <img id="PreviewImage" alt="Preview Image" style="width: 300px; height: auto;">
     </div>
 
+    <div class="categoryBox">
+        <h2>What are your clothes categories?</h2>
+        <div class="categories">
+          <button class="category-btn">🧢 Casual</button>
+          <button class="category-btn">👨‍💼 Formal</button>
+          <button class="category-btn">‍♀️ Sporty</button>
+          <button class="category-btn">🛹 Streetwear</button>
+          <button class="category-btn">🎞️ Vintage</button>
+        </div>
+        <div class="continue">
+            <button type="button" id="continue-btn" disabled onclick="redirectToPageWardrobe()">Continue</button>
+        </div>
+    </div>
 
+</body>
 </form>
 <script src="js/details.js"></script>

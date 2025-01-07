@@ -117,6 +117,17 @@
             </div>
         </div>
     </div>
+
+    <div id="notification-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <img src="{{ asset('Asset/Wardrobe/checklist.png') }}" alt="Success" style="width: 80px; height: 80px;">
+                <p>Clothes successfully added!</p>
+            </div>
+        </div>
+    </div>
+
     <script src="js/addFile.js"></script>
 </body>
 </html>

@@ -40,6 +40,10 @@ Route::get('/detailsBottom', function () {
     return view('detailsBottom');
 });
 
+Route::get('/detailsStyle', function () {
+    return view('detailsStyle');
+});
+
 Route::get('/history', function () {
     return view('history');
 });
