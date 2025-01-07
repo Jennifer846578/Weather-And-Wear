@@ -20,12 +20,6 @@
         <img id="PreviewImage" alt="Preview Image" style="width: 300px; height: auto;">
     </div>
 
-    <div>
-
-    </div>
-    <div class="continue">
-        <button type="button">Continue</button>
-    </div>
 
 </form>
 <script src="js/details.js"></script>
