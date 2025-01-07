@@ -9,7 +9,7 @@
     
 </head>
 <body>
-    <div class="dvnbackbutton">
+    <div class="backbutton">
         <a href="wardrobe">
             <img src="asset/detail/back.png" alt="Back" width="36px">
         </a>
@@ -17,36 +17,36 @@
     <h1>Add Clothes to Wardrobe</h1>
 
     <!-- Pratinjau gambar -->
-    <div id="dvnPreviewContainer" style="display: none;">
-        <img id="dvnPreviewImage" alt="Preview Image" style="width: 300px; height: auto;">
+    <div id="PreviewContainer">
+        <img id="PreviewImage" alt="Preview Image" style="width: 300px; height: auto;">
     </div>
 
-    <div class="dvn-color-picker-container">
+    <div class="-color-picker-container">
         <h2>Select your clothes color</h2>
-        <div class="dvn-color-area" id="dvnColorArea"></div>
-        <input type="range" class="dvn-color-slider" id="dvnColorSlider" min="0" max="360" value="360">
-        <div class="dvn-color-display" id="dvnColorDisplay"></div>
-        <div class="dvn-hex-display" id="dvnHexDisplay">HEX: #FF0000</div>
+        <div class="-color-area" id="ColorArea"></div>
+        <input type="range" class="-color-slider" id="ColorSlider" min="0" max="360" value="360">
+        <div class="-color-display" id="ColorDisplay"></div>
+        <div class="-hex-display" id="HexDisplay">HEX: #FF0000</div>
       </div>
 
-    <div class="dvnbottomtop">
+    <div class="bottomtop">
         <p>Top or Bottom</p>
-        <div class="dvnpicktopbot">
+        <div class="picktopbot">
             <form>
-                <label for="dvntop" class="dvnlabeltop">
-                    <input type="radio" id="dvntop" name="top" value="top">
-                    <img src="Asset/detail/top.png" alt="Top" class="dvntop">
+                <label for="top" class="labeltop">
+                    <input type="radio" id="top" name="top" value="top">
+                    <img src="Asset/detail/top.png" alt="Top" class="top">
                 </label>
-                <label for="dvnbottom">
-                    <input type="radio" id="dvnbottom" name="top" value="bottom">
-                    <img src="Asset/detail/bot.png" alt="Bottom" class="dvnbottom">
+                <label for="bottom">
+                    <input type="radio" id="bottom" name="top" value="bottom">
+                    <img src="Asset/detail/bot.png" alt="Bottom" class="bottom">
                 </label>
             </form>
             
         </div>
     </div>
 
-    <div class="dvncontinue">
+    <div class="continue">
         <button type="submit" onclick="window.location.href='wardrobe'">Continue</button>
     </div>
 

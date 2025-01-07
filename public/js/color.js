@@ -1,7 +1,7 @@
-const dvnColorArea = document.getElementById('dvnColorArea');
-    const dvnColorSlider = document.getElementById('dvnColorSlider');
-    const dvnColorDisplay = document.getElementById('dvnColorDisplay');
-    const dvnHexDisplay = document.getElementById('dvnHexDisplay');
+const ColorArea = document.getElementById('ColorArea');
+    const ColorSlider = document.getElementById('ColorSlider');
+    const ColorDisplay = document.getElementById('ColorDisplay');
+    const HexDisplay = document.getElementById('HexDisplay');
 
     let hue = 360; // Default slider value (set to the far right)
     let saturation = 100;
@@ -45,19 +45,19 @@ const dvnColorArea = document.getElementById('dvnColorArea');
     // Update gradient on the color area
     function updateColorArea() {
       const gradient = `linear-gradient(to right, white, hsl(${hue}, 100%, 50%))`;
-      dvnColorArea.style.background = `linear-gradient(to top, black, rgba(0, 0, 0, 0)), ${gradient}`;
+      ColorArea.style.background = `linear-gradient(to top, black, rgba(0, 0, 0, 0)), ${gradient}`;
     }
 
     // Update the selected color display
     function updateColorDisplay() {
       selectedColor = hslToHex(hue, saturation, lightness);
-      dvnColorDisplay.style.backgroundColor = selectedColor;
-      dvnHexDisplay.textContent = `HEX: ${selectedColor.toUpperCase()}`;
+      ColorDisplay.style.backgroundColor = selectedColor;
+      HexDisplay.textContent = `HEX: ${selectedColor.toUpperCase()}`;
     }
 
     // Handle color selection on the color area
-    dvnColorArea.addEventListener('click', (event) => {
-      const rect = dvnColorArea.getBoundingClientRect();
+    ColorArea.addEventListener('click', (event) => {
+      const rect = ColorArea.getBoundingClientRect();
       const x = event.clientX - rect.left; // X position in the color area
       const y = event.clientY - rect.top; // Y position in the color area
       saturation = Math.round((x / rect.width) * 100);
@@ -66,7 +66,7 @@ const dvnColorArea = document.getElementById('dvnColorArea');
     });
 
     // Handle slider input
-    dvnColorSlider.addEventListener('input', (event) => {
+    ColorSlider.addEventListener('input', (event) => {
       hue = event.target.value;
       updateColorArea();
       updateColorDisplay();

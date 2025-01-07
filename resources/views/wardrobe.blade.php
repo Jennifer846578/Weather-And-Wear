@@ -13,14 +13,13 @@
         <div class="wardrobe-header">
             <h1>Wardrobe</h1>
 
-            <div class="InputFile">
-            <button>
-                <input type="file" id="FileInput" accept="image/*">
-                <label for="FileInput">Add Clothes to Wardrobe</label>
-            </button>
-        </div>
+    <div class="InputFile">
+        <button>
+            <input type="file" id="FileInput" accept="image/*">
+            <label for="FileInput">Add Clothes to Wardrobe</label>
+        </button>
+    </div>
     
-    <script src="js/addFile.js"></script>
     </div>
 
         <div class="categories-wrapper-luar">
@@ -118,5 +117,6 @@
             </div>
         </div>
     </div>
+    <script src="js/addFile.js"></script>
 </body>
 </html>
