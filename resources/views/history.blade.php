@@ -8,11 +8,12 @@
 </head>
 <body>
     <div class="dvnHistoryBox">
+    <x-navbar></x-navbar>
         <h3>History</h3>
         <div class="dvnCalendar">
             <p>Date and Weather</p>
             <div class="dvnCalendarcontent">
-
+                <img src="Asset/History/calendar.png" alt="calendar" width="36px">
             </div>
         </div>
         <div class="dvnHistoryboxcontent">
