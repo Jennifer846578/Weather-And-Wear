@@ -19,7 +19,7 @@
             <label for="FileInput">Add Clothes to Wardrobe</label>
         </button>
     </div>
-    
+
     </div>
 
         <div class="categories-wrapper-luar">
@@ -29,7 +29,7 @@
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Blazer.png') }}" class="category-icon-image">
                         <p>Blazer</p>
                     </a>
-    
+
                     <div class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Coat.png') }}" class="category-icon-image">
                         <p>Coat</p>
@@ -41,7 +41,7 @@
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Dress.png') }}" class="category-icon-image">
                         <p>Dress</p>
                     </div>
-    
+
                     <div class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Hoodie.png') }}" class="category-icon-image">
                         <p>Hoodie</p>
@@ -53,7 +53,7 @@
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Jacket.png') }}" class="category-icon-image">
                         <p>Jacket</p>
                     </div>
-    
+
                     <div class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Shirt.png') }}" class="category-icon-image">
                         <p>Shirt</p>
@@ -65,7 +65,7 @@
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Sweater.png') }}" class="category-icon-image">
                         <p>Sweater</p>
                     </div>
-    
+
                     <div class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/T-Shirt.png') }}" class="category-icon-image">
                         <p>T-shirt</p>
@@ -77,7 +77,7 @@
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Cargo.png') }}" class="category-icon-image">
                         <p>Cargo</p>
                     </div>
-    
+
                     <div class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Jeans.png') }}" class="category-icon-image">
                         <p>Jeans</p>
@@ -89,7 +89,7 @@
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Jogger.png') }}" class="category-icon-image">
                         <p>Jogger</p>
                     </div>
-    
+
                     <div class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Legging.png') }}" class="category-icon-image">
                         <p>Legging</p>
@@ -101,7 +101,7 @@
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Shorts.png') }}" class="category-icon-image">
                         <p>Shorts</p>
                     </div>
-    
+
                     <div class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Skirt.png') }}" class="category-icon-image">
                         <p>Skirt</p>

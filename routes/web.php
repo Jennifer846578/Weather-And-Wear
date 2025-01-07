@@ -32,6 +32,10 @@ Route::get('/details', function () {
     return view('details');
 });
 
+Route::get('/detailsTop', function () {
+    return view('detailsTop');
+});
+
 Route::get('/history', function () {
     return view('history');
 });

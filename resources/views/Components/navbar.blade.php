@@ -1,19 +1,19 @@
 <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
 <div class="navbar-box">
     <nav class="navbar-main">
-        <a href="#" class="nav-item">
+        <a href="/" class="nav-item">
             <img src="{{ asset('build/assets/navbar/navbaricon-home.png') }}" alt="Home" class="nav-icon">
         </a>
-        <a href="#" class="nav-item">
-            <img src="{{ asset('build/assets/navbar/navbaricon-wardrobe.png') }}" alt="Home" class="nav-icon">
+        <a href="wardrobe" class="nav-item">
+            <img src="{{ asset('build/assets/navbar/navbaricon-wardrobe.png') }}" alt="Wardrobe" class="nav-icon">
 
         </a>
-        <a href="#" class="nav-item">
-            <img src="{{ asset('build/assets/navbar/navbaricon-history.png') }}" alt="Home" class="nav-icon">
+        <a href="history" class="nav-item">
+            <img src="{{ asset('build/assets/navbar/navbaricon-history.png') }}" alt="History" class="nav-icon">
 
         </a>
-        <a href="#" class="nav-item">
-            <img src="{{ asset('build/assets/navbar/navbaricon-profile.png') }}" alt="Home" class="nav-icon">
+        <a href="profile" class="nav-item">
+            <img src="{{ asset('build/assets/navbar/navbaricon-profile.png') }}" alt="Profile" class="nav-icon">
 
         </a>
     </nav>
