@@ -46,6 +46,11 @@
                                 <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
                                 <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
                             </div>
+                            <div class="editIcon">
+                                {{-- <a href="{{ route('blazer.details') }}"> --}}
+                                    <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                                {{-- </a> --}}
+                            </div>
                             <img src="{{ asset('Asset/Wardrobe/Blazer/Blazer.png') }}" class="category-icon-image">
                         </div>
 
