@@ -153,3 +153,25 @@ body {
     position: relative;
     display: inline-block;
 }
+
+.dropdown-menu.dropdown-menu-end{
+    margin: 20px auto;
+    background-color: red;
+    width: 100px;
+    justify-content: center;
+    display: flex;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.dropdown-menu.dropdown-menu-end:hover{
+    cursor: pointer;
+}
+
+.dropdown-item{
+    margin: auto;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+

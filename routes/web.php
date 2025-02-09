@@ -3,24 +3,29 @@
 use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FacebookController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\homepageController;
 
-Route::get('/', function () {
-    return view('homepage');
-});
+// Route::get('/', function () {
+//     return view('homepage');
+// });
 
-Route::post('/homepage', function () {
-    return view('homepage');
-});
+Route::get('/',[App\Http\Controllers\homepageController::class,'index']);
+
+// Route::post('/homepage', function () {
+//     return view('homepage');
+// });
+Route::post('/homepage',[App\Http\Controllers\homepageController::class,'index']);
 
 Route::get('/profile', function () {
     return view('profile');
 });
 
-Route::get('/login', function () {
+Route::get('/logins', function () {
     return view('login');
 });
 
-Route::get('/register', function () {
+Route::get('/registers', function () {
     return view('register');
 });
 
@@ -58,3 +63,7 @@ Route::get('/logout',[SocialiteController::class, 'logout'])->name('logout')->mi
 
 Route::get('/auth/facebook', [FacebookController::class, 'facebookpage'])->name('auth/facebook');
 Route::get('/auth/facebook/callback', [FacebookController::class, 'facebookredirect'])->name('auth/facebook/callback');
+
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
