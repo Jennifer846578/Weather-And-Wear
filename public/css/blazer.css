@@ -167,6 +167,16 @@ body {
     cursor: pointer;
 }
 
+.editIcon img {
+    position: absolute;
+    top: 8px;
+    right: 30px;
+    /* left: 7px; */
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
 .btn-fav-clothes img {
     position: absolute;
     height: 100%;

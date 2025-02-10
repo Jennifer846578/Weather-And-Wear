@@ -34,7 +34,7 @@
         </div>
         <div class="continue">
             <button type="button" id="continue-btn" disabled onclick="redirectToPageStyle()">Continue</button>
-          </div>
+        </div>
       </div>
 
 </form>

@@ -21,7 +21,7 @@
     </div>
 
     <div class="categoryBox">
-        <h2>What are your clothes categories?</h2>
+        <h2>What are your clothes style?</h2>
         <div class="categories">
           <button class="category-btn">🧢 Casual</button>
           <button class="category-btn">👨‍💼 Formal</button>

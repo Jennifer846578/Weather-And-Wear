@@ -14,11 +14,12 @@
             <h1>Wardrobe</h1>
 
     <div class="InputFile">
-        <button>
+        <button class="inputButton">
             <input type="file" id="FileInput" accept="image/*">
-            <label for="FileInput">Add Clothes to Wardrobe</label>
+            <label class="inputLabel" for="FileInput">Add Clothes to Wardrobe</label>
         </button>
     </div>
+    
 
     </div>
 
