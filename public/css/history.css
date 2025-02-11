@@ -30,7 +30,6 @@ body
 {
     width: 36px;
     height: 36px;
-    background-color: #7187C5;
     border-radius: 90px;
     margin-left: 200px;
 }
@@ -54,9 +53,9 @@ body
 
 .dvnweatherhistory
 {
+    z-index: 1;
     margin-top: 15px;
     margin-left: 11px;
-    z-index: 10;
     width: 376px;
     height: 114px;
     background-color: #85A4EE;
@@ -71,4 +70,173 @@ body
     color: white;
     margin-left: 11px;
 
+}
+
+.schedule-button
+{
+    border: none;
+    background-color: transparent;
+}
+
+/* View Schedule After Click */
+.popup-background {
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.schedule-list {
+    margin-bottom: 20px; /* Memberi jarak dengan kalender */
+}
+
+.schedule-item {
+    background-color: #eef3ff; /* Latar biru muda */
+    padding: 10px 15px; /* Memberikan ruang dalam */
+    margin-bottom: 10px; /* Jarak antar item */
+    border-radius: 5px; /* Sudut melengkung */
+    font-size: 14px; /* Ukuran font yang proporsional */
+    text-align: left; /* Teks rata kiri */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan ringan */
+}
+
+.popup {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+}
+
+.popup h2 {
+    margin: 0;
+    color: #839de2;
+}
+
+.popup .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4d4d;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.popup .yes-button {
+    background-color: rgb(54, 215, 54);
+    margin-top: 10px;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+}
+
+
+.calendar {
+    margin-top: 20px;
+}
+
+.calendar .date {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.calendar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.calendar ul li {
+    margin: 5px 0;
+    padding: 10px;
+    background: #e8f0fe;
+    border-radius: 5px;
+}
+
+/* Tabel Kalender */
+.calendar-table table {
+    width: 100%; /* Lebar penuh */
+    border-collapse: collapse; /* Menghilangkan garis antara sel */
+    margin-top: 10px; /* Memberikan jarak atas */
+}
+
+.calendar-table th,
+.calendar-table td {
+    width: 15%;
+    /* padding: 10px; */
+    text-align: center; /* Teks rata tengah */
+    border-radius: 100%; /* Membuat tanggal berbentuk lingkaran */
+    cursor: pointer; /* Ubah kursor jadi pointer */
+    transition: background-color 0.3s, color 0.3s; /* Efek transisi saat hover */
+}
+
+.calendar-table th {
+    color: #6b89d4; /* Warna header */
+    font-weight: bold;
+}
+
+.calendar-table td {
+    background-color: #eef3ff; /* Latar tanggal */
+    font-weight: bold; /* Teks lebih tebal */
+}
+
+.calendar-table td:hover {
+    background-color: #6b89d4; /* Warna hover */
+    color: #ffffff; /* Warna teks saat hover */
+}
+
+.calendar-table .active {
+    background-color: #6b89d4; /* Warna tanggal yang aktif */
+    color: #ffffff;
+}
+
+/* Navigasi Bulan */
+.month-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* Memberi jarak dengan tabel */
+}
+
+.month-navigation button {
+    background: none; /* Menghapus latar belakang default */
+    border: none; /* Menghapus border default */
+    font-size: 16px; /* Ukuran teks */
+    font-weight: bold; /* Teks tebal */
+    color: #6b89d4; /* Warna biru */
+    cursor: pointer; /* Ubah kursor jadi pointer */
+}
+
+.month-navigation span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #4a4a4a; /* Warna teks bulan */
+}
+
+/* Header Pop-up */
+.popup h2 {
+    margin-bottom: 15px; /* Jarak bawah dengan elemen lainnya */
+    color: #6b89d4; /* Warna teks */
+    font-size: 20px; /* Ukuran font header */
 }
