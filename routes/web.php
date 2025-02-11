@@ -10,7 +10,8 @@ use App\Http\Controllers\homepageController;
 //     return view('homepage');
 // });
 
-Route::get('/',[App\Http\Controllers\homepageController::class,'index']);
+// Route::get('/',[App\Http\Controllers\homepageController::class,'index']);
+Route::get('/home',[App\Http\Controllers\homepageController::class,'index']);
 
 // Route::post('/homepage', function () {
 //     return view('homepage');
@@ -70,4 +71,4 @@ Auth::routes();
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
