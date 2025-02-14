@@ -39,6 +39,21 @@
                         </div>
 
                         <div class="row mb-3">
+                            {{-- <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label> --}}
+
+                            <div class="col-md-6 genderclass">
+                                <p>Gender</p>
+                                <select name="gender" id="gender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>   
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="row mb-3">
                             {{-- <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label> --}}
 
                             <div class="col-md-6">

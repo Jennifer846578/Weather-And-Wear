@@ -23,6 +23,7 @@ class User extends Authenticatable
         'facebook_id',
         'email',
         'password',
+        'gender',
     ];
 
     /**

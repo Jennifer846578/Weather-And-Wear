@@ -5,21 +5,24 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FacebookController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\homepageController;
-
+use Symfony\Component\HttpKernel\Profiler\Profile;
+use App\Http\Controllers\ProfileController;
 // Route::get('/', function () {
 //     return view('homepage');
 // });
 
-Route::get('/',[App\Http\Controllers\homepageController::class,'index']);
+Route::get('/',[App\Http\Controllers\homepageController::class,'index'])->name('home');
 
 // Route::post('/homepage', function () {
 //     return view('homepage');
 // });
 Route::post('/homepage',[App\Http\Controllers\homepageController::class,'index']);
 
+Route::resource('profile',App\Http\Controllers\ProfileController::class);
+
 Route::get('/profile', function () {
     return view('profile');
-});
+})->name('/profile');
 
 Route::get('/logins', function () {
     return view('login');
