@@ -70,3 +70,7 @@ Route::get('/auth/facebook/callback', [FacebookController::class, 'facebookredir
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

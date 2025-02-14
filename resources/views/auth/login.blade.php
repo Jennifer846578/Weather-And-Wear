@@ -10,7 +10,7 @@
 
                 <div class="dvnloginbox">
                     {{-- <div class="card-header">{{ __('Login') }}</div> --}}
-                    
+
                     <img src="Asset/login/dvnLogoWW.png" alt="WnW" class="dvnLogo">
                     <p class="dvnText">Login to your account</p>
                     <div class="dvnsocialLogin">
@@ -21,7 +21,7 @@
                         <p >or use your email account</p>
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-                            
+
                             <div class="row mb-3">
                                 {{-- <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label> --}}
 
@@ -50,8 +50,8 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                                {{-- <div class="col-md-6 offset-md-4"> --}}
+                            {{-- <div class="row mb-3">
+                                <div class="col-md-6 offset-md-4">
                                     <div class="form-check">
                                         <input class="form-check-inputs" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -59,8 +59,8 @@
                                             {{ __('Remember Me') }}
                                         </label>
                                     </div>
-                                {{-- </div> --}}
-                            </div>
+                                </div>
+                            </div> --}}
 
                             <div class="row mb-0">
                                 {{-- <div class="col-md-8 offset-md-4"> --}}
@@ -73,7 +73,7 @@
                                             {{ __('Forgot Your Password?') }}
                                         </a>
                                     @endif
-                                    
+
                                 {{-- </div> --}}
                             </div>
                             <p class="dvnNoAcc">Don't have an account ? <a href="register">Register here</a></p>
@@ -81,7 +81,7 @@
                     </div>
                 </div>
 
-                
+
             {{-- </div> --}}
         </div>
     </div>
