@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+.weathertext {
+    font-family: 'Nosifer', sans-serif; /* Example usage */
+    font-size: 48px;
+    color: #ffffff;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
@@ -290,7 +296,7 @@ body {
     background-color: #eef3ff; /* Latar tanggal */
     font-weight: bold; /* Teks lebih tebal */
     height: 45px;
-}   
+}
 
 .calendar-table td:hover {
     background-color: #6b89d4; /* Warna hover */

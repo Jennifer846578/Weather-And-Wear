@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/homepage.css">
     <title>Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="phone-card">
@@ -13,7 +16,7 @@
             <p class="weathertext"></p>
             <x-navbar></x-navbar>
             {{-- <x-tips></x-tips> --}}
-            <x-weather-name>build\assets\homepage\wn-rain.png</x-weather-name>
+            {{-- <x-weather-name>build\assets\homepage\wn-rain.png</x-weather-name> --}}
             <x-weather>build\assets\homepage\rain.png</x-weather>
             <x-otherinfo></x-otherinfo>
             <x-hourly-forecast></x-hourly-forecast>
