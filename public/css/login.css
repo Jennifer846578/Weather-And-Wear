@@ -54,3 +54,40 @@
     color: white;
     font-size: 15px;
 }
+
+.row.mb-3{
+    display: flex;
+    margin: auto;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-check{
+    display: flex;
+    justify-content: center;
+}
+
+.form-check-inputs#remember{
+    background-color: black;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    margin: auto 1%;
+}
+
+.form-check-label{
+    width: 130px;
+}
+
+.row.mb-0{
+    display: flex;
+    flex-direction: column;
+}
+
+.btn.btn-primary.dvnlogin{
+    width: 270px;
+    margin: auto;
+}

@@ -6,21 +6,26 @@ use App\Http\Controllers\FacebookController;
 
 Route::get('/', function () {
     return view('homepage');
-})->name('root');
-
-Route::post('/homepage', function () {
-    return view('homepage');
 });
+
+Route::get('/',[App\Http\Controllers\homepageController::class,'index'])->name('home');
+
+// Route::post('/homepage', function () {
+//     return view('homepage');
+// });
+Route::post('/homepage',[App\Http\Controllers\homepageController::class,'index']);
+
+Route::resource('profile',App\Http\Controllers\ProfileController::class);
 
 Route::get('/profile', function () {
     return view('profile');
-})->name('profile_page');
+});
 
-Route::get('/login', function () {
+Route::get('/logins', function () {
     return view('login');
 });
 
-Route::get('/register', function () {
+Route::get('/registers', function () {
     return view('register');
 });
 
@@ -74,3 +79,11 @@ Route::get('/logout',[SocialiteController::class, 'logout'])->name('logout')->mi
 
 Route::get('/auth/facebook', [FacebookController::class, 'facebookpage'])->name('auth/facebook');
 Route::get('/auth/facebook/callback', [FacebookController::class, 'facebookredirect'])->name('auth/facebook/callback');
+
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

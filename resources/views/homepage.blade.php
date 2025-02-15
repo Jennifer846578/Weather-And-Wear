@@ -6,13 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/homepage.css">
     <title>Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="phone-card">
         <body>
+            <p class="weathertext"></p>
             <x-navbar></x-navbar>
-            <x-tips></x-tips>
-            <x-weather-name>build\assets\homepage\wn-rain.png</x-weather-name>
+            {{-- <x-tips></x-tips> --}}
+            {{-- <x-weather-name>build\assets\homepage\wn-rain.png</x-weather-name> --}}
             <x-weather>build\assets\homepage\rain.png</x-weather>
             <x-otherinfo></x-otherinfo>
             <x-hourly-forecast></x-hourly-forecast>
@@ -23,4 +27,19 @@
         </body>
     </div>
 </body>
+<script>
+    const timestamp = @json($fetchdata['dt']) * 1000; // Convert seconds to milliseconds
+    const dt = new Date(timestamp);
+    let curr=dt.getHours();
+    let currDate=dt.getDate();
+    let currTemp= parseInt(@json($fetchdata['main']['temp'])-273.15 )
+    let currId=parseInt(@json($fetchdata['weather'][0]['id'])/100);
+    console.log(currId);
+    listofWeather=['ThunderStorm','Rain','Rain','Rain','Snow','Atmosphere','Clouds','Additional'];
+    if(parseInt(@json($fetchdata['weather'][0]['id']))==800){
+        document.querySelector(p.weathertext).innerHTML="Clear";
+    }
+    document.querySelector('p.weathertext').innerHTML=listofWeather[currId-2];
+    // console.log(curr);
+</script>
 </html>
