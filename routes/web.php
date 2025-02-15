@@ -18,7 +18,7 @@ Route::post('/homepage',[App\Http\Controllers\homepageController::class,'index']
 Route::resource('profile',App\Http\Controllers\ProfileController::class);
 
 Route::get('/profile', function () {
-    return view('profile');
+    return view('profile_page');
 });
 
 Route::get('/logins', function () {
