@@ -296,7 +296,7 @@ body {
     background-color: #eef3ff; /* Latar tanggal */
     font-weight: bold; /* Teks lebih tebal */
     height: 45px;
-}   
+}
 
 .calendar-table td:hover {
     background-color: #6b89d4; /* Warna hover */
