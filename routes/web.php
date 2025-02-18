@@ -3,12 +3,15 @@
 use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FacebookController;
+use App\Http\Controllers\homepageController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
-    return view('homepage');
-});
+// Route::get('/', function () {
+//     return view('homepage');
+// });
 
-Route::get('/',[App\Http\Controllers\homepageController::class,'index'])->name('home');
+Route::get('/',[App\Http\Controllers\homepageController::class,'index'])->name('root');
 
 // Route::post('/homepage', function () {
 //     return view('homepage');
@@ -18,8 +21,8 @@ Route::post('/homepage',[App\Http\Controllers\homepageController::class,'index']
 Route::resource('profile',App\Http\Controllers\ProfileController::class);
 
 Route::get('/profile', function () {
-    return view('profile_page');
-});
+    return view('profile');
+})->name('profile_page');
 
 Route::get('/logins', function () {
     return view('login');
@@ -87,3 +90,7 @@ Auth::routes();
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

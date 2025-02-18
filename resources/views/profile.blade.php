@@ -34,7 +34,7 @@
             </div>   
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" value={{ Auth::user()->name }} name="name">
+                <input type="text" id="username" value="{{ Auth::user()->name }}" name="name">
                 <hr>
             </div>
 

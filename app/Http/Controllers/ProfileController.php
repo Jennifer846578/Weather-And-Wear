@@ -18,6 +18,7 @@ class ProfileController extends Controller
     public function index()
     {
         //
+        return view('profile');
     }
 
     /**
@@ -68,13 +69,13 @@ class ProfileController extends Controller
         // if($request->profileimage != NULL){
             
         // }
-        if(file_exists(public_path('Asset\Profile',$data->profile_image))){
-            File::delete(public_path('Asset/Profile/'.$data->profile_image));
-        }
+        // if(file_exists(public_path('Asset\Profile',$data->profile_image))){
+        //     File::delete(public_path('Asset/Profile/'.$data->profile_image));
+        // }
 
-        $profileimagename = now().'.'.$request->file('profile_image')->getClientOriginalExtension();
-        $request->file('profile_image')->move(public_path('Asset\Profile'), $profileimagename);
-        $data->profileimage = $profileimagename;
+        // $profileimagename = now().'.'.$request->file('profile_image')->getClientOriginalExtension();
+        // $request->file('profile_image')->move(public_path('Asset\Profile'), $profileimagename);
+        // $data->profileimage = $profileimagename;
 
         $data->save();
         return redirect()->route('/profile');
