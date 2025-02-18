@@ -91,3 +91,13 @@ form{
     width: 270px;
     margin: auto;
 }
+
+.invalid-feedback{
+    display: flex;
+    width: 250px;
+    margin: auto;
+}
+
+.invalid-feedback strong{
+    margin: auto;
+}

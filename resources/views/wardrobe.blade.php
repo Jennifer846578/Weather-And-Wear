@@ -26,7 +26,7 @@
         <div class="categories-wrapper-luar">
             <div class="categories-wrapper">
                 <div class="two-category-wrapper">
-                    <a href="{{ route('wardrobe.blazer') }}" class="category">
+                    <a href="{{ route('blazer_page') }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Blazer.png') }}" class="category-icon-image">
                         <p>Blazer</p>
                     </a>

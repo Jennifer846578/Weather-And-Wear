@@ -47,9 +47,9 @@
                                 <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
                             </div>
                             <div class="editIcon">
-                                {{-- <a href="{{ route('blazer.details') }}"> --}}
+                                <a href="{{ route('editClothes_page') }}">
                                     <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
-                                {{-- </a> --}}
+                                </a>
                             </div>
                             <img src="{{ asset('Asset/Wardrobe/Blazer/Blazer.png') }}" class="category-icon-image">
                         </div>
@@ -58,6 +58,11 @@
                             <div class="btn-fav-clothes">
                                 <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
                                 <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
+                            </div>
+                            <div class="editIcon">
+                                <a href="{{ route('editClothes_page') }}">
+                                    <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                                </a>
                             </div>
                             <img src="{{ asset('Asset/Wardrobe/Blazer/blazer1.png') }}" class="category-icon-image">
                         </div>
@@ -69,6 +74,11 @@
                                 <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
                                 <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
                             </div>
+                            <div class="editIcon">
+                                <a href="{{ route('editClothes_page') }}">
+                                    <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                                </a>
+                            </div>
                             <img src="{{ asset('Asset/Wardrobe/Blazer/blazer2.png') }}" class="category-icon-image">
                         </div>
 
@@ -76,6 +86,11 @@
                             <div class="btn-fav-clothes">
                                 <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
                                 <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
+                            </div>
+                            <div class="editIcon">
+                                <a href="{{ route('editClothes_page') }}">
+                                    <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                                </a>
                             </div>
                             <img src="{{ asset('Asset/Wardrobe/Blazer/blazer3.png') }}" class="category-icon-image">
                         </div>
@@ -87,6 +102,11 @@
                                 <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
                                 <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
                             </div>
+                            <div class="editIcon">
+                                <a href="{{ route('editClothes_page') }}">
+                                    <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                                </a>
+                            </div>
                             <img src="{{ asset('Asset/Wardrobe/Blazer/blazer4.png') }}" class="category-icon-image">
                         </div>
 
@@ -94,6 +114,11 @@
                             <div class="btn-fav-clothes">
                                 <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
                                 <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
+                            </div>
+                            <div class="editIcon">
+                                <a href="{{ route('editClothes_page') }}">
+                                    <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                                </a>
                             </div>
                             <img src="{{ asset('Asset/Wardrobe/Blazer/blazer5.png') }}" class="category-icon-image">
                         </div>
@@ -105,6 +130,11 @@
                                 <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
                                 <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
                             </div>
+                            <div class="editIcon">
+                                <a href="{{ route('editClothes_page') }}">
+                                    <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                                </a>
+                            </div>
                             <img src="{{ asset('Asset/Wardrobe/Blazer/blazer6.png') }}" class="category-icon-image">
                         </div>
 
@@ -112,6 +142,11 @@
                             <div class="btn-fav-clothes">
                                 <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
                                 <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
+                            </div>
+                            <div class="editIcon">
+                                <a href="{{ route('editClothes_page') }}">
+                                    <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                                </a>
                             </div>
                             <img src="{{ asset('Asset/Wardrobe/Blazer/blazer7.png') }}" class="category-icon-image">
                         </div>
@@ -122,6 +157,11 @@
                             <div class="btn-fav-clothes">
                                 <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
                                 <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
+                            </div>
+                            <div class="editIcon">
+                                <a href="{{ route('editClothes_page') }}">
+                                    <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                                </a>
                             </div>
                             <img src="{{ asset('Asset/Wardrobe/Blazer/blazer8.png') }}" class="category-icon-image">
                         </div>
@@ -135,6 +175,18 @@
             <img src="{{ asset('Asset/Wardrobe/Blazer/up-arrow.png') }}" alt="Scroll to Top">
         </div>
     </div>
+
+    <div id="notification-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <img src="{{ asset('Asset/Wardrobe/checklist.png') }}" alt="Success" style="width: 80px; height: 80px;">
+                <p>Clothes successfully updated!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/successNotification.js"></script>
     <script src="/js/blazer.js"></script>
 </body>
 </html>
