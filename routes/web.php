@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\homepageController;
 use App\Http\Controllers\ProfileController;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 use Illuminate\Support\Facades\Auth;
 
 // Route::get('/', function () {
@@ -34,11 +35,11 @@ Route::get('/registers', function () {
 
 Route::get('/wardrobe', function () {
     return view('wardrobe');
-})->name('wardrobe_page');
+});
 
 Route::get('/details', function () {
     return view('details');
-})->name('details_page');
+});
 
 Route::get('/detailsTop', function () {
     return view('detailsTop');
@@ -52,29 +53,13 @@ Route::get('/detailsStyle', function () {
     return view('detailsStyle');
 });
 
-Route::get('/editClothes', function () {
-    return view('editClothes');
-})->name('editClothes_page');
-
-Route::get('/editTopClothes', function () {
-    return view('editTopClothes');
-});
-
-Route::get('/editBottomClothes', function () {
-    return view('editBottomClothes');
-});
-
-Route::get('/editStyleClothes', function () {
-    return view('editStyleClothes');
-});
-
 Route::get('/history', function () {
     return view('history');
-})->name('history_page');
+});
 
 Route::get('/wardrobe/blazer', function () {
     return view('blazer');
-})->name('blazer_page');
+})->name('wardrobe.blazer');
 
 Route::get('/redirect',[SocialiteController::class, 'redirect'])->name('redirect')->middleware('guest');
 Route::get('/callback',[SocialiteController::class, 'callback'])->name('callback')->middleware('guest');
