@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="phone-card">
-        <body>
+        <body> 
             <p class="weathertext"></p>
             <x-navbar></x-navbar>
             {{-- <x-tips></x-tips> --}}
