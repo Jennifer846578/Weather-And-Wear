@@ -3,10 +3,13 @@
 use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FacebookController;
-
-Route::get('/', function () {
-    return view('homepage');
-});
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\homepageController;
+use Symfony\Component\HttpKernel\Profiler\Profile;
+use App\Http\Controllers\ProfileController;
+// Route::get('/', function () {
+//     return view('homepage');
+// });
 
 Route::get('/',[App\Http\Controllers\homepageController::class,'index'])->name('home');
 
@@ -18,8 +21,8 @@ Route::post('/homepage',[App\Http\Controllers\homepageController::class,'index']
 Route::resource('profile',App\Http\Controllers\ProfileController::class);
 
 Route::get('/profile', function () {
-    return view('profile_page');
-});
+    return view('profile');
+})->name('/profile');
 
 Route::get('/logins', function () {
     return view('login');
@@ -31,11 +34,11 @@ Route::get('/registers', function () {
 
 Route::get('/wardrobe', function () {
     return view('wardrobe');
-})->name('wardrobe_page');
+});
 
 Route::get('/details', function () {
     return view('details');
-})->name('details_page');
+});
 
 Route::get('/detailsTop', function () {
     return view('detailsTop');
@@ -49,29 +52,13 @@ Route::get('/detailsStyle', function () {
     return view('detailsStyle');
 });
 
-Route::get('/editClothes', function () {
-    return view('editClothes');
-})->name('editClothes_page');
-
-Route::get('/editTopClothes', function () {
-    return view('editTopClothes');
-});
-
-Route::get('/editBottomClothes', function () {
-    return view('editBottomClothes');
-});
-
-Route::get('/editStyleClothes', function () {
-    return view('editStyleClothes');
-});
-
 Route::get('/history', function () {
     return view('history');
-})->name('history_page');
+});
 
 Route::get('/wardrobe/blazer', function () {
     return view('blazer');
-})->name('blazer_page');
+})->name('wardrobe.blazer');
 
 Route::get('/redirect',[SocialiteController::class, 'redirect'])->name('redirect')->middleware('guest');
 Route::get('/callback',[SocialiteController::class, 'callback'])->name('callback')->middleware('guest');
@@ -87,5 +74,3 @@ Auth::routes();
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// yang bener ini coba
