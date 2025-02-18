@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/homepage.css">
     <title>Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="phone-card">
@@ -25,18 +28,58 @@
     </div>
 </body>
 <script>
+    function getUserLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(
+                function (position) {
+                    let latitude = position.coords.latitude;
+                    let longitude = position.coords.longitude;
+
+                    console.log("Latitude:", latitude, "Longitude:", longitude);
+                },
+                function (error) {
+                    console.error("Error mendapatkan lokasi:", error);
+                },
+                {
+                    enableHighAccuracy: true,
+                    maximumAge: 0
+                }
+            );
+        } else {
+            alert("Geolocation tidak didukung di browser ini.");
+        }
+    }
+
+    getUserLocation();
+    
     const timestamp = @json($fetchdata['dt']) * 1000; // Convert seconds to milliseconds
     const dt = new Date(timestamp);
     let curr=dt.getHours();
     let currDate=dt.getDate();
     let currTemp= parseInt(@json($fetchdata['main']['temp'])-273.15 )
-    let currId=parseInt(@json($fetchdata['weather'][0]['id'])/100);
+
+
+    async function getData() {
+    try {
+        let response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=sentul,id&appid=3282175a32c9ea3ccd6e541b9510f24c');
+        // let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longtitude}&appid=3282175a32c9ea3ccd6e541b9510f24c`);
+        let data = await response.json();
+        return data; // ✅ Data is now returned
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+    }
+
+    // Calling the function and using the data
+    getData().then(data => {
+    let currId=parseInt(data['weather'][0]['id']/100);
     console.log(currId);
     listofWeather=['ThunderStorm','Rain','Rain','Rain','Snow','Atmosphere','Clouds','Additional'];
-    if(parseInt(@json($fetchdata['weather'][0]['id']))==800){
+    if(parseInt(data['weather'][0]['id'])==800){
         document.querySelector(p.weathertext).innerHTML="Clear";
     }
     document.querySelector('p.weathertext').innerHTML=listofWeather[currId-2];
     // console.log(curr);
+    });
 </script>
 </html>
