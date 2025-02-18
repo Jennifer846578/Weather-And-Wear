@@ -58,9 +58,9 @@ class ProfileController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'profile_image' => 'image|mimes:png,jpg|max:4098',
-        ]);
+        // $request->validate([
+        //     'profile_image' => 'image|mimes:png,jpg|max:4098',
+        // ]);
 
         //
         $data=User::find($id);
@@ -78,7 +78,7 @@ class ProfileController extends Controller
         // $data->profileimage = $profileimagename;
 
         $data->save();
-        return redirect()->route('/profile');
+        return redirect()->route('profile_page');
     }
 
     /**
