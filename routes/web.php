@@ -7,9 +7,13 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\homepageController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Test001Controller;
 // Route::get('/', function () {
 //     return view('homepage');
 // });
+
+// Route::get('/test',[App\Http\Controllers\Test001Controller::class,'index']);
+Route::resource('test',   App\Http\Controllers\Test001Controller::class);
 
 Route::get('/',[App\Http\Controllers\homepageController::class,'index'])->name('home');
 

@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 
 
 class ProfileController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -57,6 +61,27 @@ class ProfileController extends Controller
         $data=User::find($id);
         $data->gender=$request->gender;
         $data->name=$request->name;
+        // if($request->profileimage != NULL){
+            
+        // }
+        $request->validate([
+            'profileimage'=>"image|mimes:png,jpeg|max:1024"
+        ]);
+        if(file_exists(public_path('Asset/Profile/'.$data->profileimage))){
+            File::delete(public_path('Asset/Profile/'.$data->profileimage));
+        };
+        $imagePath=time().'.'.$request->profileimage->extension();
+        $request->profileimage->move(public_path('Asset/Profile'),$imagePath);
+        $data->profileimage=$imagePath;
+        
+        // if(file_exists(public_path('Asset\Profile'.$data->profileimage))){
+        //     File::delete(public_path('Asset/Profile/'.$data->profileimage));
+        // }
+
+        // $profileimagename = now().'.'.$request->file('profileimage')->getClientOriginalExtension();
+        // $request->file('profileimage')->move(public_path('Asset/Profile'), $profileimagename);
+        // $data->profileimage = $profileimagename;
+
         $data->save();
         return redirect()->route('/profile');
     }

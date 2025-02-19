@@ -9,28 +9,29 @@
 </head>
 <body>
     <div class="profile-card">
-        <x-navbar></x-navbar>
-        <div class="profile-header">
-            <h1>Profile</h1>
+            
 
-            {{-- <div class="profile-username">
-                <img src="{{ asset('Asset/Profile/catProfile.png') }}" alt="Profile">
-                <h2>Kucing_Imut</h2>
-            </div> --}}
-
-            <div class="profile-username">
-                <label for="profilePicInput" class="camera-icon">
-                    <img src="{{ asset('Asset/Profile/catProfile.png') }}" alt="Profile" id="profilePic">
-                    <img src="{{ asset('Asset/Profile/camera.png') }}" alt="Camera Icon" class="camera-icon-image">
-                </label>
-                <input type="file" id="profilePicInput" accept="image/*" style="display: none;">
-                <h2>{{ Auth::user()->name }}</h2>
-            </div> 
-        </div>       
-
-        <form class="profile-form" id="profileForm" method="POST" action="{{ route('profile.update', Auth::user()->id) }}">
+        <form class="profile-form" id="profileForm" method="POST" action="{{ route('profile.update', Auth::user()->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+            <x-navbar></x-navbar>
+            <div class="profile-header">
+                <h1>Profile</h1>
+
+                {{-- <div class="profile-username">
+                    <img src="{{ asset('Asset/Profile/catProfile.png') }}" alt="Profile">
+                    <h2>Kucing_Imut</h2>
+                </div> --}}
+                
+                <div class="profile-username">
+                    <label for="profilePicInput" class="camera-icon">
+                        <img src="Asset/Profile/{{ Auth::user()->profileimage }}" alt="Profile" id="profilePic">
+                        <img src="{{ asset('Asset/Profile/camera.png') }}" alt="Camera Icon" class="camera-icon-image">
+                    </label>
+                    <input type="file" id="profilePicInput" accept="image/*" style="display: none;" name="profileimage">
+                    <h2>{{ Auth::user()->name }}</h2>
+                </div> 
+            </div>   
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" value={{ Auth::user()->name }} name="name">

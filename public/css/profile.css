@@ -20,13 +20,21 @@ body {
     background-color: rgb(178, 211, 255);
 }
 
+.profile-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .profile-header {
     background-color: rgb(57, 38, 166);
-    width: 100%;
+    width: 412px;
     height: 310px;
     border-bottom-right-radius: 7%;
     border-bottom-left-radius: 7%;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 8px;
+    display: flex;
+    flex-direction: column;
 }
 
 .profile-header h1 {
@@ -70,14 +78,14 @@ body {
     margin-top: 10px;
 }
 
-.profile-form {
+/* .profile-form {
     padding-top: 30px;
     padding-left: 30px;
     padding-right: 30px;
-}
+} */
 
 .form-group {
-    margin-bottom: 12px;
+    margin: 12px 30px;
 }
 
 .form-group label {
