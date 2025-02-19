@@ -296,7 +296,7 @@ body {
     background-color: #eef3ff; /* Latar tanggal */
     font-weight: bold; /* Teks lebih tebal */
     height: 45px;
-}   
+}
 
 .calendar-table td:hover {
     background-color: #6b89d4; /* Warna hover */
@@ -405,9 +405,9 @@ h1 {
 
 .outfit-display .navigation {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0;
+    justify-content: center;
+    margin: 0;
+    gap: 20px;
 }
 
 .outfit-display .navigation button {
@@ -415,8 +415,8 @@ h1 {
     color: #ffffff;
     border: none;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
 }
 

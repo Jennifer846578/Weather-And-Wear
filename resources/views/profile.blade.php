@@ -34,7 +34,7 @@
             </div>   
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" value={{ Auth::user()->name }} name="name">
+                <input type="text" id="username" value="{{ Auth::user()->name }}" name="name">
                 <hr>
             </div>
 
@@ -49,8 +49,7 @@
                 <select id="gender" name="gender">
                     <option>{{ Auth::user()->gender }}</option>
                     <option value="Female">Female</option>
-                    <option value="Male">Male</option>
-                    
+                    <option value="Male">Male</option> 
                     <option value="Other">Other</option>
                 </select>
                 <hr>

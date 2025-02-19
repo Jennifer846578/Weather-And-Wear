@@ -12,11 +12,11 @@
 </head>
 <body>
     <div class="phone-card">
-        <body>
+        <body> 
             <p class="weathertext"></p>
             <x-navbar></x-navbar>
             {{-- <x-tips></x-tips> --}}
-            <x-weather-name>build\assets\homepage\wn-rain.png</x-weather-name>
+            {{-- <x-weather-name>build\assets\homepage\wn-rain.png</x-weather-name> --}}
             <x-weather>build\assets\homepage\rain.png</x-weather>
             <x-otherinfo></x-otherinfo>
             <x-hourly-forecast></x-hourly-forecast>

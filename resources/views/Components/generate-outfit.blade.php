@@ -5,13 +5,13 @@
         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Hoodie.png') }}" class="category-icon-image">
         <p>Hoodie</p>
     </div>
-    <div class="navigation">
-        <button onclick="previousItem()">&#8249;</button>
-        <button onclick="nextItem()">&#8250;</button>
-    </div>
     <div class="item">
         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Jeans.png') }}" class="category-icon-image">
         <p>Jeans</p>
+    </div>
+    <div class="navigation">
+        <button onclick="previousItem()">&#8249;</button>
+        <button onclick="nextItem()">&#8250;</button>
     </div>
     <button class="wear-button" onclick="showPopupWear()">Wear This Outfit</button> <!-- Onclick added -->
 </div>
