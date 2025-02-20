@@ -18,7 +18,7 @@ Route::get('/',[App\Http\Controllers\homepageController::class,'index'])->name('
 // Route::post('/homepage', function () {
 //     return view('homepage');
 // });
-Route::post('/homepage',[App\Http\Controllers\homepageController::class,'index']);
+Route::post('/homepage',[App\Http\Controllers\homepageController::class,'index'])->name("root");
 
 Route::resource('profile',App\Http\Controllers\ProfileController::class);
 

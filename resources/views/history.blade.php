@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History Page</title>
+    <link rel="stylesheet" href="{{ asset('css/blazer.css') }}">
+
     <link rel="stylesheet" href="css/history.css">
 </head>
 <body>
     <div class="dvnHistoryBox">
-    <x-navbar></x-navbar>
+        <div class="navigationHistory">
+            <x-navbar></x-navbar>
+        </div>
         <h3>History</h3>
         <div class="dvnCalendar">
             <p>Date and Weather</p>
@@ -20,61 +24,118 @@
         </div>
         <div class="dvnHistoryboxcontent">
             <div class="dvnweatherhistory">
-                
+                <div class="weatherImages">
+                    <img src="Asset/History/2.png" width="114px">
+                </div>
+                <div class="weatherDate">
+                    <p>Monday<br>3/12/2024<br>10:20</p>
+                </div>
+                <div class="weatherDesc">
+                    <p>Sunny at 3/12/2024 - 10:20<br>Casual</p>
+                </div>
             </div>
-            <p>Outfit List</p>
+
+            <p class="tulisasnoutfitlist">Outfit List</p>
+
             <div class="outfitlist">
+                <div class="outfitWore">
+                    <div class="category">
+                        <div class="btn-fav-clothes">
+                            <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
+                            <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
+                        </div>
+                        <div class="editIcon">
+                            <a href="{{ route('editClothes_page') }}">
+                                <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                            </a>
+                        </div>
+                        <img src="{{ asset('Asset/Wardrobe/Blazer/Blazer.png') }}" class="category-icon-image">
+                    </div>
+                    <p>Style : Casual<br>Category : Blazzer</p>
+                </div>
+
+                <div class="outfitWore">
+                    <div class="category">
+                        <div class="btn-fav-clothes">
+                            <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
+                            <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
+                        </div>
+                        <div class="editIcon">
+                            <a href="{{ route('editClothes_page') }}">
+                                <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                            </a>
+                        </div>
+                        <img src="{{ asset('Asset/Wardrobe/Blazer/Blazer.png') }}" class="category-icon-image">
+                    </div>
+                    <p>Style : Casual<br>Category : Blazzer</p>
+                </div>
+
+                <div class="outfitWore">
+                    <div class="category">
+                        <div class="btn-fav-clothes">
+                            <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
+                            <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
+                        </div>
+                        <div class="editIcon">
+                            <a href="{{ route('editClothes_page') }}">
+                                <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                            </a>
+                        </div>
+                        <img src="{{ asset('Asset/Wardrobe/Blazer/Blazer.png') }}" class="category-icon-image">
+                    </div>
+                    <p>Style : Casual<br>Category : Blazzer</p>
+                </div>
                 
             </div>
         </div>
     </div>
 
-    
-<div class="popup-background">
-    <div class="popup">
-        <button class="close-button">✖</button>
-        <h2>Date</h2>
-        <div class="calendar-table">
+    <div class="popup-background">
+        <div class="popup">
+            <button class="close-button">✖</button>
+            <h2>Date</h2>
+            <div class="calendar-table">
 
-            <div class="month-navigation">
-                <button onclick="prevMonth()">&#8249;</button>
-                <span>March 2024</span>
-                <button onclick="nextMonth()">&#8250;</button>
+                <div class="month-navigation">
+                    <button onclick="prevMonth()">&#8249;</button>
+                    <span>March 2024</span>
+                    <button onclick="nextMonth()">&#8250;</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sun</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td>
+                        </tr>
+                        <tr>
+                            <td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td>
+                        </tr>
+                        <tr>
+                            <td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td>
+                        </tr>
+                        <tr>
+                            <td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td>
+                        </tr>
+                        <tr>
+                            <td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Sun</th>
-                        <th>Mon</th>
-                        <th>Tue</th>
-                        <th>Wed</th>
-                        <th>Thu</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td>
-                    </tr>
-                    <tr>
-                        <td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td>
-                    </tr>
-                    <tr>
-                        <td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td>
-                    </tr>
-                    <tr>
-                        <td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td>
-                    </tr>
-                    <tr>
-                        <td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td></td>
-                    </tr>
-                </tbody>
-            </table>
+            <button class="yes-button">✔</button>
         </div>
-        <button class="yes-button">✔</button>
     </div>
-</div>
+    <script src="/js/blazer.js"></script>
 
 <script> //untuk pop up blur effect
     // Menampilkan pop-up dan latar belakang blur
