@@ -6,6 +6,8 @@ use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\homepageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Test001Controller;
+use App\Http\Controllers\WardrobeController;
+use Illuminate\Support\Facades\Auth;
 // Route::get('/', function () {
 //     return view('homepage');
 // });
@@ -34,25 +36,33 @@ Route::get('/registers', function () {
     return view('register');
 });
 
-Route::get('/wardrobe', function () {
-    return view('wardrobe');
-})->name('wardrobe_page');
+Route::get('/wardrobe', [App\Http\Controllers\WardrobeController::class,'index'])->name('wardrobe_page');
+Route::post('/wardrobe', [App\Http\Controllers\WardrobeController::class,'store'])->name('wardrobe_store');
+Route::put('/wardrobe',[App\Http\Controllers\WardrobeController::class,'indexfour'])->name('detailSave');
 
-Route::get('/details', function () {
-    return view('details');
-})->name('details_page');
 
-Route::get('/detailsTop', function () {
-    return view('detailsTop');
-});
+// Route::resource('wardrobe',App\Http\Controllers\WardrobeController::class)->names([
+//     'wardrobe.index'=>'wardrobe_page',
+//     'wardrobe.indexone'=>'details_page',
+// ]);
 
-Route::get('/detailsBottom', function () {
-    return view('detailsBottom');
-});
+Route::get('/details', [App\Http\Controllers\WardrobeController::class,'indexone'])->name('details_page');
+// Route::get('/detailsBottom/{id}', [App\Http\Controllers\WardrobeController::class,'indextwob'])->name('detailsBottom');
+Route::post('/detailsBottom',[App\Http\Controllers\WardrobeController::class,'indextwob'])->name('detailsBottom');
+Route::post('/detailsTop',[App\Http\Controllers\WardrobeController::class,'indextwot'])->name('detailsTop');
+Route::post('/detailsStyle',[App\Http\Controllers\WardrobeController::class,'indexthree'])->name('detailsStyle');
+// Route::post('/detailSave',[App\Http\Controllers\WardrobeController::class,'indexfour'])->name('detailSave');
+// Route::get('/detailsTop', function () {
+//     return view('detailsTop');
+// });
 
-Route::get('/detailsStyle', function () {
-    return view('detailsStyle');
-});
+// Route::get('/detailsBottom', function () {
+//     return view('detailsBottom');
+// });
+
+// Route::get('/detailsStyle', function () {
+//     return view('detailsStyle');
+// });
 
 Route::get('/editClothes', function () {
     return view('editClothes');
@@ -74,9 +84,12 @@ Route::get('/history', function () {
     return view('history');
 })->name('history_page');
 
-Route::get('/wardrobe/blazer', function () {
-    return view('blazer');
-})->name('blazer_page');
+// Route::get('/wardrobe/blazer', function () {
+//     return view('blazer');
+// })->name('blazer_page');
+
+Route::get('/wardrobe/blazer',[App\Http\Controllers\WardrobeController::class,'showBlazer'])->name('blazer_page');
+Route::put('/wardrobe/blazer',[App\Http\Controllers\WardrobeController::class,'favBlazer'])->name('blazer_fav');
 
 Route::get('/redirect',[SocialiteController::class, 'redirect'])->name('redirect')->middleware('guest');
 Route::get('/callback',[SocialiteController::class, 'callback'])->name('callback')->middleware('guest');
@@ -89,10 +102,10 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+// Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

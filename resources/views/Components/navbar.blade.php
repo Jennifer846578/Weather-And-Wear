@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
 <div class="navbar-box">
     <nav class="navbar-main">
-        <a href="{{ route("root") }}"  class="nav-item">
+        <a href="{{ route("home") }}"  class="nav-item">
             <img src="{{ asset('build/assets/navbar/navbaricon-home.png') }}" alt="Home" class="nav-icon">
         </a>
         <a href="{{ route("wardrobe_page") }}" class="nav-item">

@@ -14,10 +14,16 @@
             <h1>Wardrobe</h1>
 
     <div class="InputFile">
-        <button class="inputButton">
-            <input type="file" id="FileInput" accept="image/*">
-            <label class="inputLabel" for="FileInput">Add Clothes to Wardrobe</label>
-        </button>
+        <form action="{{ route('wardrobe_store') }}" method="POST" enctype="multipart/form-data" class="submitlahbang">
+            @csrf
+            {{-- @if ($session)
+                <p>{{ $session }} and {{ $who }}</p>
+            @endif --}}
+            <button class="inputButton">
+                <input type="file" id="FileInput" accept="image/*" name="image" >
+                <label class="inputLabel" for="FileInput">Add Clothes to Wardrobe</label>
+            </button>
+        </form>
     </div>
     
 
@@ -128,7 +134,13 @@
             </div>
         </div>
     </div>
-
-    <script src="js/addFile.js"></script>
+    <script>
+        document.querySelector('input#FileInput').addEventListener('change',function(){
+            if(this.files.length>0){
+                document.querySelector('form.submitlahbang').submit();
+            }
+        })
+    </script>
+    {{-- <script src="js/addFile.js"></script> --}}
 </body>
 </html>

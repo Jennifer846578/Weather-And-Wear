@@ -40,7 +40,70 @@
                 </div>
 
                 <div class="clothes-list">
-                    <div class="two-category-wrapper">
+                    @for ($i=0;$i+2<=count($results);$i+=2)
+                        <div class="two-category-wrapper">
+                            <div class="category">
+                                <div class="btn-fav-clothes">
+                                    @if ($results[$i]->favourite=="yes")
+                                        <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
+                                    @else
+                                        <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
+                                    @endif
+                                    {{-- <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
+                                    <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like"> --}}
+                                </div>
+                                <div class="editIcon">
+                                    <a href="{{ route('editClothes_page') }}">
+                                        <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                                    </a>
+                                </div>
+                                <img src="{{ asset('Asset/Wardrobe/Images/'.$results[$i]->imagePath) }}" class="category-icon-image">
+                                <p style="display: none;" class="value">{{ $results[$i]->id }}</p>
+                            </div>
+
+                            <div class="category">
+                                <div class="btn-fav-clothes">
+                                    @if ($results[$i+1]->favourite=="yes")
+                                        <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
+                                    @else
+                                        <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
+                                    @endif
+                                    {{-- <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
+                                    <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like"> --}}
+                                </div>
+                                <div class="editIcon">
+                                    <a href="{{ route('editClothes_page') }}">
+                                        <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                                    </a>
+                                </div>
+                                <img src="{{ asset('Asset/Wardrobe/Images/'.$results[$i+1]->imagePath) }}" class="category-icon-image">
+                                <p style="display: none;" class="value">{{ $results[$i+1]->id }}</p>
+                            </div>
+                        </div>   
+                    @endfor
+                    @if (count($results)%2)
+                        <div class="two-category-wrapper">
+                            <div class="category">
+                                <div class="btn-fav-clothes">
+                                    @if ($results[$i]->favourite=="yes")
+                                        <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
+                                    @else
+                                        <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
+                                    @endif
+                                    {{-- <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
+                                    <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like"> --}}
+                                </div>
+                                <div class="editIcon">
+                                    <a href="{{ route('editClothes_page') }}">
+                                        <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                                    </a>
+                                </div>
+                                <img src="{{ asset('Asset/Wardrobe/Images/'.$results[count($results)-1]->imagePath) }}" class="category-icon-image">
+                                <p style="display: none;" class="value">{{ $results[count($results)-1]->id }}</p>
+                            </div>
+                        </div>
+                    @endif
+                    {{-- <div class="two-category-wrapper">
                         <div class="category">
                             <div class="btn-fav-clothes">
                                 <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
@@ -66,106 +129,7 @@
                             </div>
                             <img src="{{ asset('Asset/Wardrobe/Blazer/blazer1.png') }}" class="category-icon-image">
                         </div>
-                    </div>
-
-                    <div class="two-category-wrapper">
-                        <div class="category">
-                            <div class="btn-fav-clothes">
-                                <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
-                                <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
-                            </div>
-                            <div class="editIcon">
-                                <a href="{{ route('editClothes_page') }}">
-                                    <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
-                                </a>
-                            </div>
-                            <img src="{{ asset('Asset/Wardrobe/Blazer/blazer2.png') }}" class="category-icon-image">
-                        </div>
-
-                        <div class="category">
-                            <div class="btn-fav-clothes">
-                                <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
-                                <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
-                            </div>
-                            <div class="editIcon">
-                                <a href="{{ route('editClothes_page') }}">
-                                    <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
-                                </a>
-                            </div>
-                            <img src="{{ asset('Asset/Wardrobe/Blazer/blazer3.png') }}" class="category-icon-image">
-                        </div>
-                    </div>
-
-                    <div class="two-category-wrapper">
-                        <div class="category">
-                            <div class="btn-fav-clothes">
-                                <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
-                                <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
-                            </div>
-                            <div class="editIcon">
-                                <a href="{{ route('editClothes_page') }}">
-                                    <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
-                                </a>
-                            </div>
-                            <img src="{{ asset('Asset/Wardrobe/Blazer/blazer4.png') }}" class="category-icon-image">
-                        </div>
-
-                        <div class="category">
-                            <div class="btn-fav-clothes">
-                                <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
-                                <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
-                            </div>
-                            <div class="editIcon">
-                                <a href="{{ route('editClothes_page') }}">
-                                    <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
-                                </a>
-                            </div>
-                            <img src="{{ asset('Asset/Wardrobe/Blazer/blazer5.png') }}" class="category-icon-image">
-                        </div>
-                    </div>
-
-                    <div class="two-category-wrapper">
-                        <div class="category">
-                            <div class="btn-fav-clothes">
-                                <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
-                                <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
-                            </div>
-                            <div class="editIcon">
-                                <a href="{{ route('editClothes_page') }}">
-                                    <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
-                                </a>
-                            </div>
-                            <img src="{{ asset('Asset/Wardrobe/Blazer/blazer6.png') }}" class="category-icon-image">
-                        </div>
-
-                        <div class="category">
-                            <div class="btn-fav-clothes">
-                                <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
-                                <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
-                            </div>
-                            <div class="editIcon">
-                                <a href="{{ route('editClothes_page') }}">
-                                    <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
-                                </a>
-                            </div>
-                            <img src="{{ asset('Asset/Wardrobe/Blazer/blazer7.png') }}" class="category-icon-image">
-                        </div>
-                    </div>
-
-                    <div class="two-category-wrapper">
-                        <div class="category">
-                            <div class="btn-fav-clothes">
-                                <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
-                                <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
-                            </div>
-                            <div class="editIcon">
-                                <a href="{{ route('editClothes_page') }}">
-                                    <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
-                                </a>
-                            </div>
-                            <img src="{{ asset('Asset/Wardrobe/Blazer/blazer8.png') }}" class="category-icon-image">
-                        </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -185,8 +149,65 @@
             </div>
         </div>
     </div>
-
+    
     <script src="/js/successNotification.js"></script>
-    <script src="/js/blazer.js"></script>
+    {{-- <script src="/js/blazer.js"></script> --}}
+    {{-- <button onclick="submitForm()">Submit</button> --}}
+
+    <script>
+    function submitFavForm(id,value) {
+        let form = document.createElement("form");
+        form.method = "POST";
+        form.action = "{{ route('blazer_fav') }}"; // Replace with your route name
+
+        // Add CSRF Token (required for Laravel POST requests)
+        let csrfToken = document.createElement("input");
+        csrfToken.type = "hidden";
+        csrfToken.name = "_token";
+        csrfToken.value = "{{ csrf_token() }}";
+        form.appendChild(csrfToken);
+
+        // Optional: Add additional data as hidden inputs
+        let methodInput = document.createElement("input");
+        methodInput.type = "hidden";
+        methodInput.name = "_method";
+        methodInput.value = "PUT";
+        form.appendChild(methodInput);
+
+        let inputData = document.createElement("input");
+        inputData.type = "hidden";
+        inputData.name = "id";
+        inputData.value = id;
+        form.appendChild(inputData);
+
+        let inputDataOne = document.createElement("input");
+        inputDataOne.type = "hidden";
+        inputDataOne.name = "favourite";
+        inputDataOne.value = value;
+        form.appendChild(inputDataOne);
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+    let favButtons=document.querySelectorAll('img[alt*="like"]');
+    for(let i=0;i<favButtons.length;i++){
+        favButtons[i].addEventListener('click',function(){
+            if(i>1){
+                id=favButtons[i].parentElement.parentElement.querySelector('p.value').innerHTML;
+                if(favButtons[i].getAttribute('alt')?.includes('yes')){
+                    value="no"
+                }else{
+                    value="yes"
+                }
+                // console.log(id,value)
+                submitFavForm(id,value);
+            }
+        })
+    }
+
+
+    
+    </script>
+
 </body>
 </html>

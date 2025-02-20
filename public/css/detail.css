@@ -240,15 +240,21 @@ h1{
 }
 
 .category-btn {
+  display: flex;
   background-color: #f2f2f200;
   border: 1px solid #7b7b7b;
   border-radius: 20px;
   color: #333333;
   cursor: pointer;
   font-size: 14px;
-  padding: 8px 15px;
+  padding: 0px 15px;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  justify-content: space-between;
 }
+
+/* .category-btn p{
+  height: 0px;
+} */
 
 .category-btn:hover {
   background-color: #d9ecff;

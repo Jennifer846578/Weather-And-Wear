@@ -49,6 +49,7 @@ function updateColorDisplay() {
   const selectedColor = hsbToHex(hue, saturation, brightness);
   ColorDisplay.style.backgroundColor = selectedColor;
   HexDisplay.textContent = `HEX: ${selectedColor.toUpperCase()}`;
+  document.querySelector('p.value').innerHTML=selectedColor;
 }
 
 // Event handler untuk klik di area warna

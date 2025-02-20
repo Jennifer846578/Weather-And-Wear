@@ -28,6 +28,10 @@
     </div>
 </body>
 <script>
+
+    // script jason
+    // end
+
     function getUserLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.watchPosition(
@@ -73,13 +77,17 @@
     // Calling the function and using the data
     getData().then(data => {
     let currId=parseInt(data['weather'][0]['id']/100);
-    console.log(currId);
     listofWeather=['ThunderStorm','Rain','Rain','Rain','Snow','Atmosphere','Clouds','Additional'];
     if(parseInt(data['weather'][0]['id'])==800){
         document.querySelector(p.weathertext).innerHTML="Clear";
     }
     document.querySelector('p.weathertext').innerHTML=listofWeather[currId-2];
     // console.log(curr);
+
+    let teks=document.querySelector('p.weathertext');
+    console.log(teks.innerHTML)
+    console.log("build/assets/homepage/"+teks.innerHTML+".png" )
+    let gambar=document.querySelector('div.weather-dynamic').querySelector('img');
     });
 </script>
 </html>

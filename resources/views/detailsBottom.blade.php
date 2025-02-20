@@ -17,24 +17,84 @@
 
     <!-- Pratinjau gambar -->
     <div id="PreviewContainer">
-        <img id="PreviewImage" alt="Preview Image" style="width: 300px; height: auto;">
+        <img id="PreviewImage" alt="Preview Image" style="width: 300px; height: auto;" src="Asset/Wardrobe/Images/{{ $data->imagePath }}">
     </div>
 
     <div class="categoryBox">
         <h2>What are your clothes categories?</h2>
         <div class="categories">
-            <button class="category-btn">👷 Cargo</button>
-            <button class="category-btn">👖 Jeans</button>
-            <button class="category-btn">🏃 Jogger</button>
-            <button class="category-btn">🦵 Legging</button>
-            <button class="category-btn">🩳 Shorts</button>
-            <button class="category-btn">🌹 Skirt</button>
-            <button class="category-btn">🕶️ Trousers</button>
+            <button class="category-btn"><p>👷</p>  <p class="pcategory">Cargo</p></button>
+            <button class="category-btn"><p>👖</p>  <p class="pcategory">Jeans</p></button>
+            <button class="category-btn"><p>🏃</p>  <p class="pcategory">Jogger</p></button>
+            <button class="category-btn"><p>🦵</p>  <p class="pcategory">Legging</p></button>
+            <button class="category-btn"><p>🩳</p>  <p class="pcategory">Shorts</p></button>
+            <button class="category-btn"><p>🌹</p>  <p class="pcategory">Skirt</p></button>
+            <button class="category-btn"><p>🕶️</p>  <p class="pcategory">Trousers</p></button>
         </div>
         <div class="continue">
-            <button type="button" id="continue-btn" disabled onclick="redirectToPageStyle()">Continue</button>
+            <button type="button" id="continue-btn" disabled value={{ $data->id }}>Continue</button>
         </div>
     </div>
 
-</form>
-<script src="js/details.js"></script>
+</body>
+</html>
+<script>
+    function sendToController(id,category) {
+        let form = document.createElement("form");
+        form.method = "POST";
+        form.action = "{{ route('detailsStyle') }}"; // Replace with your route name
+
+        // Add CSRF Token (Required for Laravel POST requests)
+        let csrfToken = document.createElement("input");
+        csrfToken.type = "hidden";
+        csrfToken.name = "_token";
+        csrfToken.value = "{{ csrf_token() }}";
+        form.appendChild(csrfToken);
+
+        // Add test variable input
+        let testInput = document.createElement("input");
+        testInput.type = "hidden";
+        testInput.name = "id";
+        testInput.value = id;
+        form.appendChild(testInput);
+
+        let testInputOne = document.createElement("input");
+        testInputOne.type = "hidden";
+        testInputOne.name = "category";
+        testInputOne.value = category;
+        form.appendChild(testInputOne);
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+        
+
+    let buttons = document.querySelectorAll('button.category-btn');
+    for(let i=0;i<buttons.length;i++){
+        buttons[i].addEventListener('click',function(){
+            for(let ii=0;ii<buttons.length;ii++){
+                if(ii!=i){
+                    buttons[ii].classList.remove('active');
+                }else{
+                    if(buttons[ii].classList.contains('active')){
+                        buttons[ii].classList.remove('active');
+                        document.querySelector('button#continue-btn').disabled=true;
+                    }else{
+                        buttons[ii].classList.add('active');
+                        document.querySelector('button#continue-btn').disabled=false;
+                    }
+                }
+            }
+        })
+    }
+    
+    document.querySelector('div.continue button#continue-btn').addEventListener('click',function(){
+        for(let i=0;i<buttons.length;i++){
+            if(buttons[i].classList.contains('active')){
+                sendToController(document.querySelector('div.continue button#continue-btn').value,buttons[i].querySelector('p.pcategory').innerHTML);
+                break;
+            }
+        }
+    })
+</script>
+{{-- <script src="js/details.js"></script> --}}
