@@ -13,12 +13,31 @@
             <img src="asset/detail/back.png" alt="Back" width="36px">
         </a>
     </div>
-    <h1>Edit Clothes</h1>
 
     <!-- Pratinjau gambar -->
     <div id="PreviewContainer">
         <img id="PreviewImage" class="PreviewImage" alt="Preview Image" style="width: 250px;">
     </div>
+
+    <div class="changeClothesWrapper">
+        <div class="iconChangeClothes">
+            <img src="Asset/Wardrobe/Edit Clothes/change clothes.png" width="33px">
+        </div>
+        <div class="changeClothes">
+            <p>Change Clothes</p>
+        </div>
+    </div>
+
+    <div class="removeClothesWrapper">
+        <div class="removeClothes">
+            <p>Remove Clothes</p>
+        </div>
+        <div class="iconRemoveClothes">
+            <img src="Asset/Wardrobe/Edit Clothes/delete clothes.png" width="27px">
+        </div>
+    </div>
+
+    <h1 class="h1_editClothes">Edit Clothes</h1>
 
     <div class="-color-picker-container">
         <h2>Select your clothes color</h2>
