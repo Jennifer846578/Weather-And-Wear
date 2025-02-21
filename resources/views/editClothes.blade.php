@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    <div class="removeClothesWrapper">
+    <div class="removeClothesWrapper" onclick="confirmRemoveClothes()">
         <div class="removeClothes">
             <p>Remove Clothes</p>
         </div>
@@ -36,6 +36,20 @@
             <img src="Asset/Wardrobe/Edit Clothes/delete clothes.png" width="27px">
         </div>
     </div>
+
+    <!-- Pop-up Confirmation -->
+    <div id="popupConfirm" class="popup">
+        <div class="popup-content">
+            <h1>Are you sure you want to remove this clothes?</h1>
+            <p>This action can not be undone</p>
+            <button class="btn-cancel" onclick="closePopup()">Cancel</button>
+            <button class="btn-remove" onclick="removeClothes()">Remove</button>
+        </div>
+    </div>
+
+    {{-- <div class="continue">
+        <button type="button" id="continue-btn" disabled onclick="redirectToPageBlazer()">Continue</button>
+    </div> --}}
 
     <h1 class="h1_editClothes">Edit Clothes</h1>
 
