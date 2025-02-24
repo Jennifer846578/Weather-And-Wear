@@ -23,6 +23,7 @@
                 <input type="file" id="FileInput" accept="image/*" name="image" >
                 <label class="inputLabel" for="FileInput">Add Clothes to Wardrobe</label>
             </button>
+            
         </form>
     </div>
     
@@ -32,7 +33,7 @@
         <div class="categories-wrapper-luar">
             <div class="categories-wrapper">
                 <div class="two-category-wrapper">
-                    <a href="{{ route('blazer_page') }}" class="category">
+                    <a href="{{ route('wardrobe_page_category',['category'=>'blazer']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Blazer.png') }}" class="category-icon-image">
                         <p>Blazer</p>
                     </a>

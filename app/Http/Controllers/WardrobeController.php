@@ -23,6 +23,18 @@ class WardrobeController extends Controller
         $who=session('who');
         return view('wardrobe',compact('session','who'));
     }
+
+    public function UndoAddWardrobe(Request $request)
+    {
+        $data=wardrobe::findOrFail($request->id);
+        $imagepath=public_path('Asset/Wardrobe/Images/'.$data->imagePath);
+        if(File::exists($imagepath)){
+            File::delete($imagepath);
+        }
+        $data->delete();
+        return redirect()->route('wardrobe_page');
+
+    }
     public function indexone()
     {
         $id=session('dataid');
@@ -32,6 +44,11 @@ class WardrobeController extends Controller
         return view('details',compact('data'));
         // return session('dataid');
         // return view('details');
+    }
+
+    public function backToIndexOne(Request $request){
+        $data=wardrobe::findOrFail($request->id);
+        return view('details',compact('data'));
     }
 
     public function indextwob(Request $request)
@@ -52,6 +69,19 @@ class WardrobeController extends Controller
         return view('detailsTop',compact('data'));
         // return $data;
     }
+
+    public function indextwobret(Request $request)
+    {
+        $data=wardrobe::findOrFail($request->id);
+        return view('detailsBottom',compact('data'));
+    }
+
+    public function indextwotret(Request $request)
+    {
+        $data=wardrobe::findOrFail($request->id);
+        return view('detailsTop',compact('data'));
+    }
+
     public function indexthree(Request $request)
     {
         $data=wardrobe::findOrFail($request->id);
@@ -68,19 +98,176 @@ class WardrobeController extends Controller
         return view('wardrobe');
     }
 
-    public function showBlazer()
+    public function showWardrobe()
     {
-        $results=wardrobe::where('userid',Auth::user()->id)->get();
-        return view('blazer',compact('results'));
-        // return $results;
+        return view('wardrobe');
     }
 
-    public function favBlazer(Request $request)
+    public function showWardrobeCategory($category)
+    {
+        // $results=wardrobe::where('userid',Auth::user()->id)->get();
+        $results=wardrobe::where('userid',Auth::user()->id)->where('category',$category)->get();
+        return view('blazer',compact('results'));
+        // return $category;
+    }
+    
+    public function favWardrobe(Request $request)
     {
         $data=wardrobe::findOrFail($request->id);
         $data->favourite=$request->favourite;
         $data->save();
-        return redirect()->route('blazer_fav');
+        return redirect()->route('wardrobe_page_category',['category'=>$data->category]);
+        // return $data->category;
+    }
+
+    public function deleteWardrobeClothes(Request $request)
+    {
+        $data=wardrobe::findOrFail($request->id);
+        $imagepath=public_path('Asset/Wardrobe/Images/'.$data->imagePath);
+        if(File::exists($imagepath)){
+            File::delete($imagepath);
+        }
+        $category=$data->category;
+        $data->delete();
+        return redirect()->route('wardrobe_page_category',['category'=>$category]);
+    }
+
+    public function editWardrobeOne(Request $request)
+    {
+        $data=wardrobe::findOrFail($request->id);
+        $dataCopy=new wardrobe();
+        $dataCopy->userid=$data->userid;
+        $dataCopy->style="Copy of id ".$data->id; 
+        $dataCopy->imagePath=$data->imagePath;
+        $dataCopy->category=$data->category;
+        $dataCopy->color=$data->color;
+        $dataCopy->favourite=$data->favourite;
+        $dataCopy->save();
+        return view('editClothes',compact('data','dataCopy'));
+        // return $data;
+    }
+
+    public function GetEditWardrobeOne(Request $request)
+    {
+        $data=wardrobe::findOrFail($request->id);
+        $dataCopy=wardrobe::findOrFail($request->idCopy);
+        return view('editClothes',compact('data','dataCopy'));
+    }
+
+    public function deleteEditWardrobe(Request $request)
+    {
+        $data=wardrobe::findOrFail($request->id);
+        $dataCopy=wardrobe::findOrFail($request->idCopy);
+        if($data->imagePath!==$dataCopy->imagePath){
+            $imagepath=public_path('Asset/Wardrobe/Images/'.$dataCopy->imagePath);
+            if(File::exists($imagepath)){
+                File::delete($imagepath);
+            }
+        }
+        $dataCopy->delete();
+        return redirect()->route('wardrobe_page_category',['category'=>$data->category]);
+    }
+
+    // public function ChangeWardrobeImage(Request $request)
+    // {
+    //     $data=wardrobe::findOrFail($request->id);
+    //     $request->validate([
+    //         'image'=>'required|image|mimes:png,jpeg|max:1024'
+    //     ]);
+    //     $imagepath=time().'.'.$request->image->extension();
+    //     $request->image->move(public_path('Asset/Wardrobe/Images'),$imagepath);
+    //     $data->imagePath=$imagepath;
+    //     $data->save();
+    //     return redirect()->route('editClothes_page_get')->with('data',$data);
+    // }
+
+    // public function editWardrobeGet()
+    // {
+    //     $data=session('data');
+    //     return view('editClothes',compact('data'));
+    // }
+
+    public function editClothesTopBottomPage(Request $request)
+    {
+        $data=wardrobe::findOrFail($request->id);
+        $dataCopy=wardrobe::findOrFail($request->idCopy);
+        $dataCopy->color=$request->color;
+
+        
+
+        // $data=wardrobe::findOrFail($request->id);
+        // if($request->top==="top"){
+        //     return view('editTopClothes',compact('data'));
+        // }{
+        //     return view('editBottomClothes',compact('data'));
+        // }
+        if($request->image===null){
+            $dataCopy->imagePath=$data->imagePath;
+        }else{
+            $request->validate([
+                'image'=>'required|image|mimes:png,jpeg|max:1024'
+            ]);
+            $imagepath=time().'.'.$request->image->extension();
+            $request->image->move(public_path('Asset/Wardrobe/Images'),$imagepath);
+            $dataCopy->imagePath=$imagepath;
+        }
+        $dataCopy->save();
+        // $data->save();
+        if($request->option==="top"){
+            // return $dataCopy."Top ini mang".$data;
+            return view('editTopClothes',compact('data','dataCopy'));
+        }else{
+            return view('editBottomClothes',compact('data','dataCopy'));
+        }
+        // return $datas.$data;
+
+    }
+
+    public function editClothesTopBottomReturnPage(Request $request)
+    {
+        $data=wardrobe::findOrFail($request->id);
+        $dataCopy=wardrobe::findOrFail($request->idCopy);
+        $BotCategories=['Cargo','Jeans','Jogger','Legging','Shorts','Skirt','Trousers'];
+        if(in_array($dataCopy->category,$BotCategories)){
+            return view('editBottomClothes',compact('data','dataCopy'));
+        }else{
+            return view('editTopClothes',compact('data','dataCopy'));
+        }
+    }
+
+    public function EditClothesCategory(Request $request)
+    {
+        // $data=wardrobe::findOrFail($request->id);
+        // $data->category=$request->category;
+        // $data->save();
+        // return view('editStyleClothes',compact('data'));
+        $dataCopy=wardrobe::findOrFail($request->idCopy);
+        $dataCopy->category=$request->category;
+        $dataCopy->save();
+        $data=wardrobe::findOrFail($request->id);
+        return view('editStyleClothes',compact('data','dataCopy'));
+        // return $dataCopy;
+        // return $request;
+    }
+
+    public function EditClothesStyle(Request $request)
+    {
+        $dataCopy=wardrobe::findOrFail($request->idCopy);
+        $data=wardrobe::findOrFail($request->id);
+        $category=$data->category;
+        if($data->imagePath!==$dataCopy->imaagePath){
+            $imagepath=public_path('Asset/Wardrobe/Images/'.$data->imagePath);
+            if(File::exists($imagepath)){
+                File::delete($imagepath);
+            }
+        }
+        $data->imagePath=$dataCopy->imagePath;
+        $data->color=$dataCopy->color;
+        $data->category=$dataCopy->category;
+        $data->style=$request->style;
+        $data->save();
+        $dataCopy->delete();
+        return redirect()->route('wardrobe_page_category',['category'=>$category]);
     }
 
     /**

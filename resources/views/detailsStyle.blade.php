@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="backbutton">
-        <a href="details">
+        <a onclick="back()">
             <img src="asset/detail/back.png" alt="Back" width="36px">
         </a>
     </div>
@@ -36,6 +36,41 @@
 
 </body>
 <script>
+
+    function back(){
+        let form = document.createElement("form");
+        form.method = "POST";
+        let categories=['Cargo','Jeans','Jogger','Legging','Shorts','Skirt','Trousers']
+        if(categories.includes(@json($data->category))){
+            form.action = "{{ route('backdetailsBottom') }}";
+        }else{
+            form.action = "{{ route('backdetailsTop') }}";
+        }
+
+        // Add CSRF Token (Required for Laravel POST requests)
+        let csrfToken = document.createElement("input");
+        csrfToken.type = "hidden";
+        csrfToken.name = "_token";
+        csrfToken.value = "{{ csrf_token() }}";
+        form.appendChild(csrfToken);
+
+        let methodInput = document.createElement("input");
+        methodInput.type = "hidden";
+        methodInput.name = "_method";
+        methodInput.value = "PUT";
+        form.appendChild(methodInput);
+
+        // Add test variable input
+        let testInput = document.createElement("input");
+        testInput.type = "hidden";
+        testInput.name = "id";
+        testInput.value = @json($data->id);
+        form.appendChild(testInput);
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+
     function sendToController(id,style) {
         let form = document.createElement("form");
         form.method = "POST";
