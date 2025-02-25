@@ -71,3 +71,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // };
 
 });
+
+function confirmRemoveClothes() {
+    document.getElementById("popupConfirm").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("popupConfirm").style.display = "none";
+}
+
+function removeClothes() {
+    // Di sini bisa tambahkan logika untuk menghapus item dari daftar
+    // closePopup();
+    window.location.href = "/wardrobe/blazer";
+}

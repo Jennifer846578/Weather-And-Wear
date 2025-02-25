@@ -11,7 +11,7 @@
     <div class="phone-card">
         <x-navbar></x-navbar>
         <!-- Tombol Back -->
-        <div class="back-button" onclick="goBack()">
+        <div class="back-button" onclick="window.location.href='/wardrobe'">
             <img src="{{ asset('Asset/Wardrobe/Blazer/back-arrow.png') }}" alt="Back">
         </div>
 
@@ -53,7 +53,8 @@
                                     <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like"> --}}
                                 </div>
                                 <div class="editIcon">
-                                    <a href="{{ route('editClothes_page') }}">
+                                    {{-- <a href="{{ route('editClothes_page') }}"> --}}
+                                    <a>
                                         <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
                                     </a>
                                 </div>
@@ -72,7 +73,7 @@
                                     <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like"> --}}
                                 </div>
                                 <div class="editIcon">
-                                    <a href="{{ route('editClothes_page') }}">
+                                    <a>
                                         <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
                                     </a>
                                 </div>
@@ -94,7 +95,7 @@
                                     <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like"> --}}
                                 </div>
                                 <div class="editIcon">
-                                    <a href="{{ route('editClothes_page') }}">
+                                    <a>
                                         <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
                                     </a>
                                 </div>
@@ -155,10 +156,40 @@
     {{-- <button onclick="submitForm()">Submit</button> --}}
 
     <script>
+    function submitEditForm(id) {
+        let form = document.createElement("form");
+        form.method = "POST";
+        form.action = "{{ route('editClothes_page') }}"; // Replace with your route name
+
+        // Add CSRF Token (required for Laravel POST requests)
+        let csrfToken = document.createElement("input");
+        csrfToken.type = "hidden";
+        csrfToken.name = "_token";
+        csrfToken.value = "{{ csrf_token() }}";
+        form.appendChild(csrfToken);
+
+        // Optional: Add additional data as hidden inputs
+        let inputData = document.createElement("input");
+        inputData.type = "hidden";
+        inputData.name = "id";
+        inputData.value = id;
+        form.appendChild(inputData);
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    let editIcons=document.querySelectorAll('div.editIcon');
+    for(let i=0;i<editIcons.length;i++){
+        editIcons[i].querySelector('img').addEventListener('click',function(){
+            submitEditForm(editIcons[i].parentElement.querySelector('p.value').innerHTML);
+        })
+    }
+
     function submitFavForm(id,value) {
         let form = document.createElement("form");
         form.method = "POST";
-        form.action = "{{ route('blazer_fav') }}"; // Replace with your route name
+        form.action = "{{ route('wardrobe_fav') }}"; // Replace with your route name
 
         // Add CSRF Token (required for Laravel POST requests)
         let csrfToken = document.createElement("input");

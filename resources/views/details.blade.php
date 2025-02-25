@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="backbutton">
-        <a href="wardrobe">
+        <a onclick="BackToWardrobe()">
             <img src="asset/detail/back.png" alt="Back" width="36px">
         </a>
     </div>
@@ -56,6 +56,34 @@
     </form>
     {{-- <script src="js/details.js"></script> --}}
     <script>
+        function BackToWardrobe(){
+            let form = document.createElement("form");
+            form.method = "POST";
+            form.action = "{{ route('UndoAddWardrobe') }}"; // Replace with your route name
+
+            // Add CSRF Token (Required for Laravel POST requests)
+            let csrfToken = document.createElement("input");
+            csrfToken.type = "hidden";
+            csrfToken.name = "_token";
+            csrfToken.value = "{{ csrf_token() }}";
+            form.appendChild(csrfToken);
+
+            let methodInput = document.createElement("input");
+            methodInput.type = "hidden";
+            methodInput.name = "_method";
+            methodInput.value = "DELETE";
+            form.appendChild(methodInput);
+
+            // Add test variable input
+            let testInput = document.createElement("input");
+            testInput.type = "hidden";
+            testInput.name = "id";
+            testInput.value = @json($data->id);
+            form.appendChild(testInput);
+
+            document.body.appendChild(form);
+            form.submit();
+        }
         function sendToControllerBottom(id,color) {
             let form = document.createElement("form");
             form.method = "POST";

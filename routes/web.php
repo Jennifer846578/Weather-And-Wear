@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FacebookController;
@@ -38,6 +39,7 @@ Route::get('/registers', function () {
 
 Route::get('/wardrobe', [App\Http\Controllers\WardrobeController::class,'index'])->name('wardrobe_page');
 Route::post('/wardrobe', [App\Http\Controllers\WardrobeController::class,'store'])->name('wardrobe_store');
+Route::delete('/wardrobe',[App\Http\Controllers\WardrobeController::class,'UndoAddWardrobe'])->name('UndoAddWardrobe');
 Route::put('/wardrobe',[App\Http\Controllers\WardrobeController::class,'indexfour'])->name('detailSave');
 
 
@@ -47,9 +49,12 @@ Route::put('/wardrobe',[App\Http\Controllers\WardrobeController::class,'indexfou
 // ]);
 
 Route::get('/details', [App\Http\Controllers\WardrobeController::class,'indexone'])->name('details_page');
+Route::post('/details',[App\Http\Controllers\WardrobeController::class,'backToIndexOne'])->name('backdetails_page');
 // Route::get('/detailsBottom/{id}', [App\Http\Controllers\WardrobeController::class,'indextwob'])->name('detailsBottom');
 Route::post('/detailsBottom',[App\Http\Controllers\WardrobeController::class,'indextwob'])->name('detailsBottom');
 Route::post('/detailsTop',[App\Http\Controllers\WardrobeController::class,'indextwot'])->name('detailsTop');
+Route::put('/detailsBottom',[App\Http\Controllers\WardrobeController::class,'indextwobret'])->name('backdetailsBottom');
+Route::put('/detailsTop',[App\Http\Controllers\WardrobeController::class,'indextwotret'])->name('backdetailsTop');
 Route::post('/detailsStyle',[App\Http\Controllers\WardrobeController::class,'indexthree'])->name('detailsStyle');
 // Route::post('/detailSave',[App\Http\Controllers\WardrobeController::class,'indexfour'])->name('detailSave');
 // Route::get('/detailsTop', function () {
@@ -64,9 +69,19 @@ Route::post('/detailsStyle',[App\Http\Controllers\WardrobeController::class,'ind
 //     return view('detailsStyle');
 // });
 
-Route::get('/editClothes', function () {
-    return view('editClothes');
-})->name('editClothes_page');
+// Route::get('/editClothes', function () {
+//     return view('editClothes');
+// })->name('editClothes_page');
+Route::delete('/deleteClothes',[App\Http\Controllers\WardrobeController::class,'deleteWardrobeClothes'])->name('deleteWardrobeClothes');
+Route::post('/ReturnEditClothes',[App\Http\Controllers\WardrobeController::class,'GetEditWardrobeOne'])->name('BackEditClothes');
+Route::post('/editClothes',[App\Http\Controllers\WardrobeController::class,'editWardrobeOne'])->name('editClothes_page');
+// Route::get('/editClothes',[App\Http\Controllers\WardrobeController::class,'editWardrobeGet'])->name('editClothes_page_get');
+Route::put('/editClothes',[App\Http\Controllers\WardrobeController::class,'editClothesTopBottomPage'])->name('GetTopBottomEdit');
+Route::put('/ReturnEditClothes',[App\Http\Controllers\WardrobeController::class,'editClothesTopBottomReturnPage'])->name('ReturnTopBottomEdit');
+Route::post('/editClothesStyle',[App\Http\Controllers\WardrobeController::class,'EditClothesCategory'])->name('editStyle');
+Route::put('/editClothesStyle',[App\Http\Controllers\WardrobeController::class,'EditClothesStyle'])->name('editStyleDone');
+Route::post('/EditUnsave',[App\Http\Controllers\WardrobeController::class,'deleteEditWardrobe'])->name('deleteDataCopy');
+// Route::post('/editClothes/image',[App\Http\Controllers\WardrobeController::class,'ChangeWardrobeImage'])->name('editWardrobeChangeImage');
 
 Route::get('/editTopClothes', function () {
     return view('editTopClothes');
@@ -88,8 +103,9 @@ Route::get('/history', function () {
 //     return view('blazer');
 // })->name('blazer_page');
 
-Route::get('/wardrobe/blazer',[App\Http\Controllers\WardrobeController::class,'showBlazer'])->name('blazer_page');
-Route::put('/wardrobe/blazer',[App\Http\Controllers\WardrobeController::class,'favBlazer'])->name('blazer_fav');
+Route::get('/wardobe',[App\Http\Controllers\WardrobeController::class,'showWardrobe'])->name('wardrobe_page');
+Route::get('/wardrobe/{category}',[App\Http\Controllers\WardrobeController::class,'showWardrobeCategory'])->name('wardrobe_page_category');
+Route::put('/wardrobe/favorite',[App\Http\Controllers\WardrobeController::class,'favWardrobe'])->name('wardrobe_fav');
 
 Route::get('/redirect',[SocialiteController::class, 'redirect'])->name('redirect')->middleware('guest');
 Route::get('/callback',[SocialiteController::class, 'callback'])->name('callback')->middleware('guest');

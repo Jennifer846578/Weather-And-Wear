@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="backbutton">
-        <a href="details">
+        <a onclick="back()">
             <img src="asset/detail/back.png" alt="Back" width="36px">
         </a>
     </div>
@@ -40,6 +40,30 @@
 </body>
 </html>
 <script>
+
+    function back(){
+        let form = document.createElement("form");
+        form.method = "POST";
+        form.action = "{{ route('backdetails_page') }}"; // Replace with your route name
+
+        // Add CSRF Token (Required for Laravel POST requests)
+        let csrfToken = document.createElement("input");
+        csrfToken.type = "hidden";
+        csrfToken.name = "_token";
+        csrfToken.value = "{{ csrf_token() }}";
+        form.appendChild(csrfToken);
+
+        // Add test variable input
+        let testInput = document.createElement("input");
+        testInput.type = "hidden";
+        testInput.name = "id";
+        testInput.value = @json($data->id);
+        form.appendChild(testInput);
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+
     function sendToController(id,category) {
         let form = document.createElement("form");
         form.method = "POST";
