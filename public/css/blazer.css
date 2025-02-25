@@ -25,6 +25,11 @@ body {
     overflow: auto;
 }
 
+.photo-atas{
+    width: 100%;
+    height: 35vh;
+}
+
 .clothes-wrapper-luar{
     display: flex;
     flex-direction: column;
@@ -38,10 +43,17 @@ body {
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     height: fit-content;
+    min-height: 65vh;
     padding-bottom: 90px;
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.bottom-white{
+    width: 93%;
+    height: 30px;
+    background-color: white;
 }
 
 .judul-dan-fav-icon{

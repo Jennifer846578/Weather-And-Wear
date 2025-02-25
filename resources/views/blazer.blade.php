@@ -15,7 +15,7 @@
             <img src="{{ asset('Asset/Wardrobe/Blazer/back-arrow.png') }}" alt="Back">
         </div>
 
-        <img src="{{ asset('Asset/Wardrobe/Blazer/Blazer Photo.avif') }}" class="">
+        <img src="{{ asset('Asset/Wardrobe/Blazer/Blazer Photo.avif') }}" class="photo-atas">
         <div class="clothes-wrapper-luar">
             <div class="clothes-wrapper">
                 <div class="judul-dan-fav-icon">
@@ -133,6 +133,7 @@
                     </div> --}}
                 </div>
             </div>
+            <div class="bottom-white"></div>
         </div>
 
         <!-- Tombol Scroll to Top -->
