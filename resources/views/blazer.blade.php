@@ -15,7 +15,7 @@
             <img src="{{ asset('Asset/Wardrobe/Blazer/back-arrow.png') }}" alt="Back">
         </div>
 
-        <img src="{{ asset('Asset/Wardrobe/Blazer/Blazer.jpg') }}" class="photo-atas">
+        <img src="{{ asset('Asset/Wardrobe/Blazer/'.$category.'.jpg') }}" class="photo-atas">
         <div class="clothes-wrapper-luar">
             <div class="clothes-wrapper">
                 <div class="judul-dan-fav-icon">
@@ -25,7 +25,7 @@
                         <img id="yes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
                     </div>
                 </div>
-                <p>A blazer is a tailored jacket, versatile for both formal and semi-casual settings, often styled with trousers or jeans.</p>
+                <p class="details"></p>
                 <hr>
 
                 <div class="style-filter">
@@ -157,6 +157,28 @@
     {{-- <button onclick="submitForm()">Submit</button> --}}
 
     <script>
+
+    let description={
+        Blazer:"A blazer is a tailored jacket, versatile for both formal and semi-casual settings, often styled with trousers or jeans.",
+        Coat:"A coat is a long outer garment, designed for warmth and style, often layered over formal or casual outfits.",
+        Dress:"A dress is a one-piece garment, available in various styles, suited for both casual and elegant occasions.",
+        Hoodie:"A hoodie is a cozy, hooded sweatshirt, perfect for casual wear and layering in cooler weather.",
+        Jacket:"A jacket is a lightweight outerwear piece, adding warmth and style to both casual and formal looks.",
+        Shirt:"A shirt is a buttoned, collared garment, suitable for professional, semi-formal, or casual styling.",
+        Sweater:" A sweater is a knitted garment, providing warmth and comfort in various casual and formal settings.",
+        TShirt:"A T-shirt is a short-sleeved, lightweight top, ideal for everyday casual wear and layering.",
+        Cargo:"Cargo pants are relaxed-fit trousers with multiple pockets, blending functionality with casual style.",
+        Jeans:"Jeans are durable, denim trousers, offering a classic, versatile look for casual and smart-casual outfits.",
+        Jogger:"Joggers are soft, tapered sweatpants, combining comfort and style for lounging or active wear.",
+        Legging:"Leggings are stretchy, form-fitting bottoms, perfect for layering, workouts, or casual styling.",
+        Shorts:"Shorts are knee-length or shorter bottoms, designed for warm weather and casual comfort.",
+        Skirt:"A skirt is a lower-body garment, available in various lengths, suitable for casual and formal wear.",
+        Trousers:"Trousers are structured pants, offering a polished look for professional or smart-casual attire."
+    }
+
+    document.querySelector('p.details').innerHTML=description[@json($category)];
+    console.log(@json($category));
+    
     function submitEditForm(id) {
         let form = document.createElement("form");
         form.method = "POST";

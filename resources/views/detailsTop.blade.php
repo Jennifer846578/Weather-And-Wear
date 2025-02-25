@@ -30,7 +30,7 @@
           <button class="category-btn"><p>🧥</p> <p class="pcategory">Jacket</p></button>
           <button class="category-btn"><p>👔</p> <p class="pcategory">Shirt</p></button>
           <button class="category-btn"><p>🧶</p> <p class="pcategory">Sweater</p></button>
-          <button class="category-btn"><p>👕</p> <p class="pcategory">T-Shirt</p></button>
+          <button class="category-btn"><p>👕</p> <p class="pcategory">TShirt</p></button>
         </div>
         <div class="continue">
             <button type="button" id="continue-btn" value={{ $data->id }} disabled>Continue</button>

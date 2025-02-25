@@ -33,94 +33,94 @@
         <div class="categories-wrapper-luar">
             <div class="categories-wrapper">
                 <div class="two-category-wrapper">
-                    <a href="{{ route('wardrobe_page_category',['category'=>'blazer','favourite'=>'no','style'=>'All']) }}" class="category">
+                    <a href="{{ route('wardrobe_page_category',['category'=>'Blazer','favourite'=>'no','style'=>'All']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Blazer.png') }}" class="category-icon-image">
                         <p>Blazer</p>
                     </a>
 
-                    <div class="category">
+                    <a href="{{ route('wardrobe_page_category',['category'=>'Coat','favourite'=>'no','style'=>'All']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Coat.png') }}" class="category-icon-image">
                         <p>Coat</p>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="two-category-wrapper">
-                    <div class="category">
+                    <a href="{{ route('wardrobe_page_category',['category'=>'Dress','favourite'=>'no','style'=>'All']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Dress.png') }}" class="category-icon-image">
                         <p>Dress</p>
-                    </div>
+                    </a>
 
-                    <div class="category">
+                    <a href="{{ route('wardrobe_page_category',['category'=>'Hoodie','favourite'=>'no','style'=>'All']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Hoodie.png') }}" class="category-icon-image">
                         <p>Hoodie</p>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="two-category-wrapper">
-                    <div class="category">
+                    <a href="{{ route('wardrobe_page_category',['category'=>'Jacket','favourite'=>'no','style'=>'All']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Jacket.png') }}" class="category-icon-image">
                         <p>Jacket</p>
-                    </div>
+                    </a>
 
-                    <div class="category">
+                    <a href="{{ route('wardrobe_page_category',['category'=>'Shirt','favourite'=>'no','style'=>'All']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Shirt.png') }}" class="category-icon-image">
                         <p>Shirt</p>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="two-category-wrapper">
-                    <div class="category">
+                    <a href="{{ route('wardrobe_page_category',['category'=>'Sweater','favourite'=>'no','style'=>'All']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Sweater.png') }}" class="category-icon-image">
                         <p>Sweater</p>
-                    </div>
+                    </a>
 
-                    <div class="category">
+                    <a href="{{ route('wardrobe_page_category',['category'=>'Shirt','favourite'=>'no','style'=>'All']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/T-Shirt.png') }}" class="category-icon-image">
-                        <p>T-shirt</p>
+                        <p>TShirt</p>
                     </div>
                 </div>
 
                 <div class="two-category-wrapper">
-                    <div class="category">
+                    <a href="{{ route('wardrobe_page_category',['category'=>'Cargo','favourite'=>'no','style'=>'All']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Cargo.png') }}" class="category-icon-image">
                         <p>Cargo</p>
-                    </div>
+                    </a>
 
-                    <div class="category">
+                    <a href="{{ route('wardrobe_page_category',['category'=>'Jeans','favourite'=>'no','style'=>'All']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Jeans.png') }}" class="category-icon-image">
                         <p>Jeans</p>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="two-category-wrapper">
-                    <div class="category">
+                    <a href="{{ route('wardrobe_page_category',['category'=>'Jogger','favourite'=>'no','style'=>'All']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Jogger.png') }}" class="category-icon-image">
                         <p>Jogger</p>
-                    </div>
+                    </a>
 
-                    <div class="category">
+                    <a href="{{ route('wardrobe_page_category',['category'=>'Legging','favourite'=>'no','style'=>'All']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Legging.png') }}" class="category-icon-image">
                         <p>Legging</p>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="two-category-wrapper">
-                    <div class="category">
+                    <a href="{{ route('wardrobe_page_category',['category'=>'Shorts','favourite'=>'no','style'=>'All']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Shorts.png') }}" class="category-icon-image">
                         <p>Shorts</p>
-                    </div>
+                    </a>
 
-                    <div class="category">
+                    <a href="{{ route('wardrobe_page_category',['category'=>'Skirt','favourite'=>'no','style'=>'All']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Skirt.png') }}" class="category-icon-image">
                         <p>Skirt</p>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="two-category-wrapper">
-                    <div class="category">
+                    <a href="{{ route('wardrobe_page_category',['category'=>'Trousers','favourite'=>'no','style'=>'All']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Trousers.png') }}" class="category-icon-image">
                         <p>Trousers</p>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
