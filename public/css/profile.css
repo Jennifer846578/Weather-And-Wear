@@ -35,6 +35,7 @@ body {
     box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 8px;
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
 }
 
 .profile-header h1 {
@@ -149,9 +150,10 @@ body {
     height: 35px;
     cursor: pointer;
     font-size: 15px;
-    color: rgb(57, 38, 166);
+    background-color: rgb(57, 38, 166);
+    color: white;
     font-weight: 700;
-    background: rgba(255, 255, 255, 0.5);
+    /* background: rgba(255, 255, 255, 0.5); */
     border-style: none;
     outline: none;
     border-radius: 6px;
@@ -163,13 +165,15 @@ body {
 }
 
 .dropdown-menu.dropdown-menu-end{
-    margin: 20px auto;
-    background-color: red;
-    width: 100px;
+    margin: 12px auto;
+    background-color: rgba(255, 255, 255, 0.7);
+    /* border-style: solid; */
+    border-color: rgb(57, 38, 166);
+    width: 50%;
+    height: 35px;
     justify-content: center;
     display: flex;
-    height: 30px;
-    border-radius: 10px;
+    border-radius: 6px;
 }
 
 .dropdown-menu.dropdown-menu-end:hover{
@@ -178,7 +182,8 @@ body {
 
 .dropdown-item{
     margin: auto;
-    color: white;
+    color: red;
+    /* color: rgb(57, 38, 166); */
     font-weight: bold;
     text-decoration: none;
 }
