@@ -12,7 +12,6 @@
 </head>
 <body>
     <div class="phone-card">
-        <body>
             <p class="weathertext"></p>
             <x-navbar></x-navbar>
             <x-tips></x-tips>
@@ -24,7 +23,6 @@
             <h1>What to Wear Today?</h1>
             <x-style-selector></x-style-selector>
             <x-generate-outfit></x-generate-outfit>
-        </body>
     </div>
 </body>
 <script>
@@ -76,29 +74,43 @@
     listofWeather=['ThunderStorm','Rain','Rain','Rain','Snow','Atmosphere','Clouds','Additional'];
     if(parseInt(data['weather'][0]['id'])==800){
         document.querySelector(p.weathertext).innerHTML="Clear";
+    }else{
+        document.querySelector('p.weathertext').innerHTML=listofWeather[currId-2];
     }
-    document.querySelector('p.weathertext').innerHTML=listofWeather[currId-2];
+
     // console.log(curr);
 
     // // change image base on weather
     let teks = document.querySelector('p.weathertext');
+let imagePath;
 
-    if (teks) {
-        console.log(teks.innerHTML);
+if (teks) {
+    console.log(teks.innerHTML);
 
-        let imagePath = `Asset/Homepage/${teks.innerHTML}_weather.png`;
-        console.log(imagePath);
-        // Mencari elemen gambar dalam div.weather-dynamic dan mengganti src-nya
-        let gambar = document.querySelector('div.weather-dynamic img');
-
-        if (gambar) {
-            gambar.src = imagePath;
+    if (teks.innerHTML == "Rain" || teks.innerHTML == "Clear") {
+        if (dt.getHours() >= 18) {
+            imagePath = `Asset/Homepage/${teks.innerHTML}_weather_malam.png`;
         } else {
-            console.error("Elemen gambar tidak ditemukan dalam div.weather-dynamic");
+            imagePath = `Asset/Homepage/${teks.innerHTML}_weather_siang.png`;
         }
     } else {
-        console.error("Elemen p.weathertext tidak ditemukan");
+        imagePath = `Asset/Homepage/${teks.innerHTML}_weather.png`;
     }
+
+    console.log(imagePath);
+
+    // Mencari elemen gambar dalam div.weather-dynamic dan mengganti src-nya
+    let gambar = document.querySelector('div.weather-dynamic img');
+
+    if (gambar) {
+        gambar.src = imagePath;
+    } else {
+        console.error("Elemen gambar tidak ditemukan dalam div.weather-dynamic");
+    }
+} else {
+    console.error("Elemen p.weathertext tidak ditemukan");
+}
+
 
     // change tips based on weather
         document.addEventListener("DOMContentLoaded", () => {
@@ -216,6 +228,8 @@
             document.getElementById("youtube-video").src = ""; // Reset video
         }
     });
+
+    console.log(dt.getHours());
 
 
 });

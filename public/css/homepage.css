@@ -6,8 +6,11 @@
 
 .weathertext {
     font-family: 'Nosifer', sans-serif;
-    font-size: 48px;
+    font-size: 50px;
     color: #ffffff;
+    /* padding: 10px 0 0 0; */
+    margin: 20px 0 0 0 ;
+    transform: scaleY(1.5);
 }
 
 body {
@@ -486,9 +489,9 @@ h1 {
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    position: fixed;
+    position:sticky;
     top: 120px;
-    right: 550px;
+    margin-left: 300px;
     z-index: 1000;
 }
 
