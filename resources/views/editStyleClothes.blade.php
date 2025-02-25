@@ -69,6 +69,18 @@
         inputDataCopy.value = @json($dataCopy->id);
         form.appendChild(inputDataCopy);
 
+        let inputFav = document.createElement("input");
+        inputFav.type = "hidden";
+        inputFav.name = "favourite";
+        inputFav.value = @json($favourite);
+        form.appendChild(inputFav);
+
+        let inputStyle = document.createElement("input");
+        inputStyle.type = "hidden";
+        inputStyle.name = "style";
+        inputStyle.value = @json($style);
+        form.appendChild(inputStyle);
+
         
 
         // Create file input and append the selected file
@@ -116,6 +128,18 @@
         testInputOne.name = "style";
         testInputOne.value = style;
         form.appendChild(testInputOne);
+
+        let inputFav = document.createElement("input");
+        inputFav.type = "hidden";
+        inputFav.name = "favourite";
+        inputFav.value = @json($favourite);
+        form.appendChild(inputFav);
+
+        let inputStyle = document.createElement("input");
+        inputStyle.type = "hidden";
+        inputStyle.name = "style";
+        inputStyle.value = @json($style);
+        form.appendChild(inputStyle);
 
         document.body.appendChild(form);
         form.submit();

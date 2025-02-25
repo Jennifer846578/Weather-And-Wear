@@ -130,6 +130,18 @@
             inputDataCopy.value = @json($dataCopy->id);
             form.appendChild(inputDataCopy);
 
+            let inputFav = document.createElement("input");
+            inputFav.type = "hidden";
+            inputFav.name = "favourite";
+            inputFav.value = @json($favourite);
+            form.appendChild(inputFav);
+
+            let inputStyle = document.createElement("input");
+            inputStyle.type = "hidden";
+            inputStyle.name = "style";
+            inputStyle.value = @json($style);
+            form.appendChild(inputStyle);
+
             document.body.appendChild(form);
             form.submit();
         }
@@ -199,6 +211,18 @@
             radioInput.value = selectedRadio.value;
             form.appendChild(radioInput);
 
+            let inputFav = document.createElement("input");
+            inputFav.type = "hidden";
+            inputFav.name = "favourite";
+            inputFav.value = @json($favourite);
+            form.appendChild(inputFav);
+
+            let inputStyle = document.createElement("input");
+            inputStyle.type = "hidden";
+            inputStyle.name = "style";
+            inputStyle.value = @json($style);
+            form.appendChild(inputStyle);
+
             // Append form to body and submit
             document.body.appendChild(form);
             form.submit();
@@ -226,7 +250,6 @@
         // })
         // console.log(@json($data->id));
         function removeClothWardrobe(id,idCopy){
-            console.log(id)
             let form = document.createElement("form");
             form.method = "POST";
             form.action = "{{ route('deleteWardrobeClothes') }}"; // Replace with your route name
@@ -256,6 +279,18 @@
             inputDataCopy.name = "idCopy";
             inputDataCopy.value = idCopy;
             form.appendChild(inputDataCopy);
+
+            let inputFav = document.createElement("input");
+            inputFav.type = "hidden";
+            inputFav.name = "favourite";
+            inputFav.value = @json($favourite);
+            form.appendChild(inputFav);
+
+            let inputStyle = document.createElement("input");
+            inputStyle.type = "hidden";
+            inputStyle.name = "style";
+            inputStyle.value = @json($style);
+            form.appendChild(inputStyle);
 
             document.body.appendChild(form);
             form.submit();

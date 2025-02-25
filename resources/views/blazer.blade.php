@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blazer</title>
+    <title>{{ $category }}</title>
     <link rel="stylesheet" href="{{ asset('css/blazer.css') }}">
 </head>
 <body>
@@ -19,7 +19,7 @@
         <div class="clothes-wrapper-luar">
             <div class="clothes-wrapper">
                 <div class="judul-dan-fav-icon">
-                    <h1>Blazer</h1>
+                    <h1>{{ $category }}</h1>
                     <div id="btn">
                         <img id="no" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
                         <img id="yes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
@@ -175,6 +175,18 @@
         inputData.value = id;
         form.appendChild(inputData);
 
+        let inputFav = document.createElement("input");
+        inputFav.type = "hidden";
+        inputFav.name = "favourite";
+        inputFav.value = @json($favourite);
+        form.appendChild(inputFav);
+
+        let inputStyle = document.createElement("input");
+        inputStyle.type = "hidden";
+        inputStyle.name = "style";
+        inputStyle.value = @json($style);
+        form.appendChild(inputStyle);
+
         document.body.appendChild(form);
         form.submit();
     }
@@ -213,14 +225,39 @@
 
         let inputDataOne = document.createElement("input");
         inputDataOne.type = "hidden";
-        inputDataOne.name = "favourite";
+        inputDataOne.name = "favouriteValue";
         inputDataOne.value = value;
         form.appendChild(inputDataOne);
+
+        let inputFav = document.createElement("input");
+        inputFav.type = "hidden";
+        inputFav.name = "favourite";
+        inputFav.value = @json($favourite);
+        form.appendChild(inputFav);
+
+        let inputStyle = document.createElement("input");
+        inputStyle.type = "hidden";
+        inputStyle.name = "style";
+        inputStyle.value = @json($style);
+        form.appendChild(inputStyle);
 
         document.body.appendChild(form);
         form.submit();
     }
     let favButtons=document.querySelectorAll('img[alt*="like"]');
+    for(let i=0;i<favButtons.length;i++){
+        if(@json($favourite)=="yes"){
+            favButtons[0].style.opacity="0"
+            favButtons[0].style.visibility="hidden"
+            favButtons[1].style.opacity="1"
+            favButtons[1].style.visibility="visible"
+        }else{
+            favButtons[1].style.opacity="0"
+            favButtons[1].style.visibility="hidden"
+            favButtons[0].style.opacity="1"
+            favButtons[0].style.visibility="visible"
+        }
+    }
     for(let i=0;i<favButtons.length;i++){
         favButtons[i].addEventListener('click',function(){
             if(i>1){
@@ -232,10 +269,36 @@
                 }
                 // console.log(id,value)
                 submitFavForm(id,value);
+            }else{
+                let favourite="yes"
+                if(favButtons[i].getAttribute('alt')?.includes('yes')){
+                    favourite="no"
+                }
+                window.location.href="{{ route('wardrobe_page_category',['category'=>'__category__','favourite'=>'__favourite__','style'=>'__style__']) }}".replace('__category__',@json($category)).replace('__favourite__',favourite).replace('__style__',@json($style));
             }
         })
     }
 
+
+    //setting the options
+    let select = document.getElementById("style");
+    let selectedValue = @json($style); // Get style from Laravel
+    let optionss = Array.from(select.options);
+    let selectedOption = optionss.find(option => option.value === selectedValue);
+    if (selectedOption) {
+        // Remove the selected option
+        select.removeChild(selectedOption);
+        // Insert it at the beginning
+        select.insertBefore(selectedOption, select.firstChild);
+        // Keep it selected
+        selectedOption.selected = true;
+    }
+
+    let selectElement = document.getElementById('style');
+    selectElement.addEventListener('change', function() {
+        let selectedOption = this.options[this.selectedIndex];
+        window.location.href="{{ route('wardrobe_page_category',['category'=>'__category__','favourite'=>'__favourite__','style'=>'__style__']) }}".replace('__category__',@json($category)).replace('__favourite__',@json($favourite)).replace('__style__',selectedOption.value);
+    });
 
     
     </script>

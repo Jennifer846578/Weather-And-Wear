@@ -65,6 +65,18 @@
         inputDataCopy.value = @json($dataCopy->id);
         form.appendChild(inputDataCopy);
 
+        let inputFav = document.createElement("input");
+        inputFav.type = "hidden";
+        inputFav.name = "favourite";
+        inputFav.value = @json($favourite);
+        form.appendChild(inputFav);
+
+        let inputStyle = document.createElement("input");
+        inputStyle.type = "hidden";
+        inputStyle.name = "style";
+        inputStyle.value = @json($style);
+        form.appendChild(inputStyle);
+
         document.body.appendChild(form);
         form.submit();
     }
@@ -73,6 +85,7 @@
     for(let i=0;i<buttones.length;i++){
         if(buttones[i].querySelector('p.pcategory').innerHTML===@json($dataCopy->category)){
             buttones[i].classList.add('active');
+            document.querySelector('button#continue-btn').disabled=false
             break;
         }
     }
@@ -107,6 +120,18 @@
         testInputOne.name = "category";
         testInputOne.value = category;
         form.appendChild(testInputOne);
+
+        let inputFav = document.createElement("input");
+        inputFav.type = "hidden";
+        inputFav.name = "favourite";
+        inputFav.value = @json($favourite);
+        form.appendChild(inputFav);
+
+        let inputStyle = document.createElement("input");
+        inputStyle.type = "hidden";
+        inputStyle.name = "style";
+        inputStyle.value = @json($style);
+        form.appendChild(inputStyle);
 
         document.body.appendChild(form);
         form.submit();
