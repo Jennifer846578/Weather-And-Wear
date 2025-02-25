@@ -132,6 +132,7 @@
                     </tbody>
                 </table>
             </div>
+   
             <button class="yes-button">✔</button>
         </div>
     </div>
