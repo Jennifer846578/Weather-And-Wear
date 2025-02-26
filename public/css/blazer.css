@@ -75,6 +75,31 @@ body {
     font-size: 14px;
 }
 
+.BajuKosong {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 282px;
+    /* background-color: red; */
+    width: 100%;
+}
+
+.BajuKosong p{
+    text-align: center;
+    margin-top: 10px;
+    color: gray;
+    font-size: 14px;
+    opacity: 65%;
+}
+
+.BajuKosong img{
+    margin-top: 10px;
+    width: 150px;
+    height: 150px;
+    opacity: 65%;
+}
+
 .clothes-wrapper hr{
     border-style: solid none none;
     border-top: 2px solid gray;
