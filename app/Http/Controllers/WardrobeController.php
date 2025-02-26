@@ -95,7 +95,8 @@ class WardrobeController extends Controller
         $data=wardrobe::findOrFail($request->id);
         $data->style=$request->style;
         $data->save();
-        return view('wardrobe');
+        $notification="yes";
+        return view('wardrobe',compact('notification'));
     }
 
     public function showWardrobe()
@@ -103,7 +104,7 @@ class WardrobeController extends Controller
         return view('wardrobe');
     }
 
-    public function showWardrobeCategory($category,$favourite,$style)
+    public function showWardrobeCategory($category,$favourite,$style,$editted)
     {
         // $results=wardrobe::where('userid',Auth::user()->id)->get();
         // $result=wardrobe::where('userid',Auth::user()->id)->where('category',$category);
@@ -120,9 +121,11 @@ class WardrobeController extends Controller
                 $results=wardrobe::where('userid',Auth::user()->id)->where('category',$category)->where('favourite','yes')->where('style',$style)->get();
             }
         }
+        // return $editted.$style.$category.$favourite;
+        return view('blazer',compact('results','favourite','category','style','editted'));
         // return $category.$favourite.$style;
         // return $style;
-        return view('blazer',compact('results','category','favourite','style'));
+        // return view('blazer',compact('results','category','favourite','style'));
         
         // return $category;
     }
@@ -132,7 +135,7 @@ class WardrobeController extends Controller
         $data=wardrobe::findOrFail($request->id);
         $data->favourite=$request->favouriteValue;
         $data->save();
-        return redirect()->route('wardrobe_page_category',['category'=>$data->category,'style'=>$request->style,'favourite'=>$request->favourite]);
+        return redirect()->route('wardrobe_page_category',['category'=>$data->category,'style'=>$request->style,'favourite'=>$request->favourite,'editted'=>'no']);
         // return $data->category;
     }
 
@@ -153,7 +156,7 @@ class WardrobeController extends Controller
         $dataCopy->delete();
         $category=$data->category;
         $data->delete();
-        return redirect()->route('wardrobe_page_category',['category'=>$data->category,'style'=>$request->style,'favourite'=>$request->favourite]);
+        return redirect()->route('wardrobe_page_category',['category'=>$data->category,'style'=>$request->style,'favourite'=>$request->favourite,'editted'=>'no']);
     }
 
     public function editWardrobeOne(Request $request)
@@ -193,7 +196,7 @@ class WardrobeController extends Controller
             }
         }
         $dataCopy->delete();
-        return redirect()->route('wardrobe_page_category',['category'=>$data->category,'style'=>$request->style,'favourite'=>$request->favourite]);
+        return redirect()->route('wardrobe_page_category',['category'=>$data->category,'style'=>$request->style,'favourite'=>$request->favourite,'editted'=>'no']);
     }
 
     // public function ChangeWardrobeImage(Request $request)
@@ -303,7 +306,7 @@ class WardrobeController extends Controller
         $data->style=$request->style;
         $data->save();
         $dataCopy->delete();
-        return redirect()->route('wardrobe_page_category',['category'=>$category,'favourite'=>$favourite,'style'=>$style]);
+        return redirect()->route('wardrobe_page_category',['category'=>$category,'favourite'=>$favourite,'style'=>$style,'editted'=>'yes']);
     }
 
     /**

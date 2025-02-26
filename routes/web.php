@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 // Route::get('/test',[App\Http\Controllers\Test001Controller::class,'index']);
-Route::resource('test',   App\Http\Controllers\Test001Controller::class);
+// Route::resource('test',   App\Http\Controllers\Test001Controller::class);
 
 Route::get('/',[App\Http\Controllers\homepageController::class,'index'])->name('home');
 
@@ -104,7 +104,7 @@ Route::get('/history', function () {
 // })->name('blazer_page');
 
 Route::get('/wardobe',[App\Http\Controllers\WardrobeController::class,'showWardrobe'])->name('wardrobe_page');
-Route::get('/wardrobe/{category}/{favourite}/{style}',[App\Http\Controllers\WardrobeController::class,'showWardrobeCategory'])->name('wardrobe_page_category');
+Route::get('/wardrobe/{category}/{favourite}/{style}/{editted}',[App\Http\Controllers\WardrobeController::class,'showWardrobeCategory'])->name('wardrobe_page_category');
 Route::put('/wardrobe/favorite',[App\Http\Controllers\WardrobeController::class,'favWardrobe'])->name('wardrobe_fav');
 
 Route::get('/redirect',[SocialiteController::class, 'redirect'])->name('redirect')->middleware('guest');

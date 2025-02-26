@@ -39,6 +39,12 @@
                     </select>
                 </div>
 
+                
+                @if (count($results)===0)
+                    <p class="BajuKosong">No {{ $category }} found in your wardrobe</p>
+                @endif
+                
+
                 <div class="clothes-list">
                     @for ($i=0;$i+2<=count($results);$i+=2)
                         <div class="two-category-wrapper">
@@ -152,11 +158,20 @@
         </div>
     </div>
     
-    <script src="/js/successNotification.js"></script>
+    {{-- <script src="/js/successNotification.js"></script> --}}
     {{-- <script src="/js/blazer.js"></script> --}}
     {{-- <button onclick="submitForm()">Submit</button> --}}
 
     <script>
+
+    if(@json($editted)==="yes"){
+        document.querySelector('div#notification-modal').style="display: flex;"
+    }
+
+    function closeModal(){
+        window.location.href="{{ route('wardrobe_page_category',['category'=>'__category__','favourite'=>'__favourite__','style'=>'__style__','editted'=>'no']) }}".replace('__category__',@json($category)).replace('__favourite__',@json($favourite)).replace('__style__',@json($style));
+    }
+    
 
     let description={
         Blazer:"A blazer is a tailored jacket, versatile for both formal and semi-casual settings, often styled with trousers or jeans.",
@@ -297,7 +312,7 @@
                 if(favButtons[i].getAttribute('alt')?.includes('yes')){
                     favourite="no"
                 }
-                window.location.href="{{ route('wardrobe_page_category',['category'=>'__category__','favourite'=>'__favourite__','style'=>'__style__']) }}".replace('__category__',@json($category)).replace('__favourite__',favourite).replace('__style__',@json($style));
+                window.location.href="{{ route('wardrobe_page_category',['category'=>'__category__','favourite'=>'__favourite__','style'=>'__style__','editted'=>'no']) }}".replace('__category__',@json($category)).replace('__favourite__',favourite).replace('__style__',@json($style));
             }
         })
     }
@@ -320,7 +335,7 @@
     let selectElement = document.getElementById('style');
     selectElement.addEventListener('change', function() {
         let selectedOption = this.options[this.selectedIndex];
-        window.location.href="{{ route('wardrobe_page_category',['category'=>'__category__','favourite'=>'__favourite__','style'=>'__style__']) }}".replace('__category__',@json($category)).replace('__favourite__',@json($favourite)).replace('__style__',selectedOption.value);
+        window.location.href="{{ route('wardrobe_page_category',['category'=>'__category__','favourite'=>'__favourite__','style'=>'__style__','editted'=>'no']) }}".replace('__category__',@json($category)).replace('__favourite__',@json($favourite)).replace('__style__',selectedOption.value);
     });
 
     

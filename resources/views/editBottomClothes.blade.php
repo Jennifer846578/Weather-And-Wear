@@ -17,7 +17,7 @@
 
     <!-- Pratinjau gambar -->
     <div id="PreviewContainer">
-        <img id="PreviewImage" alt="Preview Image" style="width: 300px; height: auto;" src="Asset/Wardrobe/Images/{{ $data->imagePath }}">
+        <img id="PreviewImage" alt="Preview Image" style="width: 300px; height: auto;" src="Asset/Wardrobe/Images/{{ $dataCopy->imagePath }}">
     </div>
 
     <div class="categoryBox">
