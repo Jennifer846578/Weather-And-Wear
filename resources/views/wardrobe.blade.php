@@ -12,23 +12,19 @@
         <x-navbar></x-navbar>
         <div class="wardrobe-header">
             <h1>Wardrobe</h1>
-
-    <div class="InputFile">
-        <form action="{{ route('wardrobe_store') }}" method="POST" enctype="multipart/form-data" class="submitlahbang">
-            @csrf
-            {{-- @if ($session)
-                <p>{{ $session }} and {{ $who }}</p>
-            @endif --}}
-            <button class="inputButton">
-                <input type="file" id="FileInput" accept="image/*" name="image" >
-                <label class="inputLabel" for="FileInput">Add Clothes to Wardrobe</label>
-            </button>
-            
-        </form>
-    </div>
-    
-
-    </div>
+            <div class="InputFile">
+                <form action="{{ route('wardrobe_store') }}" method="POST" enctype="multipart/form-data" class="submitlahbang">
+                    @csrf
+                    {{-- @if ($session)
+                        <p>{{ $session }} and {{ $who }}</p>
+                    @endif --}}
+                    <button class="inputButton">
+                        <input type="file" id="FileInput" accept="image/*" name="image" >
+                        <label class="inputLabel" for="FileInput">Add Clothes to Wardrobe</label>
+                    </button>
+                </form>
+            </div>
+        </div>
 
         <div class="categories-wrapper-luar">
             <div class="categories-wrapper">
@@ -76,8 +72,8 @@
 
                     <a href="{{ route('wardrobe_page_category',['category'=>'Shirt','favourite'=>'no','style'=>'All']) }}" class="category">
                         <img src="{{ asset('Asset/Wardrobe/Icon Luar/T-Shirt.png') }}" class="category-icon-image">
-                        <p>TShirt</p>
-                    </div>
+                        <p>T-Shirt</p>
+                    </a>
                 </div>
 
                 <div class="two-category-wrapper">
@@ -135,6 +131,7 @@
             </div>
         </div>
     </div>
+    
     <script>
         document.querySelector('input#FileInput').addEventListener('change',function(){
             if(this.files.length>0){
