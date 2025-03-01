@@ -9,10 +9,20 @@
         <img src="{{ asset('Asset/Wardrobe/Icon Luar/Jeans.png') }}" class="category-icon-image">
         <p>Jeans</p>
     </div>
+        <!-- Rating Stars -->
+    <div class="rating">
+        <span class="star" onclick="rate(1)" data-value="1">&#9733;</span>
+        <span class="star" onclick="rate(2)" data-value="2">&#9733;</span>
+        <span class="star" onclick="rate(3)" data-value="3">&#9733;</span>
+        <span class="star" onclick="rate(4)" data-value="4">&#9733;</span>
+        <span class="star" onclick="rate(5)" data-value="5">&#9733;</span>
+    </div>
+
     <div class="navigation">
         <button onclick="previousItem()">&#8249;</button>
         <button onclick="nextItem()">&#8250;</button>
     </div>
+
     <button class="wear-button" onclick="showPopupWear()">Wear This Outfit</button> <!-- Onclick added -->
 </div>
 
@@ -36,7 +46,7 @@ function showOutfit() {
 
     let phoneCard = document.querySelector('.phone-card');
     if (phoneCard) {
-        phoneCard.style.minHeight = '210vh'; // Perubahan tinggi
+        phoneCard.style.minHeight = '214vh'; // Perubahan tinggi
     }
 
     // Pastikan tombol Wear This Outfit juga tampil
@@ -67,5 +77,19 @@ function showOutfit() {
     let generateButton = document.querySelector('.generate-button');
     generateButton.addEventListener('click', showOutfit);
 });
+
+// RATING FUNCTION
+
+function rate(stars) {
+    let starElements = document.querySelectorAll('.star');
+    starElements.forEach(star => {
+        if (parseInt(star.getAttribute('data-value')) <= stars) {
+            star.classList.add('active');
+        } else {
+            star.classList.remove('active');
+        }
+    });
+}
+
 
 </script>

@@ -34,7 +34,8 @@ class SocialiteController extends Controller
             auth('web')->login($userFromDb);
             session()->regenerate();
         }
-        return redirect('/')->with('user', $userFromDb);
+        // return redirect('/')->with('user', $userFromDb);
+        return redirect('/')->with('user', $userFromDb)->with('login_success', true);
     }
 
     public function logout(Request $request)

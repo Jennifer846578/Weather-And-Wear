@@ -488,6 +488,27 @@ h1 {
     background-color: #6b89d4;
 }
 
+/* BINTANG RATING */
+
+.rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.star {
+    font-size: 40px;
+    color: gray;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.star:hover,
+.star.active {
+    color: gold;
+}
+
+
 /* pop up wear */
 .popup-wear {
     position: fixed;
@@ -546,7 +567,6 @@ h1 {
 
 /* Pop-up modal styling */
 .tips-popup {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -557,6 +577,7 @@ h1 {
     justify-content: center;
     align-items: center;
     z-index: 1001;
+    display: none;
 }
 
 /* Konten pop-up */
