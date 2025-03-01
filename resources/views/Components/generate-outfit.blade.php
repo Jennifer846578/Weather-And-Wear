@@ -28,10 +28,24 @@
 </div>
 
 <script>
-    function showOutfit() {
-        document.getElementById('outfitDisplay').style.display = 'block';
-        document.querySelector('.phone-card').style.minHeight = '210vh';
+function showOutfit() {
+    let outfitDisplay = document.getElementById('outfitDisplay');
+    if (outfitDisplay) {
+        outfitDisplay.style.display = 'block'; // Tampilkan outfit
     }
+
+    let phoneCard = document.querySelector('.phone-card');
+    if (phoneCard) {
+        phoneCard.style.minHeight = '210vh'; // Perubahan tinggi
+    }
+
+    // Pastikan tombol Wear This Outfit juga tampil
+    let wearButton = document.querySelector('.wear-button');
+    if (wearButton) {
+        wearButton.style.display = 'block';
+    }
+}
+
 
     function previousItem() {
         alert('Show previous item');
@@ -48,4 +62,10 @@
     function closePopupWear() {
         document.getElementById('popup-wear').style.display = 'none';
     }
+
+    document.addEventListener("DOMContentLoaded", function() {
+    let generateButton = document.querySelector('.generate-button');
+    generateButton.addEventListener('click', showOutfit);
+});
+
 </script>

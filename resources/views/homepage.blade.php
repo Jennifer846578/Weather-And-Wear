@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div class="phone-card">
@@ -20,11 +22,12 @@
             <x-otherinfo></x-otherinfo>
             <x-hourly-forecast></x-hourly-forecast>
             <x-view-schedule></x-view-schedule>
-            <h1>What to Wear Today?</h1>
+            <h1 class="whattowear">What to Wear Today?</h1>
             <x-style-selector></x-style-selector>
             <x-generate-outfit></x-generate-outfit>
     </div>
 </body>
+
 <script>
     function getUserLocation() {
         if (navigator.geolocation) {
@@ -233,5 +236,7 @@ if (teks) {
 
 
 });
+
+
 </script>
 </html>
