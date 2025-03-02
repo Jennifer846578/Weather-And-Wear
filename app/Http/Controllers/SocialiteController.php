@@ -17,26 +17,40 @@ class SocialiteController extends Controller
     }
 
     public function callback()
-    {
+{
+    try {
         $userFromGoogle = Socialite::driver('google')->stateless()->user();
 
-        $userFromDb = User::where('google_id', $userFromGoogle->getId())->first();
+        // Cek apakah user sudah ada di database berdasarkan email
+        $userFromDb = User::where('email', $userFromGoogle->getEmail())->first();
 
-        if(!$userFromDb)
-        {
+        if (!$userFromDb) {
+            // Jika user belum ada, buat user baru
             $userFromDb = new User();
             $userFromDb->email = $userFromGoogle->getEmail();
             $userFromDb->google_id = $userFromGoogle->getId();
             $userFromDb->name = $userFromGoogle->getName();
+            $userFromDb->password = bcrypt('password'); // Tambahkan password dummy
 
             $userFromDb->save();
-
-            auth('web')->login($userFromDb);
-            session()->regenerate();
+        } else {
+            // Jika user sudah ada tetapi belum memiliki google_id, update datanya
+            if (!$userFromDb->google_id) {
+                $userFromDb->google_id = $userFromGoogle->getId();
+                $userFromDb->save();
+            }
         }
-        // return redirect('/')->with('user', $userFromDb);
-        return redirect('/')->with('user', $userFromDb)->with('login_success', true);
+
+        // Login user
+        auth('web')->login($userFromDb, true);
+        session()->regenerate();
+
+        return redirect('/');
+
+    } catch (\Exception $e) {
+        return redirect('/login')->with('error', 'Terjadi kesalahan saat login.');
     }
+}
 
     public function logout(Request $request)
     {
