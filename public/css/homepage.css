@@ -6,11 +6,22 @@
 
 .weathertext {
     font-family: 'Nosifer', sans-serif;
-    font-size: 50px;
+    font-size: 60px;
     color: #ffffff;
     /* padding: 10px 0 0 0; */
     margin: 20px 0 0 0 ;
     transform: scaleY(1.5);
+}
+
+.whattowear {
+    font-family: "Oleo Script Swash Caps", system-ui;
+    font-size: 40px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.item p {
+    color: rgba(65,111,240, 0.6);
 }
 
 body {
@@ -23,7 +34,7 @@ body {
 
 .phone-card {
     width: 412px;
-    min-height: 150vh;
+    min-height: 155vh;
     background-color: #B2D3FF;
     display: flex;
     flex-direction: column;
@@ -35,11 +46,11 @@ body {
     text-align: center;
 }
 
-.weatherName-dynamic img{
-    width: 70%;
+/* .weatherName-dynamic img{
+    width: 80%;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .weather-box{
     margin: 10px 0 0 0;
@@ -47,9 +58,10 @@ body {
 }
 
 .weather-dynamic img{
-    width: 60%;
+    width: 85%;
     justify-content: center;
     align-items: center;
+    filter: drop-shadow(7px 7px 7px rgba(23, 60, 108, 0.3));
 }
 
 /* otherinfo */
@@ -58,15 +70,14 @@ body {
     justify-content: center;
 }
 .weather-card {
-    margin-top: 15px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 390px;
+    width: 375px;
     padding: 10px;
-    border: 1px solid white;
-    border-radius: 44px;
-    background: rgba(74, 74, 74, 0.241); /* Warna putih transparan */
+    /* border: 1px solid white; */
+    border-radius: 30px;
+    background: rgba(30, 52, 106, 0.278);
     backdrop-filter: blur(10px); /* Efek kaca buram */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan */
 }
@@ -102,30 +113,33 @@ body {
 /* Hourly Forecast */
 
 .forecast-container {
-    border: 1px solid white;
+    /* border: 1px solid white; */
     display: flex;
     flex-direction: column;
-    width: 390px;
+    width: 375px;
     margin: 20px 0 0 0;
     justify-content: center;
-    border-radius: 44px;
+    border-radius: 35px;
     padding: 12px;
     gap: 0px;
-    background: rgba(74, 74, 74, 0.241); /* Warna putih transparan */
+    background: rgba(30, 52, 106, 0.278);
+    /* background: rgba(30, 52, 106, 0.27);  */
     backdrop-filter: blur(10px); /* Efek kaca buram */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan */
 }
 
 .forecast-card {
-    border: 1px solid white;
+    /* border: 1px solid white; */
     background-color: #46b2e0;
     border-radius: 30px;
     color: white;
     text-align: center;
-    padding: 15px;
+    justify-content: center;
+    padding: 15px 0px;
     width: 60px;
     display: grid;
     gap: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .forecast-card.now {
@@ -150,7 +164,7 @@ body {
 .forecast-title {
     font-size: 18px;
     font-weight: bold;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.9);
     text-align: center;
     margin-bottom: 15px;
 }
@@ -175,9 +189,9 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
     gap: 10px;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     border-radius: 25px;
-    background: rgba(74, 74, 74, 0.241); /* Warna putih transparan */
+    background: rgba(30, 52, 106, 0.278);
     backdrop-filter: blur(10px); /* Efek kaca buram */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan */
 }
@@ -205,6 +219,7 @@ body {
     display: none;
     justify-content: center;
     align-items: center;
+    z-index: 1002;
 }
 
 .schedule-list {
@@ -346,27 +361,59 @@ body {
 h1 {
     font-size: 24px;
     color: #6583AB;
-    margin-bottom: 20px;
     text-shadow: 0 2px 2px rgba(255, 255, 255, 2);
 }
 
-/* Style selector */
+/* Wrapper untuk memastikan tampilan lebih rapi */
 .style-selector {
-    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 20px;
+    width: fit-content;
 }
 
 .style-selector label {
     font-size: 16px;
-    color: #7187C5;
+    color: rgba(65,111,240, 0.6);
     margin-right: 10px;
+    font-weight: bold;
 }
 
-.style-selector select {
-    padding: 5px;
-    font-size: 14px;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
+/* Custom Select Button */
+.custom-select {
+    position: relative;
 }
+
+.custom-select select {
+    appearance: none; /* Hilangkan tampilan default select */
+    background-color: rgba(65,111,240, 0.6); /* Warna latar belakang button */
+    color: white;
+    border: none;
+    padding: 8px 30px 8px 15px;
+    font-size: 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Tambahkan ikon panah ke bawah ⬇ */
+.custom-select::after {
+    content: "▼";  /* Panah ke bawah */
+    font-size: 12px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    pointer-events: none; /* Supaya klik tetap mengenai select */
+}
+
+/* Saat select dibuka, panah berubah ke atas ⬆ */
+.custom-select select:focus + ::after {
+    content: "▲"; /* Panah ke atas */
+}
+
 
 /* Generate Outfit */
 .generate-button {
@@ -379,6 +426,7 @@ h1 {
     padding: 10px 80px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: 10px;
 }
 
 .generate-button:hover {
@@ -440,6 +488,27 @@ h1 {
     background-color: #6b89d4;
 }
 
+/* BINTANG RATING */
+
+.rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.star {
+    font-size: 40px;
+    color: gray;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.star:hover,
+.star.active {
+    color: gold;
+}
+
+
 /* pop up wear */
 .popup-wear {
     position: fixed;
@@ -451,6 +520,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1005;
 }
 
 .popup-wear-content {
@@ -489,7 +559,7 @@ h1 {
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    position:sticky;
+    position: fixed;
     top: 120px;
     margin-left: 300px;
     z-index: 1000;
@@ -497,7 +567,6 @@ h1 {
 
 /* Pop-up modal styling */
 .tips-popup {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -508,6 +577,7 @@ h1 {
     justify-content: center;
     align-items: center;
     z-index: 1001;
+    display: none;
 }
 
 /* Konten pop-up */

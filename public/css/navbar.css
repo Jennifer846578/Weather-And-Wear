@@ -16,7 +16,7 @@
 
 .navbar-main {
     position: fixed; /* Membuat navbar tetap di tempat */
-    bottom: 20px; /* Menempel pada bagian bawah layar */
+    bottom: 10px; /* Menempel pada bagian bawah layar */
     width: 380px;
     background-color: white; /* Warna latar belakang */
     display: flex; /* Menggunakan flexbox untuk pengaturan item */

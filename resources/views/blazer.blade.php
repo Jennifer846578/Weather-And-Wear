@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $category }}</title>
+    {{-- <title>{{ $category }}</title> --}}
+    <title>{{ Str::replace('TShirt', 'T-Shirt', $category) }}</title>
     <link rel="stylesheet" href="{{ asset('css/blazer.css') }}">
 </head>
 <body>
@@ -19,7 +20,8 @@
         <div class="clothes-wrapper-luar">
             <div class="clothes-wrapper">
                 <div class="judul-dan-fav-icon">
-                    <h1>{{ $category }}</h1>
+                    {{-- <h1>{{ $category }}</h1> --}}
+                    <h1>{{ Str::replace('TShirt', 'T-Shirt', $category) }}</h1>
                     <div id="btn">
                         <img id="no" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
                         <img id="yes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
@@ -38,13 +40,14 @@
                         <option value="Vintage">Vintage</option>
                     </select>
                 </div>
-
                 
                 @if (count($results)===0)
-                    <p class="BajuKosong">No {{ $category }} found in your wardrobe</p>
+                    <div class="BajuKosong">
+                        <img src="{{ asset('Asset/Wardrobe/Blazer/no clothes.png') }}">
+                        <p>You don't have any {{ Str::replace('TShirt', 'T-Shirt', $category) }}<br>in your wardrobe yet.</p>
+                    </div>
                 @endif
                 
-
                 <div class="clothes-list">
                     @for ($i=0;$i+2<=count($results);$i+=2)
                         <div class="two-category-wrapper">
@@ -172,7 +175,6 @@
         window.location.href="{{ route('wardrobe_page_category',['category'=>'__category__','favourite'=>'__favourite__','style'=>'__style__','editted'=>'no']) }}".replace('__category__',@json($category)).replace('__favourite__',@json($favourite)).replace('__style__',@json($style));
     }
     
-
     let description={
         Blazer:"A blazer is a tailored jacket, versatile for both formal and semi-casual settings, often styled with trousers or jeans.",
         Coat:"A coat is a long outer garment, designed for warmth and style, often layered over formal or casual outfits.",
@@ -192,6 +194,7 @@
     }
 
     document.querySelector('p.details').innerHTML=description[@json($category)];
+
     console.log(@json($category));
     
     function submitEditForm(id) {

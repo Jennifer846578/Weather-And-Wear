@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div class="phone-card">
@@ -20,12 +22,16 @@
             <x-otherinfo></x-otherinfo>
             <x-hourly-forecast></x-hourly-forecast>
             <x-view-schedule></x-view-schedule>
-            <h1>What to Wear Today?</h1>
+            <h1 class="whattowear">What to Wear Today?</h1>
             <x-style-selector></x-style-selector>
             <x-generate-outfit></x-generate-outfit>
     </div>
 </body>
+
+{{-- JS --}}
+
 <script>
+    // GET USER LOCATION
     function getUserLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.watchPosition(
@@ -57,10 +63,11 @@
     let currTemp= parseInt(@json($fetchdata['main']['temp'])-273.15 )
 
 
+    // WEATHER API
+
     async function getData() {
     try {
         let response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=sentul,id&appid=3282175a32c9ea3ccd6e541b9510f24c');
-        // let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longtitude}&appid=3282175a32c9ea3ccd6e541b9510f24c`);
         let data = await response.json();
         return data; // ✅ Data is now returned
     } catch (error) {
@@ -78,54 +85,38 @@
         document.querySelector('p.weathertext').innerHTML=listofWeather[currId-2];
     }
 
-    // console.log(curr);
-
-    // // change image base on weather
+    //  CHANGE IMAGE BASE ON WEATHER
     let teks = document.querySelector('p.weathertext');
-let imagePath;
+    let imagePath;
 
-if (teks) {
-    console.log(teks.innerHTML);
+    if (teks) {
+        console.log(teks.innerHTML);
 
-    if (teks.innerHTML == "Rain" || teks.innerHTML == "Clear") {
-        if (dt.getHours() >= 18) {
-            imagePath = `Asset/Homepage/${teks.innerHTML}_weather_malam.png`;
+        if (teks.innerHTML == "Rain" || teks.innerHTML == "Clear") {
+            if (dt.getHours() >= 18) {
+                imagePath = `Asset/Homepage/${teks.innerHTML}_weather_malam.png`;
+            } else {
+                imagePath = `Asset/Homepage/${teks.innerHTML}_weather_siang.png`;
+            }
         } else {
-            imagePath = `Asset/Homepage/${teks.innerHTML}_weather_siang.png`;
-        }
-    } else {
-        imagePath = `Asset/Homepage/${teks.innerHTML}_weather.png`;
-    }
-
-    console.log(imagePath);
-
-    // Mencari elemen gambar dalam div.weather-dynamic dan mengganti src-nya
-    let gambar = document.querySelector('div.weather-dynamic img');
-
-    if (gambar) {
-        gambar.src = imagePath;
-    } else {
-        console.error("Elemen gambar tidak ditemukan dalam div.weather-dynamic");
-    }
-} else {
-    console.error("Elemen p.weathertext tidak ditemukan");
-}
-
-
-    // change tips based on weather
-        document.addEventListener("DOMContentLoaded", () => {
-        // Pastikan elemen cuaca ada sebelum memperbarui tips
-        const weatherTextElement = document.querySelector("p.weathertext");
-
-        if (!weatherTextElement) {
-            console.error("Elemen p.weathertext tidak ditemukan! Pastikan elemen ini ada dalam HTML.");
-            return;
+            imagePath = `Asset/Homepage/${teks.innerHTML}_weather.png`;
         }
 
-        updateTips(); // Jalankan updateTips() saat halaman selesai dimuat
-    });
+        console.log(imagePath);
 
-    // Fungsi untuk memperbarui modal berdasarkan cuaca
+        // Mencari elemen gambar dalam div.weather-dynamic dan mengganti src-nya
+        let gambar = document.querySelector('div.weather-dynamic img');
+
+        if (gambar) {
+            gambar.src = imagePath;
+        } else {
+            console.error("Elemen gambar tidak ditemukan dalam div.weather-dynamic");
+        }
+    } else {
+     console.error("Elemen p.weathertext tidak ditemukan");
+    }
+
+    // CHANGE TIPS CONTENT BASED ON WEATHER
     function updateTips() {
         const weatherTextElement = document.querySelector("p.weathertext"); // Ambil elemen setiap kali updateTips dipanggil
         if (!weatherTextElement) {
@@ -229,9 +220,21 @@ if (teks) {
         }
     });
 
-    console.log(dt.getHours());
+    // JIKA LOGIN SUKSES
+    document.addEventListener("DOMContentLoaded", function () {
+    let loginSuccess = document.getElementById("login_success").value === "true";
+
+    if (loginSuccess) {
+        console.log("Login berhasil, menampilkan popup tips...");
+        updateTips();
+        document.getElementById("tips-popup").style.display = "flex";
+    }
+});
+
 
 
 });
+
+
 </script>
 </html>
