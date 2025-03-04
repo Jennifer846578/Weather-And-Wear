@@ -120,6 +120,20 @@ Route::get('/auth/facebook/callback', [FacebookController::class, 'facebookredir
 
 Auth::routes();
 
+// google calendar
+// use App\Http\Controllers\GoogleAuthController;
+
+// Route::get('/auth/google', [GoogleAuthController::class, 'redirectToGoogle'])->name('google.auth');
+// Route::get('/auth/google/callback', [GoogleAuthController::class, 'handleGoogleCallback'])->name('google.callback');
+// Route::get('/schedule', [GoogleAuthController::class, 'getCalendarEvents'])->name('view.schedule');
+
+
+use App\Http\Controllers\GoogleAuthController;
+
+Route::get('/auth/google', [GoogleAuthController::class, 'redirectToGoogle'])->name('google.auth');
+Route::get('/auth/google/callback', [GoogleAuthController::class, 'handleGoogleCallback'])->name('google.callback');
+// Route::get('/schedule', [GoogleAuthController::class, 'getCalendarEvents'])->name('view.schedule');
+
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Auth::routes();

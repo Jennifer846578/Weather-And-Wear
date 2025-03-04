@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,22 +10,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&display=swap"
+        rel="stylesheet">
 
 </head>
+
 <body>
     <div class="phone-card">
-            <p class="weathertext"></p>
-            <x-navbar></x-navbar>
-            <x-tips></x-tips>
-            {{-- <x-weather-name>build\assets\homepage\wn-rain.png</x-weather-name> --}}
-            <x-weather>build\assets\homepage\rain.png</x-weather>
-            <x-otherinfo></x-otherinfo>
-            <x-hourly-forecast></x-hourly-forecast>
-            <x-view-schedule></x-view-schedule>
-            <h1 class="whattowear">What to Wear Today?</h1>
-            <x-style-selector></x-style-selector>
-            <x-generate-outfit></x-generate-outfit>
+        <p class="weathertext"></p>
+        <x-navbar></x-navbar>
+        <x-tips></x-tips>
+        {{-- <x-weather-name>build\assets\homepage\wn-rain.png</x-weather-name> --}}
+        <x-weather>build\assets\homepage\rain.png</x-weather>
+        <x-otherinfo></x-otherinfo>
+        <x-hourly-forecast></x-hourly-forecast>
+        <x-view-schedule :events='$events'></x-view-schedule>
+        <h1 class="whattowear">What to Wear Today?</h1>
+        <x-style-selector></x-style-selector>
+        <x-generate-outfit></x-generate-outfit>
     </div>
 </body>
 
@@ -35,16 +38,15 @@
     function getUserLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.watchPosition(
-                function (position) {
+                function(position) {
                     let latitude = position.coords.latitude;
                     let longitude = position.coords.longitude;
 
                     console.log("Latitude:", latitude, "Longitude:", longitude);
                 },
-                function (error) {
+                function(error) {
                     console.error("Error mendapatkan lokasi:", error);
-                },
-                {
+                }, {
                     enableHighAccuracy: true,
                     maximumAge: 0
                 }
@@ -77,13 +79,13 @@
 
     // Calling the function and using the data
     getData().then(data => {
-    let currId=parseInt(data['weather'][0]['id']/100);
-    listofWeather=['ThunderStorm','Rain','Rain','Rain','Snow','Atmosphere','Clouds','Additional'];
-    if(parseInt(data['weather'][0]['id'])==800){
-        document.querySelector(p.weathertext).innerHTML="Clear";
-    }else{
-        document.querySelector('p.weathertext').innerHTML=listofWeather[currId-2];
-    }
+        let currId = parseInt(data['weather'][0]['id'] / 100);
+        listofWeather = ['ThunderStorm', 'Rain', 'Rain', 'Rain', 'Snow', 'Atmosphere', 'Clouds', 'Additional'];
+        if (parseInt(data['weather'][0]['id']) == 800) {
+            document.querySelector(p.weathertext).innerHTML = "Clear";
+        } else {
+            document.querySelector('p.weathertext').innerHTML = listofWeather[currId - 2];
+        }
 
     //  CHANGE IMAGE BASE ON WEATHER
     let teks = document.querySelector('p.weathertext');
@@ -124,12 +126,13 @@
             return;
         }
 
-        let weatherCondition = weatherTextElement.innerText.trim(); // Gunakan innerText untuk memastikan nilai yang diambil
+            let weatherCondition = weatherTextElement.innerText
+        .trim(); // Gunakan innerText untuk memastikan nilai yang diambil
 
-        const tipsPopup = document.getElementById("tips-popup");
-        const closePopupTips = document.getElementById("close-popup");
-        const youtubeVideo = document.getElementById("youtube-video");
-        const tipsList = document.querySelector(".popup-content ul");
+            const tipsPopup = document.getElementById("tips-popup");
+            const closePopupTips = document.getElementById("close-popup");
+            const youtubeVideo = document.getElementById("youtube-video");
+            const tipsList = document.querySelector(".popup-content ul");
 
         const tipsData = {
             "Rain": {
@@ -188,46 +191,47 @@
             }
         };
 
-        if (tipsData[weatherCondition]) {
-            console.log(`Mengupdate modal dengan cuaca: ${weatherCondition}`);
+            if (tipsData[weatherCondition]) {
+                console.log(`Mengupdate modal dengan cuaca: ${weatherCondition}`);
 
-            // Perbarui judul modal
-            closePopupTips.innerText = tipsData[weatherCondition].title;
+                // Perbarui judul modal
+                closePopupTips.innerText = tipsData[weatherCondition].title;
 
-            // Perbarui video YouTube
-            youtubeVideo.src = tipsData[weatherCondition].video + "?autoplay=0&mute=1";
+                // Perbarui video YouTube
+                youtubeVideo.src = tipsData[weatherCondition].video + "?autoplay=0&mute=1";
 
-            // Perbarui daftar tips
-            tipsList.innerHTML = "";
-            tipsData[weatherCondition].list.forEach(tip => {
-                let li = document.createElement("li");
-                li.textContent = tip;
-                tipsList.appendChild(li);
-            });
-        } else {
-            console.error("Cuaca tidak dikenali:", weatherCondition);
+                // Perbarui daftar tips
+                tipsList.innerHTML = "";
+                tipsData[weatherCondition].list.forEach(tip => {
+                    let li = document.createElement("li");
+                    li.textContent = tip;
+                    tipsList.appendChild(li);
+                });
+            } else {
+                console.error("Cuaca tidak dikenali:", weatherCondition);
+            }
         }
-    }
 
-    // Pastikan tips diperbarui saat tombol ditekan
-    document.getElementById("tips-button").addEventListener("click", () => {
-        updateTips();
-        document.getElementById("tips-popup").style.display = "flex";
-    });
+        // Pastikan tips diperbarui saat tombol ditekan
+        document.getElementById("tips-button").addEventListener("click", () => {
+            updateTips();
+            document.getElementById("tips-popup").style.display = "flex";
+        });
 
-    // Tutup modal saat tombol close ditekan
-    document.getElementById("close-popup").addEventListener("click", () => {
-        document.getElementById("tips-popup").style.display = "none";
-        document.getElementById("youtube-video").src = ""; // Reset video agar tidak tetap bermain di latar belakang
-    });
-
-    // Tutup modal jika pengguna klik di luar modal
-    window.addEventListener("click", (e) => {
-        if (e.target === document.getElementById("tips-popup")) {
+        // Tutup modal saat tombol close ditekan
+        document.getElementById("close-popup").addEventListener("click", () => {
             document.getElementById("tips-popup").style.display = "none";
-            document.getElementById("youtube-video").src = ""; // Reset video
-        }
-    });
+            document.getElementById("youtube-video").src =
+            ""; // Reset video agar tidak tetap bermain di latar belakang
+        });
+
+        // Tutup modal jika pengguna klik di luar modal
+        window.addEventListener("click", (e) => {
+            if (e.target === document.getElementById("tips-popup")) {
+                document.getElementById("tips-popup").style.display = "none";
+                document.getElementById("youtube-video").src = ""; // Reset video
+            }
+        });
 
     // JIKA LOGIN SUKSES
     document.addEventListener("DOMContentLoaded", function () {
@@ -305,4 +309,5 @@ async function getData() {
     });
 });
 </script>
+
 </html>
