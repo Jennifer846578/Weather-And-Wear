@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\homepageController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Test001Controller;
 use App\Http\Controllers\WardrobeController;
 use Illuminate\Support\Facades\Auth;
 // Route::get('/', function () {
@@ -28,7 +27,7 @@ Route::resource('profile',App\Http\Controllers\ProfileController::class);
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile_page');
-
+    
 Route::get('/logins', function () {
     return view('login');
 });
@@ -125,3 +124,11 @@ Auth::routes();
 // Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+//test python
+use App\Http\Controllers\alamaktestdoang;
+
+Route::get('/generator',[App\Http\Controllers\GeneratorController::class,'index'])->name('generator');
+Route::post('/generatorclothes',[App\Http\Controllers\GeneratorController::class,'index'])->name('generatorPost');

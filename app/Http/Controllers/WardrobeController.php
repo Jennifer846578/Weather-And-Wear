@@ -112,6 +112,7 @@ class WardrobeController extends Controller
             if($style!=="All"){
                 $results=wardrobe::where('userid',Auth::user()->id)->where('category',$category)->where('style',$style)->get();
             }else{
+                
                 $results=wardrobe::where('userid',Auth::user()->id)->where('category',$category)->get();
             }
         }else{
