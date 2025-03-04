@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/test',[App\Http\Controllers\Test001Controller::class,'index']);
 // Route::resource('test',   App\Http\Controllers\Test001Controller::class);
 
+// Route::get('/', function () {
+//     return view('homepage')->with('user', session('user'))->with('login_success', session('login_success'));
+// });
+
 Route::get('/',[App\Http\Controllers\homepageController::class,'index'])->name('home');
 
 // Route::post('/homepage', function () {
