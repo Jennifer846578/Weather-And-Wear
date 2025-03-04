@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/test',[App\Http\Controllers\Test001Controller::class,'index']);
 // Route::resource('test',   App\Http\Controllers\Test001Controller::class);
 
+// Route::get('/', function () {
+//     return view('homepage')->with('user', session('user'))->with('login_success', session('login_success'));
+// });
+
 Route::get('/',[App\Http\Controllers\homepageController::class,'index'])->name('home');
 
 // Route::post('/homepage', function () {
@@ -114,6 +118,20 @@ Route::get('/auth/facebook', [FacebookController::class, 'facebookpage'])->name(
 Route::get('/auth/facebook/callback', [FacebookController::class, 'facebookredirect'])->name('auth/facebook/callback');
 
 Auth::routes();
+
+// google calendar
+// use App\Http\Controllers\GoogleAuthController;
+
+// Route::get('/auth/google', [GoogleAuthController::class, 'redirectToGoogle'])->name('google.auth');
+// Route::get('/auth/google/callback', [GoogleAuthController::class, 'handleGoogleCallback'])->name('google.callback');
+// Route::get('/schedule', [GoogleAuthController::class, 'getCalendarEvents'])->name('view.schedule');
+
+
+use App\Http\Controllers\GoogleAuthController;
+
+Route::get('/auth/google', [GoogleAuthController::class, 'redirectToGoogle'])->name('google.auth');
+Route::get('/auth/google/callback', [GoogleAuthController::class, 'handleGoogleCallback'])->name('google.callback');
+// Route::get('/schedule', [GoogleAuthController::class, 'getCalendarEvents'])->name('view.schedule');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

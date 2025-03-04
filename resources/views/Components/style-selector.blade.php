@@ -1,11 +1,13 @@
 <div class="style-selector">
     <label for="style">Style:</label>
-    <select id="style">
-        <option value="All">All</option>
-        <option value="Casual">Casual</option>
-        <option value="Formal">Formal</option>
-        <option value="Sporty">Sporty</option>
-        <option value="Streetwear">Streetwear</option>
-        <option value="Vintage">Vintage</option>
-    </select>
+    <div class="custom-select">
+        <select id="style">
+            <option value="all">All</option>
+            <option value="casual">Casual</option>
+            <option value="formal">Formal</option>
+            <option value="sporty">Sporty</option>
+            <option value="streetwear">Streetwear</option>
+            <option value="vintage">Vintage</option>
+        </select>
+    </div>
 </div>
