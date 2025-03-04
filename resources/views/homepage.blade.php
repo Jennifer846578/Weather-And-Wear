@@ -82,7 +82,7 @@
         let currId = parseInt(data['weather'][0]['id'] / 100);
         listofWeather = ['ThunderStorm', 'Rain', 'Rain', 'Rain', 'Snow', 'Atmosphere', 'Clouds', 'Additional'];
         if (parseInt(data['weather'][0]['id']) == 800) {
-            document.querySelector(p.weathertext).innerHTML = "Clear";
+            document.querySelector('p.weathertext').innerHTML = "Clear";
         } else {
             document.querySelector('p.weathertext').innerHTML = listofWeather[currId - 2];
         }
