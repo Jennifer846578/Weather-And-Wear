@@ -70,7 +70,10 @@
         <div class="-color-area" id="ColorArea"></div>
         <input type="range" class="-color-slider" id="ColorSlider" min="0" max="360" value="360">
         <div class="-color-display" id="ColorDisplay"></div>
-        <div class="-hex-display" id="HexDisplay">HEX: {{ $data->color }}</div>
+        {{-- <div class="-hex-display" id="HexDisplay">HEX: {{ $data->color }}</div> --}}
+        <div class="-hex-display" id="HexDisplay" data-color="{{ $data->color }}">
+            HEX: {{ $data->color }}
+        </div>
         <p class="value" style="display: none;">{{ $data->color }}</p>
     </div>
     
@@ -102,7 +105,8 @@
 
     </form>
     <script src="js/editClothes.js"></script>
-    <script src="js/color.js"></script>
+    {{-- <script src="js/color.js"></script> --}}
+    <script src="{{ asset('js/initColor.js') }}"></script>
     <script>
 
         function BackToWardrobe(){
