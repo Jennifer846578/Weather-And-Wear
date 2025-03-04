@@ -185,7 +185,7 @@
                     "Use tight-fitting clothes to minimize flapping",
                     "Wear accessories like hats and gloves to protect exposed areas"
                 ]
-            },
+            }
         };
 
         if (tipsData[weatherCondition]) {
