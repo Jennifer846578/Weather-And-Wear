@@ -1,0 +1,406 @@
+[33mcommit 6667db70bbce1dbdbe7e6b2792ea0683938b2ae9[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: dc3b09bf 06a8cd31
+Author: sonnnz <elsonivanboy@gmail.com>
+Date:   Tue Feb 18 08:26:45 2025 +0700
+
+    Merge branch 'main' of https://github.com/Jennifer846578/Weather-And-Wear
+
+[33mcommit dc3b09bfbbd9bfdbaade4b0869a2eafa556a9b51[m
+Author: sonnnz <elsonivanboy@gmail.com>
+Date:   Tue Feb 18 08:26:07 2025 +0700
+
+    jasonalamak
+
+[33mcommit 06a8cd31264644d64a8d903748f4e641d7071438[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Tue Feb 18 08:19:52 2025 +0700
+
+    homepage
+
+[33mcommit b073cc953aa78356c538cb26096fbfe405d09197[m
+Author: agathagloriaa <agathagtungky@gmail.com>
+Date:   Sat Feb 15 20:22:37 2025 +0700
+
+    web
+
+[33mcommit 00a517403bf9bd41e12e863491edb9d6136c9115[m
+Merge: c97352d8 cd7bf649
+Author: agathagloriaa <agathagtungky@gmail.com>
+Date:   Sat Feb 15 20:22:16 2025 +0700
+
+    Merge branch 'main' of https://github.com/Jennifer846578/Weather-And-Wear
+
+[33mcommit c97352d802085576c4057675db6584c81ca0151c[m
+Author: agathagloriaa <agathagtungky@gmail.com>
+Date:   Sat Feb 15 20:09:28 2025 +0700
+
+    tambah fitur edit clothes
+
+[33mcommit cd7bf649379f226f45fd0e7e0596cdf5aa58496e[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Fri Feb 14 23:25:46 2025 +0700
+
+    font weather
+
+[33mcommit 386c6eefa86d77f1071068ea69d40673407a3214[m
+Merge: c6388c7d f69c189f
+Author: sonnnz <elsonivanboy@gmail.com>
+Date:   Fri Feb 14 22:57:14 2025 +0700
+
+    Merge branch 'main' of https://github.com/Jennifer846578/Weather-And-Wear
+
+[33mcommit c6388c7d82f557586c2579cd021340e2e611d1d1[m
+Author: sonnnz <elsonivanboy@gmail.com>
+Date:   Fri Feb 14 22:52:26 2025 +0700
+
+    API weather done
+
+[33mcommit f69c189f6b1057f613ec23ba1472c4a91e0caa23[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Tue Feb 11 16:16:41 2025 +0700
+
+    memperbaiki history(caldendar gabs diklick)
+
+[33mcommit 14d36e9c4a8d143ac3831cb2a8c9d066c4032695[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Tue Feb 11 14:48:27 2025 +0700
+
+    fixing routes problem
+
+[33mcommit e0df0915cb1ac5ac7ec10e02b39d93564999affc[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Tue Feb 11 13:04:42 2025 +0700
+
+    composer bla bla
+
+[33mcommit 3a6469b2da167b5dcbdd0895dd64e0dcb1fe917f[m
+Merge: af92d5b5 5fe750f1
+Author: sonnnz <elsonivanboy@gmail.com>
+Date:   Mon Feb 10 16:16:23 2025 +0700
+
+    Merge branch 'main' of https://github.com/Jennifer846578/Weather-And-Wear
+
+[33mcommit 5fe750f12ef6e075f56d66c74cc8675df37a555d[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Mon Feb 10 11:21:36 2025 +0700
+
+    tips popup update
+
+[33mcommit af92d5b5f12020f74e249c7b30dc4e8842404a78[m
+Author: sonnnz <elsonivanboy@gmail.com>
+Date:   Sun Feb 9 19:24:11 2025 +0700
+
+    LoginRegisterDone
+
+[33mcommit d22a6f762eba207b548ebec68eab4a00efb049bf[m
+Author: agathagloriaa <agathagtungky@gmail.com>
+Date:   Sat Feb 8 20:20:57 2025 +0700
+
+    add editIcon at blazer page, edit detail css
+
+[33mcommit ce2a01fe6649c23e84f8cbc37c369aee95fedbda[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Tue Feb 4 14:04:21 2025 +0700
+
+    betulin button supaya bisa diklick
+
+[33mcommit cd851ef5855189476c65a1748818ca7f550fab38[m
+Author: sonnnz <elsonivanboy@gmail.com>
+Date:   Sat Feb 1 22:02:50 2025 +0700
+
+    hapus migration
+
+[33mcommit 65b38c4f11bddf4c5dd75bcafd767bca53460b05[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Tue Jan 7 20:14:09 2025 +0700
+
+    update homepage
+
+[33mcommit d8883bf27e4e478e29b0fd5913eea792dee50c75[m
+Merge: 7bbba66f a3a2eda7
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Tue Jan 7 20:02:17 2025 +0700
+
+    Merge branch 'main' of https://github.com/Jennifer846578/Weather-And-Wear
+
+[33mcommit 7bbba66fb582cc9a822146e50d4c0b69ed72dbbb[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Tue Jan 7 20:02:09 2025 +0700
+
+    add clothes top, bottom, style, success notification
+
+[33mcommit a3a2eda7b716595e5e6c0ffb59251652b5bfb73b[m
+Merge: 0830c98d f8eae85a
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Tue Jan 7 16:24:16 2025 +0700
+
+    Merge branch 'main' of https://github.com/Jennifer846578/Weather-And-Wear
+
+[33mcommit 0830c98dbd379fc8508a3f10ac01f10a06972e2e[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Tue Jan 7 16:24:09 2025 +0700
+
+    fix color bug
+
+[33mcommit f8eae85a11a581e842fb64de48fd5fd689aac351[m
+Merge: 9126e11c dd259aba
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Tue Jan 7 16:05:03 2025 +0700
+
+    Merge branch 'main' of https://github.com/Jennifer846578/Weather-And-Wear
+
+[33mcommit 9126e11c1ba69d2249dbf8310512a9d1ed40b30e[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Tue Jan 7 16:04:56 2025 +0700
+
+    nambah detailsBottom
+
+[33mcommit dd259aba0c07b2dbe863a7e97ae75d712ef7e6a0[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Tue Jan 7 15:54:52 2025 +0700
+
+    preview background color
+
+[33mcommit c49f8157e910a1ca0c7c34d131e6d1707bfb1885[m
+Merge: 8ed5d63b 0b92dbfd
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Tue Jan 7 15:47:12 2025 +0700
+
+    Merge branch 'main' of https://github.com/Jennifer846578/Weather-And-Wear
+
+[33mcommit 8ed5d63b3dea6c8777ff31c84be167bf4453b98d[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Tue Jan 7 15:47:07 2025 +0700
+
+    nambah detailsTop
+
+[33mcommit 0b92dbfda850d360273bf9dae0491fdb6143b681[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Tue Jan 7 15:36:50 2025 +0700
+
+    fix login with google bug, when user already exists
+
+[33mcommit 54eaab2ae200f4796cc8f7e5b38c14fc0d817f42[m
+Merge: 6697f5d1 e0c766ac
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Tue Jan 7 10:47:44 2025 +0700
+
+    calendar logo
+
+[33mcommit 6697f5d18920126d2768a8284c83e0747adb7683[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Tue Jan 7 10:45:43 2025 +0700
+
+    calenadr icon in history
+
+[33mcommit e0c766acf0ef8a7dd8f93820d8a76a139bc97049[m
+Author: agathagloriaa <agathagtungky@gmail.com>
+Date:   Tue Jan 7 10:26:00 2025 +0700
+
+    edit wardrobe
+
+[33mcommit f00ce79a4d558939dacb2c8642997d6fe9180db4[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Tue Jan 7 10:19:22 2025 +0700
+
+    perbaikan add file
+
+[33mcommit f67380a739923cc1262bc038beb9dc53d1cc96ce[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Mon Jan 6 15:15:31 2025 +0700
+
+    benerin navbar di page blazer
+
+[33mcommit e82eabf0d116c8d4e5501ade584a2acfb16c1777[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Mon Jan 6 08:11:46 2025 +0700
+
+    masukan route history
+
+[33mcommit ad9dc1f4715569095ec2c2a6d8d4f96b539c79f8[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Fri Jan 3 23:03:39 2025 +0700
+
+    nambah popup homepage
+
+[33mcommit 71ad792df1b120afc4d4132a69260f4d3790dd1e[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Fri Jan 3 22:32:58 2025 +0700
+
+    Homepage: view schedule, style, generate outfit, tips
+
+[33mcommit dedc0bdf7d5a95d1494f08c48ac69f832f425587[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Thu Jan 2 10:50:43 2025 +0700
+
+    back button on detail
+
+[33mcommit b876f4a56e1cadb001cc7fd7f8dd732514e6dc5b[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Thu Jan 2 10:47:26 2025 +0700
+
+    add file button , select color
+
+[33mcommit 312c1da5c92d35433bda275578ed52323074798c[m
+Author: agathagloriaa <agathagtungky@gmail.com>
+Date:   Tue Dec 31 23:30:44 2024 +0800
+
+    edit web.php and profile page (html, css)
+
+[33mcommit d003a42c27b802f3ba58cb9332f36cf34237488c[m
+Merge: e43d90a2 4d52963d
+Author: agathagloriaa <agathagtungky@gmail.com>
+Date:   Tue Dec 31 23:11:32 2024 +0800
+
+    Merge branch 'main' of https://github.com/Jennifer846578/Weather-And-Wear
+
+[33mcommit e43d90a2baeca1248ce29434f4c5cd421e09c2a2[m
+Author: agathagloriaa <agathagtungky@gmail.com>
+Date:   Tue Dec 31 23:07:42 2024 +0800
+
+    wardrobe (html, css), clothes list based on category (html, css, js)
+
+[33mcommit 4d52963dbd4d3e0daac6c6558a952d7e75861dcc[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Mon Dec 30 11:32:41 2024 +0700
+
+    buat tampilan history
+
+[33mcommit 6e03b5f7855ff6f5b9c1255b566307293885d6e8[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Sun Dec 29 23:36:52 2024 +0700
+
+    update homepage dikit
+
+[33mcommit 8980f2ed99c34eaa93ef4300150b4720f32acbe0[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Fri Dec 27 15:54:15 2024 +0700
+
+    register page
+
+[33mcommit 922ab06a2fa6ab88164702e0b4989cc38e155d83[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Fri Dec 27 13:17:55 2024 +0700
+
+    login with facebook
+
+[33mcommit 797e9c4d2720287fb08fabd4dc00984b871e2404[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Wed Dec 25 10:27:26 2024 +0700
+
+    LogIn with google
+
+[33mcommit 0d98488bd282a214dc7bef8eb922ce151170b3de[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Tue Dec 24 15:57:17 2024 +0700
+
+    js login
+
+[33mcommit 88b5e1afc0b0188ba1615eabe19def7447129b02[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Tue Dec 24 14:54:28 2024 +0700
+
+    loginUI
+
+[33mcommit 93a85d12b6572252aa5de6005459478952a938c6[m
+Author: agathagloriaa <agathagtungky@gmail.com>
+Date:   Fri Dec 20 09:14:23 2024 +0700
+
+    test wardrobe
+
+[33mcommit b81b7f2b016e0e9c5ec0d05737ce3f30ef6f01ca[m
+Author: agathagloriaa <agathagtungky@gmail.com>
+Date:   Fri Dec 20 09:12:54 2024 +0700
+
+    add wardrobe page
+
+[33mcommit 768f610a13959346699650875bd759f6c7b982e8[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Fri Dec 20 09:08:44 2024 +0700
+
+    selesai uji coba vinsen
+
+[33mcommit 2c8facd80a23fec2815ca241d3966180df7d21ff[m
+Merge: d8f02d2e ad5c23e0
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Fri Dec 20 09:07:08 2024 +0700
+
+    Merge branch 'main' of https://github.com/Jennifer846578/Weather-And-Wear
+
+[33mcommit ad5c23e0e4db1b1ed6544bc9b390817bd620a8e6[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Fri Dec 20 09:06:29 2024 +0700
+
+    da
+
+[33mcommit d8f02d2e3c1a8ccaef757d7e9295137e3f460785[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Fri Dec 20 09:06:23 2024 +0700
+
+    asdf
+
+[33mcommit 5ecf93e1e8f89410468fb2060caf062f9f9e155a[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Fri Dec 20 09:05:39 2024 +0700
+
+    hapus vinsen
+
+[33mcommit f10c11ae2c0a0b2936a92166ecf6f235867d3f5d[m
+Author: DvNAlvN <davialviano79@gmail.com>
+Date:   Fri Dec 20 09:04:38 2024 +0700
+
+    vinsen ganteng
+
+[33mcommit 09efda613b4f6cbf4e58a3915a4e2cd382df4452[m
+Author: agathagloriaa <agathagtungky@gmail.com>
+Date:   Fri Dec 20 08:49:35 2024 +0700
+
+    add profile (html, css, js, asset)
+
+[33mcommit 7b8447d13e1e5f09264d6e9d1456aa0c6a652772[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Thu Dec 19 22:26:58 2024 +0700
+
+    navbar, homepage, image, dan keroco-keroconya
+
+[33mcommit a292a408aed6acde4920a939ab0a435e9598d29d[m
+Author: agathagloriaa <agathagtungky@gmail.com>
+Date:   Thu Dec 19 13:58:40 2024 +0700
+
+    coba profile
+
+[33mcommit de40f78bf249502a8e25b450272aa11796b791dd[m
+Author: agathagloriaa <agathagtungky@gmail.com>
+Date:   Wed Dec 18 12:40:31 2024 +0700
+
+    aku sudah sehat
+
+[33mcommit b9e47c00fb67f10dfb10ae4ce6cc79e55f5dcf00[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Sat Dec 14 23:56:38 2024 +0700
+
+    add homepage
+
+[33mcommit 3aecb60cd5a9ac595f0b480e435c7ecae8092124[m
+Author: isheun <jasonamanda1@gmail.com>
+Date:   Sat Dec 14 23:44:58 2024 +0700
+
+    update env
+
+[33mcommit 359638c307349a9b1f073a80078c4e10febbfccc[m
+Author: Jennifer846578 <jtan89313@gmail.com>
+Date:   Sat Dec 14 22:05:58 2024 +0700
+
+    .
+
+[33mcommit 33888202478913e7e586ed7efe8d2e8dda7ac90e[m
+Author: Jennifer846578 <jtan89313@gmail.com>
+Date:   Sat Dec 14 22:05:34 2024 +0700
+
+    .
+
+[33mcommit 568fc23b2f5e183e391253eb8346eaed5e7ca23b[m
+Author: Jennifer846578 <jtan89313@gmail.com>
+Date:   Sat Dec 14 21:53:45 2024 +0700
+
+    first commit

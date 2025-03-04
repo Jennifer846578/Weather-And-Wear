@@ -2,19 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\test001;
+use App\Models\wardrobe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class Test001Controller extends Controller
+class GeneratorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $IMAGE=session('IMAGE');
-        return view('test001',compact('IMAGE'));
+        
+        $clothes=wardrobe::where('userid',Auth::user()->id)->get();
+        $jsonData = json_encode($clothes);
+        $encodedJson = base64_encode($jsonData);
+
+        $scriptPath = base_path('scripts/Generator.py');
+        $command = "python $scriptPath $encodedJson $request->weather $request->style 2>&1";
+        $output = shell_exec($command);
+        return $output;
     }
 
     /**
@@ -31,18 +39,12 @@ class Test001Controller extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'image'=>"required|image|mimes:png,jpeg|max:1024"
-        ]);
-        $imagePath=time().'.'.$request->image->extension();
-        $request->image->move(public_path('Asset/Profile'),$imagePath);
-        return redirect()->route('test.index')->with('IMAGE',$imagePath);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(test001 $test001)
+    public function show(string $id)
     {
         //
     }
@@ -50,7 +52,7 @@ class Test001Controller extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(test001 $test001)
+    public function edit(string $id)
     {
         //
     }
@@ -58,7 +60,7 @@ class Test001Controller extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, test001 $test001)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -66,7 +68,7 @@ class Test001Controller extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(test001 $test001)
+    public function destroy(string $id)
     {
         //
     }
