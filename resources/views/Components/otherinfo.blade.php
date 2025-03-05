@@ -13,7 +13,7 @@
     </div>
 </div>
 
-<script>
+{{-- <script>
     async function getData() {
     try {
         let response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=sentul,id&appid=3282175a32c9ea3ccd6e541b9510f24c');
@@ -31,7 +31,7 @@
     const timestamp = data['dt'] * 1000; // Convert seconds to milliseconds
     const dt = new Date(timestamp);
     const months = [
-    "January", "February", "March", "April", "May", "June", 
+    "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
     ];
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -47,7 +47,7 @@
     document.querySelector('div.weather-temp').querySelector('p').innerHTML=`${parseInt(parseFloat(data['main']['temp'])-273.15)}°`
     document.querySelector('p.temp-range').innerHTML=`Humidity: ${data['main']['humidity']}%`
     });
-    
 
-</script>
+
+</script> --}}
 

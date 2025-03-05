@@ -34,105 +34,169 @@
 {{-- JS --}}
 
 <script>
-    // GET USER LOCATION
-    function getUserLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.watchPosition(
-                function(position) {
-                    let latitude = position.coords.latitude;
-                    let longitude = position.coords.longitude;
-
-                    console.log("Latitude:", latitude, "Longitude:", longitude);
-                },
-                function(error) {
-                    console.error("Error mendapatkan lokasi:", error);
-                }, {
-                    enableHighAccuracy: true,
-                    maximumAge: 0
-                }
-            );
-        } else {
-            alert("Geolocation tidak didukung di browser ini.");
-        }
-    }
-
-    getUserLocation();
-
-    const timestamp = @json($fetchdata['dt']) * 1000; // Convert seconds to milliseconds
-    const dt = new Date(timestamp);
-    let curr=dt.getHours();
-    let currDate=dt.getDate();
-    let currTemp1= parseInt(@json($fetchdata['main']['temp'])-273.15 )
-
-
-    // WEATHER API
-
-    async function getData() {
-    try {
-        let response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=sentul,id&appid=3282175a32c9ea3ccd6e541b9510f24c');
-        let data = await response.json();
-        return data; // ✅ Data is now returned
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-    }
-
-    // Calling the function and using the data
-    getData().then(data => {
-        let currId = parseInt(data['weather'][0]['id'] / 100);
-        listofWeather = ['ThunderStorm', 'Rain', 'Rain', 'Rain', 'Snow', 'Atmosphere', 'Clouds', 'Additional'];
-        if (parseInt(data['weather'][0]['id']) == 800) {
-            document.querySelector('p.weathertext').innerHTML = "Clear";
-        } else {
-            document.querySelector('p.weathertext').innerHTML = listofWeather[currId - 2];
-        }
-
-    //  CHANGE IMAGE BASE ON WEATHER
-    let teks = document.querySelector('p.weathertext');
+    // Variabel untuk menyimpan koordinat
+    let latitude;
+    let longitude;
     let imagePath;
+    let dt;
+    let temperature;
 
-    if (teks) {
-        console.log(teks.innerHTML);
+    // Fungsi mendapatkan lokasi pengguna
+    function getUserLocation() {
+        return new Promise((resolve, reject) => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function (position) {
+                        latitude = position.coords.latitude;
+                        longitude = position.coords.longitude;
 
-        if (teks.innerHTML == "Rain" || teks.innerHTML == "Clear" || teks.innerHTML == "Thunderstorm") {
-            if (dt.getHours() >= 18) {
-                imagePath = `Asset/Homepage/${teks.innerHTML}_weather_malam.png`;
+                        console.log("Latitude:", latitude, "Longitude:", longitude);
+                        resolve({ latitude, longitude }); // Kirim data lokasi setelah berhasil
+                    },
+                    function (error) {
+                        console.error("Error mendapatkan lokasi:", error);
+                        reject(error);
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        maximumAge: 0
+                    }
+                );
             } else {
-                imagePath = `Asset/Homepage/${teks.innerHTML}_weather_siang.png`;
+                alert("Geolocation tidak didukung di browser ini.");
+                reject("Geolocation tidak didukung.");
             }
-        } else {
-            imagePath = `Asset/Homepage/${teks.innerHTML}_weather.png`;
-        }
-
-        console.log(imagePath);
-
-        // Mencari elemen gambar dalam div.weather-dynamic dan mengganti src-nya
-        let gambar = document.querySelector('div.weather-dynamic img');
-
-        if (gambar) {
-            gambar.src = imagePath;
-        } else {
-            console.error("Elemen gambar tidak ditemukan dalam div.weather-dynamic");
-        }
-    } else {
-     console.error("Elemen p.weathertext tidak ditemukan");
+        });
     }
 
-    // CHANGE TIPS CONTENT BASED ON WEATHER
-    function updateTips() {
-        const weatherTextElement = document.querySelector("p.weathertext"); // Ambil elemen setiap kali updateTips dipanggil
-        if (!weatherTextElement) {
-            console.error("Elemen p.weathertext tidak ditemukan!");
+    // Fungsi untuk mengambil data cuaca dari API
+    async function getData(lat, lon) {
+        try {
+            let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=a98a0f5f5daa0606b7aa44514cc6cdf3&units=metric`);
+            let data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            return null;
+        }
+    }
+
+    // Fungsi utama untuk menjalankan aplikasi cuaca
+    async function startWeatherApp() {
+
+        try {
+            // 1. Dapatkan lokasi pengguna
+            let location = await getUserLocation();
+
+            // 2. Gunakan lokasi untuk mengambil data cuaca
+            let weatherData = await getData(location.latitude, location.longitude);
+
+            if (weatherData) {
+                console.log("Data Cuaca:", weatherData);
+
+                // 3. Jalankan Kode 1 setelah API berhasil
+                processWeatherData(weatherData);
+            } else {
+                console.error("Gagal mendapatkan data cuaca.");
+            }
+        } catch (error) {
+            console.error("Terjadi kesalahan:", error);
+        }
+    }
+
+    // Fungsi untuk memproses data cuaca dan menampilkan di halaman
+    function processWeatherData(data) {
+
+        // OTHERINFO
+
+        console.log('Fetched Data:', data); // Now the data is available
+        document.querySelector('p.location').innerHTML=data['sys']['country']+", "+data['name'];
+        const timestamp = data['dt'] * 1000; // Convert seconds to milliseconds
+        dt = new Date(timestamp);
+        const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+        ];
+        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        // document.querySelector('p.date').innerHTML=
+        let count = 0;
+        function updateCounter() {
+                document.querySelector('p.date').innerHTML=`${days[dt.getDay()]}, ${(dt.getHours()+parseInt((dt.getMinutes()*60+dt.getSeconds()+count)/3600))%60<10?0:''}${(dt.getHours()+parseInt((dt.getMinutes()*60+dt.getSeconds()+count)/3600))%60}:${(dt.getMinutes()+parseInt((dt.getSeconds()+count)/60))%60<10?0:''}${(dt.getMinutes()+parseInt((dt.getSeconds()+count)/60))%60}:${(dt.getSeconds()+count)%60<10?0:''}${(dt.getSeconds()+count)%60}`
+                count++;
+            }
+        updateCounter();
+        setInterval(updateCounter, 1000); // Update every second
+        // document.querySelector('p.date').innerHTML=`${days[dt.getDay()]} ${dt.getHours()}:${dt.getMinutes()<10?0:''}${dt.getMinutes()}`
+        // document.querySelector('div.weather-temp').querySelector('p').innerHTML=`${parseInt(parseFloat(data['main']['temp']))}°`
+        document.querySelector('div.weather-temp').querySelector('p').innerHTML=`${parseInt(data['main']['temp'])}°`
+        console.log('akudisini',data)
+        document.querySelector('p.temp-range').innerHTML=`Humidity: ${data['main']['humidity']}%`
+
+        let weatherId = data.weather[0].id;
+        temperature = Math.round(data.main.temp); // Ambil suhu dalam Celsius
+        let weatherCondition = data.weather[0].main;
+
+
+        console.log(`ID Cuaca: ${weatherId}, Temperatur: ${temperature}°C, Kondisi: ${weatherCondition}`);
+
+        let weatherTextElement = document.querySelector('p.weathertext');
+        let weatherImageElement = document.querySelector('div.weather-dynamic img');
+
+        if (!weatherTextElement || !weatherImageElement) {
+            console.error("Elemen cuaca tidak ditemukan.");
             return;
         }
 
-            let weatherCondition = weatherTextElement.innerText
-        .trim(); // Gunakan innerText untuk memastikan nilai yang diambil
+        // Menentukan teks cuaca berdasarkan ID
+        let weatherText;
+        let listofWeather = {
+            2: "Thunderstorm",
+            3: "Drizzle",
+            5: "Rain",
+            6: "Snow",
+            7: "Atmosphere",
+            8: "Clouds"
+        };
 
-            const tipsPopup = document.getElementById("tips-popup");
-            const closePopupTips = document.getElementById("close-popup");
-            const youtubeVideo = document.getElementById("youtube-video");
-            const tipsList = document.querySelector(".popup-content ul");
+        if (weatherId === 800) {
+            weatherText = "Clear";
+        } else {
+            let category = Math.floor(weatherId / 100);
+            weatherText = listofWeather[category] || "Unknown";
+        }
+
+        // Update teks cuaca di halaman
+        weatherTextElement.innerHTML = weatherText;
+
+        // Menentukan gambar berdasarkan kondisi cuaca
+        dt = new Date();
+        let isNight = dt.getHours() >= 18;
+
+
+        if (["Rain", "Clear", "Thunderstorm"].includes(weatherText)) {
+            imagePath = `Asset/Homepage/${weatherText}_weather_${isNight ? 'malam' : 'siang'}.png`;
+        } else {
+            imagePath = `Asset/Homepage/${weatherText}_weather.png`;
+        }
+
+        weatherImageElement.src = imagePath;
+        console.log("Gambar cuaca diperbarui:", imagePath);
+
+        // Jalankan fungsi updateTips setelah cuaca ditampilkan
+        updateTips(weatherText);
+    }
+
+    // Fungsi untuk menampilkan tips berdasarkan cuaca
+    function updateTips(weatherCondition) {
+        const tipsPopup = document.getElementById("tips-popup");
+        const closePopupTips = document.getElementById("close-popup");
+        const youtubeVideo = document.getElementById("youtube-video");
+        const tipsList = document.querySelector(".popup-content ul");
+
+        if (!tipsPopup || !closePopupTips || !youtubeVideo || !tipsList) {
+            console.error("Elemen tips tidak ditemukan!");
+            return;
+        }
 
         const tipsData = {
             "Rain": {
@@ -184,130 +248,195 @@
                 title: "Tips for Windy Weather",
                 video: "Asset/Homepage/windyvideo.mp4",
                 list: [
-                    "Prioritize layers with wind-resistant fabrics",
-                    "Use tight-fitting clothes to minimize flapping",
-                    "Wear accessories like hats and gloves to protect exposed areas"
+                    "Wear wind-resistant clothes",
+                    "Avoid loose objects outdoors",
+                    "Drive carefully in strong winds"
                 ]
             }
         };
 
-            if (tipsData[weatherCondition]) {
-                console.log(`Mengupdate modal dengan cuaca: ${weatherCondition}`);
+        if (tipsData[weatherCondition]) {
+            console.log(`Menampilkan tips untuk cuaca: ${weatherCondition}`);
 
-                // Perbarui judul modal
-                closePopupTips.innerText = tipsData[weatherCondition].title;
+            // Perbarui judul modal
+            closePopupTips.innerText = tipsData[weatherCondition].title;
 
-                // Perbarui video YouTube
-                youtubeVideo.src = tipsData[weatherCondition].video + "?autoplay=0&mute=1";
+            // Perbarui video
+            youtubeVideo.src = tipsData[weatherCondition].video + "?autoplay=0&mute=1";
 
-                // Perbarui daftar tips
-                tipsList.innerHTML = "";
-                tipsData[weatherCondition].list.forEach(tip => {
-                    let li = document.createElement("li");
-                    li.textContent = tip;
-                    tipsList.appendChild(li);
-                });
-            } else {
-                console.error("Cuaca tidak dikenali:", weatherCondition);
-            }
-        }
+            // Perbarui daftar tips
+            tipsList.innerHTML = "";
+            tipsData[weatherCondition].list.forEach(tip => {
+                let li = document.createElement("li");
+                li.textContent = tip;
+                tipsList.appendChild(li);
+            });
 
-        // Pastikan tips diperbarui saat tombol ditekan
-        document.getElementById("tips-button").addEventListener("click", () => {
-            updateTips();
-            document.getElementById("tips-popup").style.display = "flex";
-        });
-
-        // Tutup modal saat tombol close ditekan
-        document.getElementById("close-popup").addEventListener("click", () => {
-            document.getElementById("tips-popup").style.display = "none";
-            document.getElementById("youtube-video").src =
-            ""; // Reset video agar tidak tetap bermain di latar belakang
-        });
-
-        // Tutup modal jika pengguna klik di luar modal
-        window.addEventListener("click", (e) => {
-            if (e.target === document.getElementById("tips-popup")) {
-                document.getElementById("tips-popup").style.display = "none";
-                document.getElementById("youtube-video").src = ""; // Reset video
-            }
-        });
-
-    // JIKA LOGIN SUKSES
-    document.addEventListener("DOMContentLoaded", function () {
-    let loginSuccess = document.getElementById("login_success").value === "true";
-
-    if (loginSuccess) {
-        console.log("Login berhasil, menampilkan popup tips...");
-        updateTips();
-        document.getElementById("tips-popup").style.display = "flex";
-    }
-});
-
-// JS Hourly Forecast
-async function getData() {
-        try {
-            let response = await fetch('https://api.openweathermap.org/data/2.5/forecast?q=sentul,id&appid=3282175a32c9ea3ccd6e541b9510f24c');
-            let data = await response.json();
-            return data;
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    }
-
-    function getWeatherIcon(weather, hour) {
-        if (weather === "Rain" || weather === "Clear" || weather === "Thunderstorm") {
-            return `Asset/Homepage/${weather}_weather_${hour >= 18 ? 'malam' : 'siang'}.png`;
+            // Tampilkan popup
+            tipsPopup.style.display = "flex";
         } else {
-            return `Asset/Homepage/${weather}_weather.png`;
+            console.error("Cuaca tidak dikenali:", weatherCondition);
         }
     }
 
-    let forecastcards = Array.from(document.querySelectorAll('.forecast-card'));
-
-    getData().then(data => {
-        if (!data || !data.list) {
-            console.error("Invalid data structure:", data);
-            return;
-        }
-
-        let indexcatch = 0;
-        let currTemp = parseInt(data.list[indexcatch].main.temp - 273.15);
-        let currWeather = data.list[indexcatch].weather[0].main;
-        let currHour = new Date(data.list[indexcatch].dt * 1000).getHours();
-
-        for (let y = 0; y < forecastcards.length; y++) {
-            let tempElement = forecastcards[y].querySelector('.temp');
-            let timeElement = forecastcards[y].querySelector('.time');
-            let imgElement = forecastcards[y].querySelector('img');
-
-            if (indexcatch === 0 && y === 0) {
-                tempElement.innerHTML = `${currTemp1}°`;
-                timeElement.innerHTML = "Now";
-                imgElement.src = imagePath;
-                forecastcards[y].classList.add('now');
-            } else {
-                let tempCelsius = parseInt(data.list[indexcatch + (y - 1)].main.temp - 273.15);
-                let timestamps = data.list[indexcatch + (y - 1)].dt * 1000;
-                let weather = data.list[indexcatch + (y - 1)].weather[0].main;
-                let dts = new Date(timestamps);
-                let hour = dts.getHours();
-                let period = hour >= 12 ? "PM" : "AM";
-                let displayHour = hour % 12 || 12;
-
-                tempElement.innerHTML = `${tempCelsius}°`;
-                timeElement.innerHTML = (y === 1 && indexcatch !== 0) ? "Now" : `${displayHour} ${period}`;
-                imgElement.src = getWeatherIcon(weather, hour);
-
-                if (y === 1 && indexcatch !== 0) {
-                    forecastcards[y].classList.add('now');
-                } else {
-                    forecastcards[y].classList.remove('now');
-                }
-            }
+    // Event listener untuk menampilkan tips saat tombol ditekan
+    document.getElementById("tips-button").addEventListener("click", () => {
+        let weatherTextElement = document.querySelector("p.weathertext");
+        if (weatherTextElement) {
+            updateTips(weatherTextElement.innerText.trim());
         }
     });
-});
+
+    // Event listener untuk menutup modal
+    document.getElementById("tips-popup").addEventListener("click", () => {
+        document.getElementById("tips-popup").style.display = "none";
+        document.getElementById("youtube-video").src = "";
+    });
+
+    // Jalankan program
+    startWeatherApp();
+
+        // JS HOURLY FORECAST
+        async function getData2() {
+            try {
+                let response = await fetch('https://api.openweathermap.org/data/2.5/forecast?q=sentul,id&appid=3282175a32c9ea3ccd6e541b9510f24c');
+                console.log(latitude, longitude)
+                // let response = await fetch('https://api.openweathermap.org/data/2.5/forecast?lat='+latitude+'&lon='+longitude+'&appid=a98a0f5f5daa0606b7aa44514cc6cdf3');
+                let data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        function getWeatherIcon(weather, hour) {
+            if (weather === "Rain" || weather === "Clear" || weather === "Thunderstorm") {
+                return `Asset/Homepage/${weather}_weather_${hour >= 18 ? 'malam' : 'siang'}.png`;
+            } else {
+                return `Asset/Homepage/${weather}_weather.png`;
+            }
+        }
+
+        let forecastcards = Array.from(document.querySelectorAll('.forecast-card'));
+
+        getData2().then(data => {
+            if (!data || !data.list) {
+                console.error("Invalid data structure:", data);
+                return;
+            }
+
+            let indexcatch = 0;
+            let currTemp1 = parseInt(data.list[indexcatch].main.temp - 273.15);
+            let currWeather = data.list[indexcatch].weather[0].main;
+            let currHour = new Date(data.list[indexcatch].dt * 1000).getHours();
+
+            for (let y = 0; y < forecastcards.length; y++) {
+                let tempElement = forecastcards[y].querySelector('.temp');
+                let timeElement = forecastcards[y].querySelector('.time');
+                let imgElement = forecastcards[y].querySelector('img');
+
+                if (indexcatch === 0 && y === 0) {
+                    tempElement.innerHTML = document.querySelector('div.weather-temp').querySelector('p').innerHTML;
+                    timeElement.innerHTML = "Now";
+                    imgElement.src = imagePath;
+                    forecastcards[y].classList.add('now');
+                } else {
+                    let tempCelsius = parseInt(data.list[indexcatch + (y - 1)].main.temp - 273.15);
+                    let timestamps = data.list[indexcatch + (y - 1)].dt * 1000;
+                    let weather = data.list[indexcatch + (y - 1)].weather[0].main;
+                    let dts = new Date(timestamps);
+                    let hour = dts.getHours();
+                    let period = hour >= 12 ? "PM" : "AM";
+                    let displayHour = hour % 12 || 12;
+
+                    tempElement.innerHTML = `${tempCelsius}°`;
+                    timeElement.innerHTML = (y === 1 && indexcatch !== 0) ? "Now" : `${displayHour} ${period}`;
+                    imgElement.src = getWeatherIcon(weather, hour);
+
+                    if (y === 1 && indexcatch !== 0) {
+                        forecastcards[y].classList.add('now');
+                    } else {
+                        forecastcards[y].classList.remove('now');
+                    }
+                }
+            }
+        });
+
+
 </script>
+
+
+
+
+{{-- <script>
+
+
+    // JS Hourly Forecast
+        async function getData() {
+            try {
+                // let response = await fetch('https://api.openweathermap.org/data/2.5/forecast?q=sentul,id&appid=3282175a32c9ea3ccd6e541b9510f24c');
+                consloe.log(latitude, longitude)
+                let response = await fetch('https://api.openweathermap.org/data/2.5/forecast?lat='+latitude+'&lon='+longitude+'&appid=a98a0f5f5daa0606b7aa44514cc6cdf3');
+                let data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        function getWeatherIcon(weather, hour) {
+            if (weather === "Rain" || weather === "Clear" || weather === "Thunderstorm") {
+                return `Asset/Homepage/${weather}_weather_${hour >= 18 ? 'malam' : 'siang'}.png`;
+            } else {
+                return `Asset/Homepage/${weather}_weather.png`;
+            }
+        }
+
+        let forecastcards = Array.from(document.querySelectorAll('.forecast-card'));
+
+        getData().then(data => {
+            if (!data || !data.list) {
+                console.error("Invalid data structure:", data);
+                return;
+            }
+
+            let indexcatch = 0;
+            let currTemp = parseInt(data.list[indexcatch].main.temp - 273.15);
+            let currWeather = data.list[indexcatch].weather[0].main;
+            let currHour = new Date(data.list[indexcatch].dt * 1000).getHours();
+
+            for (let y = 0; y < forecastcards.length; y++) {
+                let tempElement = forecastcards[y].querySelector('.temp');
+                let timeElement = forecastcards[y].querySelector('.time');
+                let imgElement = forecastcards[y].querySelector('img');
+
+                if (indexcatch === 0 && y === 0) {
+                    tempElement.innerHTML = `${currTemp1}°`;
+                    timeElement.innerHTML = "Now";
+                    imgElement.src = imagePath;
+                    forecastcards[y].classList.add('now');
+                } else {
+                    let tempCelsius = parseInt(data.list[indexcatch + (y - 1)].main.temp - 273.15);
+                    let timestamps = data.list[indexcatch + (y - 1)].dt * 1000;
+                    let weather = data.list[indexcatch + (y - 1)].weather[0].main;
+                    let dts = new Date(timestamps);
+                    let hour = dts.getHours();
+                    let period = hour >= 12 ? "PM" : "AM";
+                    let displayHour = hour % 12 || 12;
+
+                    tempElement.innerHTML = `${tempCelsius}°`;
+                    timeElement.innerHTML = (y === 1 && indexcatch !== 0) ? "Now" : `${displayHour} ${period}`;
+                    imgElement.src = getWeatherIcon(weather, hour);
+
+                    if (y === 1 && indexcatch !== 0) {
+                        forecastcards[y].classList.add('now');
+                    } else {
+                        forecastcards[y].classList.remove('now');
+                    }
+                }
+            }
+        });
+    });
+</script> --}}
 
 </html>
