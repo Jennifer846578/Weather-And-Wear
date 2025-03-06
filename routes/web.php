@@ -31,7 +31,7 @@ Route::resource('profile',App\Http\Controllers\ProfileController::class);
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile_page');
-    
+
 Route::get('/logins', function () {
     return view('login');
 });
@@ -106,7 +106,7 @@ Route::get('/history', function () {
 //     return view('blazer');
 // })->name('blazer_page');
 
-Route::get('/wardobe',[App\Http\Controllers\WardrobeController::class,'showWardrobe'])->name('wardrobe_page');
+Route::get('/wardrobe',[App\Http\Controllers\WardrobeController::class,'showWardrobe'])->name('wardrobe_page');
 Route::get('/wardrobe/{category}/{favourite}/{style}/{editted}',[App\Http\Controllers\WardrobeController::class,'showWardrobeCategory'])->name('wardrobe_page_category');
 Route::put('/wardrobe/favorite',[App\Http\Controllers\WardrobeController::class,'favWardrobe'])->name('wardrobe_fav');
 
