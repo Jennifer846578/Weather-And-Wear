@@ -12,17 +12,19 @@
         <x-navbar></x-navbar>
         <div class="wardrobe-header">
             <h1>Wardrobe</h1>
-            <div class="InputFile">
-                <form action="{{ route('wardrobe_store') }}" method="POST" enctype="multipart/form-data" class="submitlahbang">
-                    @csrf
-                    {{-- @if ($session)
-                        <p>{{ $session }} and {{ $who }}</p>
-                    @endif --}}
-                    <button class="inputButton">
-                        <input type="file" id="FileInput" accept="image/*" name="image" >
-                        <label class="inputLabel" for="FileInput">Add Clothes to Wardrobe</label>
-                    </button>
-                </form>
+            <div class="wrapper-atas">
+                <div class="InputFile">
+                    <form action="{{ route('wardrobe_store') }}" method="POST" enctype="multipart/form-data" class="submitlahbang">
+                        @csrf
+                        {{-- @if ($session)
+                            <p>{{ $session }} and {{ $who }}</p>
+                        @endif --}}
+                        <button class="inputButton">
+                            <input type="file" id="FileInput" accept="image/*" name="image" >
+                            <label class="inputLabel" for="FileInput">Add Clothes to Wardrobe</label>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
 
