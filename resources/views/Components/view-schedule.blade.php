@@ -9,18 +9,18 @@
         <button class="close-button">✖</button>
         <h2></h2>
 
-        @if (!Session::has('google_token'))
+        {{-- @if (!Session::has('google_token'))
             <div class="google-login">
                 <button class="google-login-button" onclick="window.location.href='{{ route('google.auth') }}'">
                     <img src="Asset/Homepage/google-icon.png" alt="Google Icon">
                     <span>Login with Google</span>
                 </button>
             </div>
-        @endif
+        @endif --}}
 
         <div class="schedule-list">
             @if (Session::has('google_token'))
-                @if (isset($events) && count($events) > 0)                    
+                @if (isset($events) && count($events) > 0)
                     @foreach ($events as $event)
                         <div class="schedule-item" data-date="{{ isset($event->start->dateTime) ? date('Y-m-d', strtotime($event->start->dateTime)) : date('Y-m-d', strtotime($event->start->date)) }}">
                             {{ isset($event->start->dateTime) ? date('H:i', strtotime($event->start->dateTime)) : 'All Day' }}
@@ -34,7 +34,7 @@
                     {{-- <p>{{ $events[0]->summary }}</p> --}}
                 @endif
             @else
-                <p>Please login to view your schedule</p>
+                <p class="coba">Exercise | 08:00 - 09:00</p>
             @endif
         </div>
 
@@ -246,7 +246,7 @@
         //         if (cell.textContent !== '') {
         //             const h2 = document.querySelector('.popup h2');
         //             h2.textContent = `${cell.textContent} ${months[month]} ${year}`;
-                    
+
         //             // Tampilkan schedule sesuai tanggal
         //             showScheduleForDate(cell.textContent, month, year);
         //         }

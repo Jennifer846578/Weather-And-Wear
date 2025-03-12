@@ -18,3 +18,32 @@
         </a>
     </nav>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const navItems = document.querySelectorAll(".nav-item");
+        const currentPath = window.location.pathname;
+
+        console.log("Current Path:", currentPath); // Debugging
+
+        const iconMap = {
+            "/": "navbaricon-inhome.png",
+            "/wardobe": "navbaricon-inwardrobe.png",
+            "/history": "navbaricon-inhistory.png",
+            "/profile": "navbaricon-inprofile.png"
+        };
+
+        navItems.forEach(item => {
+            const linkPath = new URL(item.href, window.location.origin).pathname;
+            console.log("Checking:", linkPath); // Debugging
+
+            const img = item.querySelector(".nav-icon");
+
+            if (currentPath === linkPath) {
+                console.log(`Matched! Changing icon for ${linkPath}`);
+                img.src = `/build/assets/navbar/${iconMap[linkPath]}`;
+            }
+        });
+    });
+
+</script>

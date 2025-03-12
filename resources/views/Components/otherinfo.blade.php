@@ -31,14 +31,14 @@
     const timestamp = data['dt'] * 1000; // Convert seconds to milliseconds
     const dt = new Date(timestamp);
     const months = [
-    "January", "February", "March", "April", "May", "June", 
+    "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
     ];
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     // document.querySelector('p.date').innerHTML=
     let count = 0;
     function updateCounter() {
-            document.querySelector('p.date').innerHTML=`${days[dt.getDay()]}, ${(dt.getHours()+parseInt((dt.getMinutes()*60+dt.getSeconds()+count)/3600))%60<10?0:''}${(dt.getHours()+parseInt((dt.getMinutes()*60+dt.getSeconds()+count)/3600))%60}:${(dt.getMinutes()+parseInt((dt.getSeconds()+count)/60))%60<10?0:''}${(dt.getMinutes()+parseInt((dt.getSeconds()+count)/60))%60}:${(dt.getSeconds()+count)%60<10?0:''}${(dt.getSeconds()+count)%60}`
+            document.querySelector('p.date').innerHTML=`${days[dt.getDay()]}, ${(dt.getHours()-15+parseInt((dt.getMinutes()*60+dt.getSeconds()+count)/3600))%60<10?0:''}${(dt.getHours()-15+parseInt((dt.getMinutes()*60+dt.getSeconds()+count)/3600))%60}:${(dt.getMinutes()+parseInt((dt.getSeconds()+count)/60))%60<10?0:''}${(dt.getMinutes()+parseInt((dt.getSeconds()+count)/60))%60}:${(dt.getSeconds()+count)%60<10?0:''}${(dt.getSeconds()+count)%60}`
             count++;
         }
     updateCounter();
@@ -47,7 +47,7 @@
     document.querySelector('div.weather-temp').querySelector('p').innerHTML=`${parseInt(parseFloat(data['main']['temp'])-273.15)}°`
     document.querySelector('p.temp-range').innerHTML=`Humidity: ${data['main']['humidity']}%`
     });
-    
+
 
 </script>
 

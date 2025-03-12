@@ -24,7 +24,7 @@
         <x-weather>build\assets\homepage\rain.png</x-weather>
         <x-otherinfo></x-otherinfo>
         <x-hourly-forecast></x-hourly-forecast>
-        <x-view-schedule :events='$events'></x-view-schedule>
+        <x-view-schedule></x-view-schedule>
         <h1 class="whattowear">What to Wear Today?</h1>
         <x-style-selector></x-style-selector>
         <x-generate-outfit></x-generate-outfit>
@@ -80,7 +80,7 @@
     // Calling the function and using the data
     getData().then(data => {
         let currId = parseInt(data['weather'][0]['id'] / 100);
-        listofWeather = ['ThunderStorm', 'Rain', 'Rain', 'Rain', 'Snow', 'Atmosphere', 'Clouds', 'Additional'];
+        listofWeather = ['ThunderStorm', 'Clear', 'Clear', 'Clear', 'Snow', 'Atmosphere', 'Clouds', 'Additional'];
         if (parseInt(data['weather'][0]['id']) == 800) {
             document.querySelector('p.weathertext').innerHTML = "Clear";
         } else {
@@ -145,12 +145,12 @@
                 ]
             },
             "Clouds": {
-                title: "Tips for Cloudy Weather",
-                video: "Asset/Homepage/cloudyvideo.mp4",
+                title: "Tips for Rainy Weather",
+                video: "Asset/Homepage/rainyvideo.mp4",
                 list: [
-                    "Bring a light jacket",
-                    "Expect cooler temperatures",
-                    "Sunlight may still be strong, wear sunscreen"
+                    "Carry an umbrella or raincoat",
+                    "Wear waterproof shoes",
+                    "Drive carefully and avoid slippery roads"
                 ]
             },
             "Thunderstorm": {
@@ -257,7 +257,7 @@ async function getData() {
 
     function getWeatherIcon(weather, hour) {
         if (weather === "Rain" || weather === "Clear" || weather === "Thunderstorm") {
-            return `Asset/Homepage/${weather}_weather_${hour >= 18 ? 'malam' : 'siang'}.png`;
+            return `Asset/Homepage/${weather}_weather_${hour < 18 ? 'siang' : 'siang'}.png`;
         } else {
             return `Asset/Homepage/${weather}_weather.png`;
         }
@@ -297,7 +297,7 @@ async function getData() {
 
                 tempElement.innerHTML = `${tempCelsius}°`;
                 timeElement.innerHTML = (y === 1 && indexcatch !== 0) ? "Now" : `${displayHour} ${period}`;
-                imgElement.src = getWeatherIcon(weather, hour);
+                imgElement.src = 'Asset/Homepage/Clear_weather_siang.png';
 
                 if (y === 1 && indexcatch !== 0) {
                     forecastcards[y].classList.add('now');

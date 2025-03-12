@@ -2,12 +2,12 @@
 
 <div class="outfit-display" id="outfitDisplay">
     <div class="item">
-        <img src="{{ asset('Asset/Wardrobe/Icon Luar/Hoodie.png') }}" class="category-icon-image">
-        <p>Hoodie</p>
+        <img src="{{ asset('Asset/Wardrobe/Icon Luar/1.png') }}" class="category-icon-image">
+        <p>T-shirt</p>
     </div>
     <div class="item">
-        <img src="{{ asset('Asset/Wardrobe/Icon Luar/Jeans.png') }}" class="category-icon-image">
-        <p>Jeans</p>
+        <img src="{{ asset('Asset/Wardrobe/Icon Luar/2.png') }}" class="category-icon-image">
+        <p>Short</p>
     </div>
         <!-- Rating Stars -->
     <div class="rating">
@@ -31,7 +31,7 @@
     <div class="popup-wear-content">
         <span class="close-button" onclick="closePopupWear()">&#10005;</span>
         <div class="check-icon">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="green"><path d="M9 16.2l-4.2-4.2-1.4 1.4 5.6 5.6 12-12-1.4-1.4z"/></svg>
+            <img src="{{ asset('Asset/Wardrobe/checklist.png') }}" alt="Success" style="width: 80px; height: 80px;">
         </div>
         <p>You look so cool!</p>
     </div>
@@ -46,7 +46,7 @@ function showOutfit() {
 
     let phoneCard = document.querySelector('.phone-card');
     if (phoneCard) {
-        phoneCard.style.minHeight = '214vh'; // Perubahan tinggi
+        phoneCard.style.minHeight = '220vh'; // Perubahan tinggi
     }
 
     // Pastikan tombol Wear This Outfit juga tampil
