@@ -12,17 +12,19 @@
         <x-navbar></x-navbar>
         <div class="wardrobe-header">
             <h1>Wardrobe</h1>
-            <div class="InputFile">
-                <form action="{{ route('wardrobe_store') }}" method="POST" enctype="multipart/form-data" class="submitlahbang">
-                    @csrf
-                    {{-- @if ($session)
-                        <p>{{ $session }} and {{ $who }}</p>
-                    @endif --}}
-                    <button class="inputButton">
-                        <input type="file" id="FileInput" accept="image/*" name="image" >
-                        <label class="inputLabel" for="FileInput">Add Clothes to Wardrobe</label>
-                    </button>
-                </form>
+            <div class="wrapper-atas">
+                <div class="InputFile">
+                    <form action="{{ route('wardrobe_store') }}" method="POST" enctype="multipart/form-data" class="submitlahbang">
+                        @csrf
+                        {{-- @if ($session)
+                            <p>{{ $session }} and {{ $who }}</p>
+                        @endif --}}
+                        <button class="inputButton">
+                            <input type="file" id="FileInput" accept="image/*" name="image" >
+                            <label class="inputLabel" for="FileInput">Add Clothes to Wardrobe</label>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
 
@@ -124,14 +126,14 @@
 
     <div id="notification-modal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <span class="close-buttoncool" onclick="closeModal()">&#10005;</span>
             <div class="modal-body">
                 <img src="{{ asset('Asset/Wardrobe/checklist.png') }}" alt="Success" style="width: 80px; height: 80px;">
                 <p>Clothes successfully added!</p>
             </div>
         </div>
     </div>
-    
+
     <script>
 
         let notification=@json($notification??null);

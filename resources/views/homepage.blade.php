@@ -603,6 +603,7 @@
 
                 if (indexcatch === 0 && y === 0) {
                     tempElement.innerHTML = document.querySelector('div.weather-temp').querySelector('p').innerHTML;
+                    // console.log(tempElement.innerHTML)
                     timeElement.innerHTML = "Now";
                     imgElement.src = imagePath;
                     forecastcards[y].classList.add('now');

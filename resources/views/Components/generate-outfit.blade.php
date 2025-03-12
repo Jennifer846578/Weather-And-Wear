@@ -5,6 +5,16 @@
 
 
 
+<!-- Popup Wear -->
+<div id="popup-wear" class="popup-wear" style="display: none;">
+    <div class="popup-wear-content">
+        <span class="close-buttoncool" onclick="closePopupWear()">&#10005;</span>
+        <div class="check-icon">
+            <img src="{{ asset('Asset/Wardrobe/checklist.png') }}" alt="Success" style="width: 80px; height: 80px;">
+        </div>
+        <p>You look so cool!</p>
+    </div>
+</div>
 
 <script>
 function showOutfit() {
@@ -15,7 +25,7 @@ function showOutfit() {
 
     let phoneCard = document.querySelector('.phone-card');
     if (phoneCard) {
-        phoneCard.style.minHeight = '214vh'; // Perubahan tinggi
+        phoneCard.style.minHeight = '203vh'; // Perubahan tinggi
     }
 
     // Pastikan tombol Wear This Outfit juga tampil
