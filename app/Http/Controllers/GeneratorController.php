@@ -21,6 +21,7 @@ class GeneratorController extends Controller
         $scriptPath = base_path('scripts/ModelStyleandWeather/Generator.py');
         $command = "python $scriptPath $encodedJson $request->weather $request->style 2>&1";
         $output = shell_exec($command);
+        // return $output;  
         $decodedOutput = json_decode($output, true);
         $OutersIds=$decodedOutput[0];
         $ShirtsIds=$decodedOutput[1];

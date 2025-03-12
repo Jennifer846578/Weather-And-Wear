@@ -185,8 +185,10 @@ if __name__ == "__main__":
         "4":[],
         "5":[],
     }
+    
     for x in range(len(outfitsScore)):
         outfitByRatingId[str(round(outfitsScore[x]))].append(outfitsId[x])
+    # print(outfitByRatingId)
     
     
 

@@ -14,14 +14,7 @@
             <x-navbar></x-navbar>
         </div>
         <h3>History</h3>
-        <div class="dvnCalendar">
-            <p>Date and Weather</p>
-            <div class="dvnCalendarcontent">
-                <button class="schedule-button" onclick="openPopup()">
-                    <img src="Asset/History/calendar.png" alt="calendar" width="36px">
-                </button>
-            </div>
-        </div>
+        {{-- w --}}
         <div class="dvnHistoryboxcontent">
             <div class="dvnweatherhistory">
                 <div class="weatherImages">
