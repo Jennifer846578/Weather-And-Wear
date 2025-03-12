@@ -7,6 +7,8 @@ use Google\Client;
 use Google\Service\Calendar;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
+use App\Models\wardrobe;
+use Illuminate\Support\Facades\Auth;
 
 class homepageController extends Controller
 {
@@ -69,8 +71,61 @@ class homepageController extends Controller
         // Update token untuk menjaga sesi aktif
         Session::put('google_token', $client->getAccessToken());
 
-        // dd($events[0]->summary);
-        return view('homepage', compact('fetchdata', 'events'));
+        //get data from GeneratorController
+        
+        $outfits=session('Outfits',null);
+        $history=session('History',0);
+        $popup=session('PopUp',1);
+        $style=session('Style',null);
+        $weather=session('Weather',null);
+        $wardrobe=wardrobe::where('userid',Auth::user()->id)->get();
+        if($wardrobe->isEmpty()){
+            $wardrobe=null;
+        }
+        // return $fetchdata;
+        // return $outfits;
+        return view('homepage', compact('fetchdata', 'events','outfits','history','popup','wardrobe','weather','style'));
+        // $shirt=session('shirt',null);
+        // $pant=session('pant',null);
+        // // return $outer;
+     
+
+
+        // if($outer!=null){
+        //     $outers=wardrobe::whereIn('id',$outer)->get();
+            
+        // }
+        // if($outer!=null){
+        //     $shirts=wardrobe::whereIn('id',$shirt)->get();
+        // }
+        // if($pant!=null){
+        //     $pants=wardrobe::whereIn('id',$pant)->get();
+        // }
+        
+        
+
+        
+        
+        
+        // if($shirt!=null && count($shirts)!=0){
+        //     $outfits=[
+        //         'outers'=>$outers,
+        //         'shirts'=>$shirts,
+        //         'pants'=>$pants,
+        //     ];
+        // }else{
+        //     $outfits=null;
+        // }
+        // // return $outfits;
+        
+        
+        // // return $outfits;
+
+
+        // // dd(session()->all());
+
+        // // dd($events[0]->summary);
+        // return view('homepage', compact('fetchdata', 'events','outfits'));
     }
 
     /**

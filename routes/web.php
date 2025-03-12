@@ -98,9 +98,11 @@ Route::get('/editStyleClothes', function () {
     return view('editStyleClothes');
 });
 
-Route::get('/history', function () {
-    return view('history');
-})->name('history_page');
+// Route::get('/history', function () {
+//     return view('history');
+// })->name('history_page');
+
+Route::get('/history',[App\Http\Controllers\HistoryController::class,'index'])->name('history_page');
 
 // Route::get('/wardrobe/blazer', function () {
 //     return view('blazer');
@@ -150,3 +152,7 @@ use App\Http\Controllers\alamaktestdoang;
 
 Route::get('/generator',[App\Http\Controllers\GeneratorController::class,'index'])->name('generator');
 Route::post('/generatorclothes',[App\Http\Controllers\GeneratorController::class,'index'])->name('generatorPost');
+
+//menggunakan baju
+use App\Http\Controllers\HistoryController;
+Route::post('/useoutfit',[App\Http\Controllers\HistoryController::class,'store'])->name('UseOutfit');

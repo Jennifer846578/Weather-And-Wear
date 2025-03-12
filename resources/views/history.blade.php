@@ -87,6 +87,79 @@
                 </div>
                 
             </div>
+            
+
+
+
+            {{-- mulai disini
+            <div class="dvnweatherhistory">
+                <div class="weatherImages">
+                    <img src="Asset/History/2.png" width="114px">
+                </div>
+                <div class="weatherDate">
+                    <p>Monday<br>3/12/2024<br>10:20</p>
+                </div>
+                <div class="weatherDesc">
+                    <p>Sunny at 3/12/2024 - 10:20<br>Casual</p>
+                </div>
+            </div>
+
+            <p class="tulisasnoutfitlist">Outfit List</p>
+
+            <div class="outfitlist">
+                <div class="outfitWore">
+                    <div class="category">
+                           <div class="btn-fav-clothes">
+                            <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
+                            <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
+                        </div>
+                        <div class="editIcon">
+                            <a href="{{ route('editClothes_page') }}">
+                                <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                            </a>
+                        </div>
+                        <img src="{{ asset('Asset/Wardrobe/Blazer/Blazer.png') }}" class="category-icon-image">
+                    </div>
+                    <p>Style : Casual<br>Category : Blazzer</p>
+                </div>
+
+                <div class="outfitWore">
+                    <div class="category">
+                        <div class="btn-fav-clothes">
+                            <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
+                            <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
+                        </div>
+                        <div class="editIcon">
+                            <a href="{{ route('editClothes_page') }}">
+                                <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                            </a>
+                        </div>
+                        <img src="{{ asset('Asset/Wardrobe/Blazer/Blazer.png') }}" class="category-icon-image">
+                    </div>
+                    <p>Style : Casual<br>Category : Blazzer</p>
+                </div>
+
+                <div class="outfitWore">
+                    <div class="category">
+                        <div class="btn-fav-clothes">
+                            <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
+                            <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
+                        </div>
+                        <div class="editIcon">
+                            <a href="{{ route('editClothes_page') }}">
+                                <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
+                            </a>
+                        </div>
+                        <img src="{{ asset('Asset/Wardrobe/Blazer/Blazer.png') }}" class="category-icon-image">
+                    </div>
+                    <p>Style : Casual<br>Category : Blazzer</p>
+                </div>
+                
+            </div> --}}
+
+            
+
+
         </div>
     </div>
 
@@ -255,6 +328,86 @@
     generateCalendar(currentMonth, currentYear);
 
 
+</script>
+
+
+<script>
+    //kode elson
+    let dom_parent=document.querySelector('div.dvnHistoryboxcontent');
+    let dom_one=document.querySelector('div.dvnweatherhistory').cloneNode(true);
+    let dom_two=document.querySelector('p.tulisasnoutfitlist').cloneNode(true);
+    // let dom_three=document.querySelector('div.outfitlist').cloneNode(true);
+    let dom_three=document.createElement('div')
+    dom_three.classList.add('outfitlist')
+    let dom_content=document.querySelector('div.outfitWore').cloneNode(true);
+    // dom_parent.appendChild(dom_one.cloneNode(true));
+    // dom_parent.appendChild(dom_two.cloneNode(true));
+    // dom_parent.appendChild(dom_three.cloneNode(true));
+
+    document.querySelector('div.dvnweatherhistory').remove();
+    document.querySelector('p.tulisasnoutfitlist').remove();
+    document.querySelector('div.outfitlist').remove();
+    let outfits= @json($outfits);
+    if(outfits.length!=0){
+        console.log(outfits);
+        for(let x=0;x<outfits.length;x++){
+            dom_parent.appendChild(dom_one.cloneNode(true));
+            dom_parent.appendChild(dom_two.cloneNode(true));
+            dom_parent.appendChild(dom_three.cloneNode(true));
+        }
+
+        let datedesc=document.querySelectorAll('div.dvnweatherhistory');
+        for(let x=0;x<datedesc.length;x++){
+            let timestamps=outfits[x]['dt']*1000
+            let date = new Date(timestamps)
+            let weather=outfits[x]['weather']
+            let style=outfits[x]['style']
+            let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+            datedesc[x].querySelector('div.weatherDate').querySelector('p').innerHTML=`${days[date.getDay()]}<br>${date.toLocaleDateString("en-GB")}<br>${date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}`;
+            datedesc[x].querySelector('div.weatherDesc').querySelector('p').classList.add('weathers');
+            p=document.createElement('p');
+            p.classList.add('desc');
+            p.style="display: none";
+            p.innerHTML=`${weather}`
+            datedesc[x].querySelector('div.weatherDesc').appendChild(p.cloneNode(true))
+            datedesc[x].querySelector('div.weatherDesc').querySelector('p.weathers').innerHTML=`${weather} at ${date.toLocaleDateString("en-GB")} - ${date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}<br>Style Choosen : ${style}`;
+            // datasec.querySelector('div.weatherDesc').querySelector('p.weathers');
+
+
+        }
+
+        imagepathes=[]
+        styles=[]
+        categories=[]
+
+        let histories=document.querySelectorAll('div.outfitlist');
+        for(let x=0;x<histories.length;x++){
+            for(let y=0;y<3;y++){
+                if(outfits[x]['outfit'][y]!=null){
+                    histories[x].appendChild(dom_content.cloneNode(true))
+                    outfitlah=outfits[x]["outfit"][y]["imagePath"]
+                    imagepath=`{{ asset('Asset/Wardrobe/Images/${outfitlah}') }}`
+                    imagepathes.push(imagepath)
+                    categories.push(outfits[x]['outfit'][y]['category'])
+                    styles.push(outfits[x]['outfit'][y]['style'])
+                    // histories[x].querySelector('img.category-icon-image').src=`{{ asset('Asset/Wardrobe/Images/${outfits[x]["outfit"][y]["imagePath"]}') }}`
+                }
+            }
+        }
+
+        
+
+        let images=document.querySelectorAll('img.category-icon-image');
+        for(let x=0;x<images.length;x++){
+            images[x].src=imagepathes[x]
+            images[x].parentNode.parentNode.querySelector('p').innerHTML=`Style : ${styles[x]}<br>Category : ${categories[x]}`
+        }
+    }
+
+
+
+    
 </script>
     
 </body>

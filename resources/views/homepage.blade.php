@@ -28,12 +28,273 @@
         <h1 class="whattowear">What to Wear Today?</h1>
         <x-style-selector></x-style-selector>
         <x-generate-outfit></x-generate-outfit>
+        <p class="nocloth">No clothes yet, add them in your wardrobe!</p>
+        
+        <div class="outfit-display" id="outfitDisplay">
+            <div class="item">
+                <img src="" class="category-icon-image">
+                <p></p>
+                <p class="index" style="display: none;"></p>
+            </div>
+            <div class="item">
+                <img src="" class="category-icon-image">
+                <p></p>
+                <p class="index" style="display: none;"></p>
+            </div>
+            <div class="item">
+                <img src="" class="category-icon-image">
+                <p></p>
+                <p class="index" style="display: none;"></p>
+            </div>
+                <!-- Rating Stars -->
+            <div class="rating">    
+                <span class="star" onclick="rate(1)" data-value="1">&#9733;</span>
+                <span class="star" onclick="rate(2)" data-value="2">&#9733;</span>
+                <span class="star" onclick="rate(3)" data-value="3">&#9733;</span>
+                <span class="star" onclick="rate(4)" data-value="4">&#9733;</span>
+                <span class="star" onclick="rate(5)" data-value="5">&#9733;</span>
+            </div>
+
+            <div class="navigation">
+                <button onclick="">&#8249;</button>
+                <button onclick="">&#8250;</button>
+            </div>
+        
+            <button class="wear-button" onclick="">Wear This Outfit</button> <!-- Onclick added -->
+        </div>
+        
+        <!-- Popup Wear -->
+        <div id="popup-wear" class="popup-wear" style="display: none;">
+            <div class="popup-wear-content">
+                <span class="close-button" onclick="closePopupWear()">&#10005;</span>
+                <div class="check-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="green"><path d="M9 16.2l-4.2-4.2-1.4 1.4 5.6 5.6 12-12-1.4-1.4z"/></svg>
+                </div>
+                <p>You look so cool!</p>
+            </div>
+        </div>
+        
+        
+                
+            
+                
+        
     </div>
 </body>
 
 {{-- JS --}}
 
 <script>
+
+    //no generate button
+    let wardrobeitem=@json($wardrobe);
+    if(wardrobeitem===null){
+        document.querySelector('button.generate-button').style='display: none;';
+        document.querySelector('p.nocloth').style='display:block;'
+    }else{
+        document.querySelector('button.generate-button').style='display: block;';
+        document.querySelector('p.nocloth').style='display:none;'
+    }
+
+    //no pop up
+    let popup=@json($popup);
+        
+
+    //history(no show rating)
+    let history=@json($history);
+    if(history===1){
+        document.querySelector('div.rating').style='display: none;';
+        document.querySelector('div.navigation').style='display: none;';
+        document.querySelector('button.wear-button').style='display: none;';
+        showPopupWear();
+    }else{
+        document.querySelector('div.rating').style='display: block;';
+        document.querySelector('div.navigation').style='display: block;';
+        document.querySelector('button.wear-button').style='display: block;';
+    }
+
+    
+
+    //setting the generated outfit
+    let outfits=@json($outfits);
+    if(outfits!==null){
+        let imagepath;
+        document.querySelector('div.outfit-display').style='display:block ;';
+
+        if(outfits.outers[0]==null){
+            document.querySelectorAll('div.item')[0].style='display: none;';
+            document.querySelectorAll('div.item')[0].querySelector('p.index').innerHTML= null;
+        }else{
+            imagepath=outfits.outers[0].imagePath;
+            document.querySelectorAll('div.item')[0].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
+            document.querySelectorAll('div.item')[0].querySelector('p').innerHTML=outfits.outers[0].category
+            document.querySelectorAll('div.item')[0].querySelector('p.index').innerHTML= outfits.outers[0].id;
+        }
+
+        imagepath=outfits.shirts[0].imagePath;
+        document.querySelectorAll('div.item')[1].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
+        document.querySelectorAll('div.item')[1].querySelector('p').innerHTML=outfits.shirts[0].category
+        document.querySelectorAll('div.item')[1].querySelector('p.index').innerHTML= outfits.shirts[0].id;
+    
+        if(outfits.pants[0]==null){
+            document.querySelectorAll('div.item')[2].style='display: none;';
+            document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML= null;
+        }else{
+            imagepath=outfits.pants[0].imagePath;
+            document.querySelectorAll('div.item')[2].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
+            document.querySelectorAll('div.item')[2].querySelector('p').innerHTML=outfits.pants[0].category
+            document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML= outfits.pants[0].id;
+        }
+    }
+
+    let indexClothes=0;
+
+    let buttonsgenerateclothes=document.querySelector('div.navigation').querySelectorAll('button');
+    let scrollIndex=0;
+    for(let i=0;i<buttonsgenerateclothes.length;i++){
+        buttonsgenerateclothes[i].addEventListener('click',function(){
+            let outfits=@json($outfits);
+            let imagepath;
+            if(i==0){
+                if(scrollIndex!=0){
+                    scrollIndex-=1
+                }
+            }else{
+                if(scrollIndex!=outfits.shirts.length-1){
+                    scrollIndex+=1
+                }
+            }
+            if(outfits.outers[scrollIndex]==null){
+                document.querySelectorAll('div.item')[0].style='display: none;';
+                document.querySelectorAll('div.item')[0].querySelector('p.index').innerHTML= null;
+            }else{
+                document.querySelectorAll('div.item')[0].style='display: block;';
+                imagepath=outfits.outers[scrollIndex].imagePath;
+                document.querySelectorAll('div.item')[0].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
+                document.querySelectorAll('div.item')[0].querySelector('p').innerHTML=outfits.outers[scrollIndex].category
+                document.querySelectorAll('div.item')[0].querySelector('p.index').innerHTML= outfits.outers[scrollIndex].id;
+            }
+
+            imagepath=outfits.shirts[scrollIndex].imagePath;
+            document.querySelectorAll('div.item')[1].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
+            document.querySelectorAll('div.item')[1].querySelector('p').innerHTML=outfits.shirts[scrollIndex].category
+            document.querySelectorAll('div.item')[1].querySelector('p.index').innerHTML= outfits.shirts[scrollIndex].id;
+        
+            if(outfits.pants[scrollIndex]==null){
+                document.querySelectorAll('div.item')[2].style='display: none;';
+                document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML= null;
+            }else{
+                document.querySelectorAll('div.item')[2].style='display: block;';
+                imagepath=outfits.pants[scrollIndex].imagePath;
+                document.querySelectorAll('div.item')[2].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
+                document.querySelectorAll('div.item')[2].querySelector('p').innerHTML=outfits.pants[scrollIndex].category
+                document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML= outfits.pants[scrollIndex].id;
+            }
+        })
+    }
+
+    
+
+    //button untuk wear clothes
+    document.querySelector('button.wear-button').addEventListener('click',function(){
+        let form = document.createElement("form");
+        form.method = "POST";
+        form.action = "{{ route('UseOutfit') }}"; // Replace with your route name
+
+        // Add CSRF Token (required for Laravel POST requests)
+        let csrfToken = document.createElement("input");
+        csrfToken.type = "hidden";
+        csrfToken.name = "_token";
+        csrfToken.value = "{{ csrf_token() }}";
+        form.appendChild(csrfToken);
+
+        // Optional: Add additional data as hidden inputs
+        let inputWeather = document.createElement("input");
+        inputWeather.type = "hidden";
+        inputWeather.name = "weather";
+        inputWeather.value = @json($weather);
+        form.appendChild(inputWeather);
+
+        let inputStyle = document.createElement("input");
+        inputStyle.type = "hidden";
+        inputStyle.name = "style";
+        inputStyle.value = @json($style);
+        form.appendChild(inputStyle);
+
+        let inputidOuter = document.createElement("input");
+        inputidOuter.type = "hidden";
+        inputidOuter.name = "idOuter";
+        inputidOuter.value = document.querySelectorAll('div.item')[0].querySelector('p.index').innerHTML;
+        form.appendChild(inputidOuter);
+
+        let inputidShirt = document.createElement("input");
+        inputidShirt.type = "hidden";
+        inputidShirt.name = "idShirt";
+        inputidShirt.value = document.querySelectorAll('div.item')[1].querySelector('p.index').innerHTML;
+        form.appendChild(inputidShirt);
+
+        let inputidPant = document.createElement("input");
+        inputidPant.type = "hidden";
+        inputidPant.name = "idPant";
+        inputidPant.value = document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML;
+        form.appendChild(inputidPant);
+
+        let inputdt = document.createElement("input");
+        inputdt.type = "hidden";
+        inputdt.name = "dt";
+        inputdt.value = @json($fetchdata['dt']);
+        form.appendChild(inputdt);
+
+        rating=document.querySelectorAll('span.star');
+        ratingValue=null;
+        for(let x=rating.length-1;x>=0;x--){
+            if(rating[x].classList.contains('active')){
+                ratingValue=x+1;
+                break;
+            }
+        }
+        console.log(ratingValue)
+        let inputrate = document.createElement("input");
+        inputrate.type = "hidden";
+        inputrate.name = "rate";
+        inputrate.value = ratingValue;
+        form.appendChild(inputrate);
+        
+        document.body.appendChild(form);
+        form.submit();
+    })
+
+    //button untuk generate clothes
+    document.querySelector('button.generate-button').addEventListener('click',function(){
+        let form = document.createElement("form");
+        form.method = "POST";
+        form.action = "{{ route('generatorPost') }}"; // Replace with your route name
+
+        // Add CSRF Token (required for Laravel POST requests)
+        let csrfToken = document.createElement("input");
+        csrfToken.type = "hidden";
+        csrfToken.name = "_token";
+        csrfToken.value = "{{ csrf_token() }}";
+        form.appendChild(csrfToken);
+
+        // Optional: Add additional data as hidden inputs
+        let inputWeather = document.createElement("input");
+        inputWeather.type = "hidden";
+        inputWeather.name = "weather";
+        inputWeather.value = document.querySelector('p.weathertext').innerHTML;
+        form.appendChild(inputWeather);
+
+        let inputStyle = document.createElement("input");
+        inputStyle.type = "hidden";
+        inputStyle.name = "style";
+        inputStyle.value = document.querySelector('select#style').value;
+        form.appendChild(inputStyle);
+
+        document.body.appendChild(form);
+        form.submit();
+    })
+
+
     // Variabel untuk menyimpan koordinat
     let latitude;
     let longitude;
@@ -273,7 +534,12 @@
             });
 
             // Tampilkan popup
-            tipsPopup.style.display = "flex";
+            if(popup===1){
+                tipsPopup.style.display = "flex";
+            }else{
+                tipsPopup.style.display = "none";
+            }
+            
         } else {
             console.error("Cuaca tidak dikenali:", weatherCondition);
         }
@@ -362,6 +628,7 @@
             }
         });
 
+        
 
 </script>
 
