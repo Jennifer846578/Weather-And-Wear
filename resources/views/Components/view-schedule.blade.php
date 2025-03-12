@@ -6,7 +6,7 @@
 
 <div class="popup-background">
     <div class="popup">
-        <button class="close-button">✖</button>
+        <button class="close-button">&#10005;</button>
         <h2></h2>
 
         {{-- @if (!Session::has('google_token'))

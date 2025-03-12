@@ -13,7 +13,7 @@
     </div>
 </div>
 
-<script>
+{{-- <script>
     async function getData() {
     try {
         let response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=sentul,id&appid=3282175a32c9ea3ccd6e541b9510f24c');
@@ -49,5 +49,5 @@
     });
 
 
-</script>
+</script> --}}
 

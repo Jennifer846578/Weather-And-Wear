@@ -31,7 +31,7 @@ Route::resource('profile',App\Http\Controllers\ProfileController::class);
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile_page');
-    
+
 Route::get('/logins', function () {
     return view('login');
 });
@@ -98,15 +98,17 @@ Route::get('/editStyleClothes', function () {
     return view('editStyleClothes');
 });
 
-Route::get('/history', function () {
-    return view('history');
-})->name('history_page');
+// Route::get('/history', function () {
+//     return view('history');
+// })->name('history_page');
+
+Route::get('/history',[App\Http\Controllers\HistoryController::class,'index'])->name('history_page');
 
 // Route::get('/wardrobe/blazer', function () {
 //     return view('blazer');
 // })->name('blazer_page');
 
-Route::get('/wardobe',[App\Http\Controllers\WardrobeController::class,'showWardrobe'])->name('wardrobe_page');
+Route::get('/wardrobe',[App\Http\Controllers\WardrobeController::class,'showWardrobe'])->name('wardrobe_page');
 Route::get('/wardrobe/{category}/{favourite}/{style}/{editted}',[App\Http\Controllers\WardrobeController::class,'showWardrobeCategory'])->name('wardrobe_page_category');
 Route::put('/wardrobe/favorite',[App\Http\Controllers\WardrobeController::class,'favWardrobe'])->name('wardrobe_fav');
 
@@ -150,3 +152,7 @@ use App\Http\Controllers\alamaktestdoang;
 
 Route::get('/generator',[App\Http\Controllers\GeneratorController::class,'index'])->name('generator');
 Route::post('/generatorclothes',[App\Http\Controllers\GeneratorController::class,'index'])->name('generatorPost');
+
+//menggunakan baju
+use App\Http\Controllers\HistoryController;
+Route::post('/useoutfit',[App\Http\Controllers\HistoryController::class,'store'])->name('UseOutfit');

@@ -18,17 +18,27 @@
 
     <!-- Pratinjau gambar -->
     <div id="PreviewContainer">
-        <img id="PreviewImage" class="PreviewImage" alt="Preview Image" style="width: 250px;" src="Asset/Wardrobe/Images/{{ $data->imagePath }}">
+        <img id="PreviewImage" class="PreviewImage" alt="Preview Image" style="width: 250px;" src="{{ asset('Asset/Wardrobe/Images/' . $data->imagePath) }}">
     </div>
 
-    <div class="-color-picker-container">
+    {{-- <div class="-color-picker-container">
         <h2>Select your clothes color</h2>
         <div class="-color-area" id="ColorArea"></div>
         <input type="range" class="-color-slider" id="ColorSlider" min="0" max="360" value="360">
         <div class="-color-display" id="ColorDisplay"></div>
-        <div class="-hex-display" id="HexDisplay">HEX: #FF0000</div>
+        <div class="-hex-display" id="HexDisplay">HEX: {{ $dominantColor }}</div>
         <p style="display: none;" class="value">#ff0000</p>
-      </div>
+      </div> --}}
+
+    <div class="-color-picker-container" data-dominant-color="{{ $dominantColor }}">
+        <h2>Select your clothes color</h2>
+        <div class="-color-area" id="ColorArea"></div>
+        <input type="range" class="-color-slider" id="ColorSlider" min="0" max="360" value="360">
+        <div class="-color-display" id="ColorDisplay"></div>
+        <div class="-hex-display" id="HexDisplay">HEX: {{ $dominantColor }}</div>
+        <p style="display: none;" class="value">{{ $dominantColor }}</p>
+    </div>
+    
 
     <div class="bottomtop">
         <p>Top or Bottom</p>

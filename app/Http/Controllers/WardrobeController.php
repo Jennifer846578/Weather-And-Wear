@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Log;
 
 class WardrobeController extends Controller
 {
@@ -38,10 +40,12 @@ class WardrobeController extends Controller
     public function indexone()
     {
         $id=session('dataid');
+        $dominantColor = session('dominantColor', '#FFFFFF'); // Default ke putih jika tidak ada
         $data=wardrobe::findOrFail($id);
         // $imagepath=$data->imagePath;
         // return $id;
-        return view('details',compact('data'));
+        // dd($data->imagePath, $dominantColor);
+        return view('details',compact('data', 'dominantColor'));
         // return session('dataid');
         // return view('details');
     }
@@ -323,19 +327,45 @@ class WardrobeController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $data=new wardrobe();
         $data->userid=Auth::user()->id;
         $request->validate([
             'image'=>'required|image|mimes:png,jpeg|max:1024'
         ]);
         $imagepath=time().'.'.$request->image->extension();
+        $originalImagePath = public_path('Asset/Wardrobe/Images/' . $imagepath);
         $request->image->move(public_path('Asset/Wardrobe/Images'),$imagepath);
-        $data->imagePath=$imagepath;
+
+        // Memanggil API Python untuk menghapus background dan mendeteksi warna dominan
+        $client = new Client();
+        $response = $client->post('http://127.0.0.1:5000/process-image', [
+            'multipart' => [
+                [
+                    'name' => 'image',
+                    'contents' => fopen($originalImagePath, 'r'),
+                ],
+            ],
+        ]);
+
+        $responseData = json_decode($response->getBody(), true);
+        $dominantColor = $responseData['dominantColor'] ?? '#FFFFFF';
+        $outputImagePath = base_path('flask-api/' . $responseData['imagePath']);
+
+        if (file_exists($outputImagePath)) {
+            File::copy($outputImagePath, $originalImagePath);
+            // Log::info("✅ File berhasil disalin ke: " . $originalImagePath);
+        } else {
+            // Log::error("❌ Gambar hasil API tidak ditemukan: " . $outputImagePath);
+        }
+
+         // Simpan path gambar dan warna dominan ke database
+        $data->imagePath = $imagepath;
         $data->save();
-        return redirect()->route('details_page')->with('dataid',$data->id);
-        // return redirect()->route('wardrobe_page')->with('imgpath',$data->imagePath)->with('who',$data->userid);
-        // return $imagepath;
+
+        return redirect()->route('details_page')->with([
+            'dataid' => $data->id,
+            'dominantColor' => $dominantColor
+        ]);
     }
 
     /**

@@ -1,35 +1,10 @@
-<button class="generate-button" onclick="showOutfit()">Generate Outfit</button>
+<button class="generate-button" onclick="">Generate Outfit</button>
 
-<div class="outfit-display" id="outfitDisplay">
-    <div class="item">
-        <img src="{{ asset('Asset/Wardrobe/Icon Luar/1.png') }}" class="category-icon-image">
-        <p>T-shirt</p>
-    </div>
-    <div class="item">
-        <img src="{{ asset('Asset/Wardrobe/Icon Luar/2.png') }}" class="category-icon-image">
-        <p>Short</p>
-    </div>
-        <!-- Rating Stars -->
-    <div class="rating">
-        <span class="star" onclick="rate(1)" data-value="1">&#9733;</span>
-        <span class="star" onclick="rate(2)" data-value="2">&#9733;</span>
-        <span class="star" onclick="rate(3)" data-value="3">&#9733;</span>
-        <span class="star" onclick="rate(4)" data-value="4">&#9733;</span>
-        <span class="star" onclick="rate(5)" data-value="5">&#9733;</span>
-    </div>
-
-    <div class="navigation">
-        <button onclick="previousItem()">&#8249;</button>
-        <button onclick="nextItem()">&#8250;</button>
-    </div>
-
-    <button class="wear-button" onclick="showPopupWear()">Wear This Outfit</button> <!-- Onclick added -->
-</div>
 
 <!-- Popup Wear -->
 <div id="popup-wear" class="popup-wear" style="display: none;">
     <div class="popup-wear-content">
-        <span class="close-button" onclick="closePopupWear()">&#10005;</span>
+        <span class="close-buttoncool" onclick="closePopupWear()">&#10005;</span>
         <div class="check-icon">
             <img src="{{ asset('Asset/Wardrobe/checklist.png') }}" alt="Success" style="width: 80px; height: 80px;">
         </div>
@@ -46,7 +21,7 @@ function showOutfit() {
 
     let phoneCard = document.querySelector('.phone-card');
     if (phoneCard) {
-        phoneCard.style.minHeight = '220vh'; // Perubahan tinggi
+        phoneCard.style.minHeight = '203vh'; // Perubahan tinggi
     }
 
     // Pastikan tombol Wear This Outfit juga tampil
