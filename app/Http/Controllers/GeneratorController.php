@@ -14,12 +14,13 @@ class GeneratorController extends Controller
     public function index(Request $request)
     {
         //
-        
+        // return $request;
         $clothes=wardrobe::where('userid',Auth::user()->id)->get();
         $jsonData = json_encode($clothes);
         $encodedJson = base64_encode($jsonData);
         $scriptPath = base_path('scripts/ModelStyleandWeather/Generator.py');
-        $command = "python $scriptPath $encodedJson $request->weather $request->style 2>&1";
+        $command = "python $scriptPath $encodedJson $request->weather $request->style";
+        // return $command;
         $output = shell_exec($command);
         // return $output;  
         $decodedOutput = json_decode($output, true);
@@ -31,7 +32,7 @@ class GeneratorController extends Controller
             'shirts' => [],
             'pants' => [],
         ];
-        
+
         $cleanedOuterIds = array_filter($OutersIds, fn($id) => $id !== null);
         $wardrobeOuterItems = Wardrobe::whereIn('id', $cleanedOuterIds)->get()->keyBy('id');
         foreach ($OutersIds as $index => $id) {
@@ -74,10 +75,10 @@ class GeneratorController extends Controller
 
         return redirect()->route('home');
 
-        
-        
 
-        
+
+
+
     }
 
     /**

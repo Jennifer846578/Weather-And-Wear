@@ -9,14 +9,14 @@
         <button class="close-button">&#10005;</button>
         <h2></h2>
 
-        @if (!Session::has('google_token'))
+        {{-- @if (!Session::has('google_token'))
             <div class="google-login">
                 <button class="google-login-button" onclick="window.location.href='{{ route('google.auth') }}'">
                     <img src="Asset/Homepage/google-icon.png" alt="Google Icon">
                     <span>Login with Google</span>
                 </button>
             </div>
-        @endif
+        @endif --}}
 
         <div class="schedule-list">
             @if (Session::has('google_token'))
@@ -34,7 +34,7 @@
                     {{-- <p>{{ $events[0]->summary }}</p> --}}
                 @endif
             @else
-                <p>Please login to view your schedule</p>
+                <p class="coba">Exercise | 08:00 - 09:00</p>
             @endif
         </div>
 

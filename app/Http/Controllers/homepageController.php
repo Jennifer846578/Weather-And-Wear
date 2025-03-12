@@ -15,11 +15,11 @@ class homepageController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        // $this->client = new Client();        
-		// $this->client->setClientId(config('services.google.client_id'));        
-		// $this->client->setClientSecret(config('services.google.client_secret'));        
-		// $this->client->setRedirectUri(config('services.google.redirect'));        
-		// $this->client->addScope(Calendar::CALENDAR);        
+        // $this->client = new Client();
+		// $this->client->setClientId(config('services.google.client_id'));
+		// $this->client->setClientSecret(config('services.google.client_secret'));
+		// $this->client->setRedirectUri(config('services.google.redirect'));
+		// $this->client->addScope(Calendar::CALENDAR);
 		// $this->calendarService = new Calendar($this->client);
     }
     /**
@@ -29,7 +29,7 @@ class homepageController extends Controller
     {
         //
         $fetchdata = Http::get('https://api.openweathermap.org/data/2.5/weather?q=sentul,id&appid=3282175a32c9ea3ccd6e541b9510f24c');
-        // session()->put('fetchdata',$fetchdata['dt']);
+        session()->put('fetchdata',$fetchdata['dt']);
 
         if (!Session::has('google_token')) {
             return redirect()->route('google.auth');
@@ -72,7 +72,7 @@ class homepageController extends Controller
         Session::put('google_token', $client->getAccessToken());
 
         //get data from GeneratorController
-        
+
         $outfits=session('Outfits',null);
         $history=session('History',0);
         $popup=session('PopUp',1);
@@ -88,12 +88,12 @@ class homepageController extends Controller
         // $shirt=session('shirt',null);
         // $pant=session('pant',null);
         // // return $outer;
-     
+
 
 
         // if($outer!=null){
         //     $outers=wardrobe::whereIn('id',$outer)->get();
-            
+
         // }
         // if($outer!=null){
         //     $shirts=wardrobe::whereIn('id',$shirt)->get();
@@ -101,12 +101,12 @@ class homepageController extends Controller
         // if($pant!=null){
         //     $pants=wardrobe::whereIn('id',$pant)->get();
         // }
-        
-        
 
-        
-        
-        
+
+
+
+
+
         // if($shirt!=null && count($shirts)!=0){
         //     $outfits=[
         //         'outers'=>$outers,
@@ -117,8 +117,8 @@ class homepageController extends Controller
         //     $outfits=null;
         // }
         // // return $outfits;
-        
-        
+
+
         // // return $outfits;
 
 

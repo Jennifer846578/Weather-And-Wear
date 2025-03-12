@@ -2,7 +2,7 @@
     <div class="forecast-title">Forecast</div>
     <div class="card-box">
         <div class="forecast-card">
-            <div class="time">3 AM</div>
+            <div class="time">11 AM</div>
             <img src="build/assets/homepage/rain.png" alt="Weather">
             <div class="temp">19°</div>
         </div>
@@ -12,7 +12,7 @@
             <div class="temp">19°</div>
         </div>
         <div class="forecast-card">
-            <div class="time">2 AM</div>
+            <div class="time"> AM</div>
             <img src="build/assets/homepage/rain.png" alt="Weather">
             <div class="temp">18°</div>
         </div>
@@ -93,3 +93,7 @@
         }
     });
 </script> --}}
+
+
+
+

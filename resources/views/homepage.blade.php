@@ -24,12 +24,12 @@
         <x-weather>build\assets\homepage\rain.png</x-weather>
         <x-otherinfo></x-otherinfo>
         <x-hourly-forecast></x-hourly-forecast>
-        <x-view-schedule :events='$events'></x-view-schedule>
+        <x-view-schedule></x-view-schedule>
         <h1 class="whattowear">What to Wear Today?</h1>
         <x-style-selector></x-style-selector>
         <x-generate-outfit></x-generate-outfit>
         <p class="nocloth">No clothes yet, add them in your wardrobe!</p>
-        
+
         <div class="outfit-display" id="outfitDisplay">
             <div class="item">
                 <img src="" class="category-icon-image">
@@ -47,7 +47,7 @@
                 <p class="index" style="display: none;"></p>
             </div>
                 <!-- Rating Stars -->
-            <div class="rating">    
+            <div class="rating">
                 <span class="star" onclick="rate(1)" data-value="1">&#9733;</span>
                 <span class="star" onclick="rate(2)" data-value="2">&#9733;</span>
                 <span class="star" onclick="rate(3)" data-value="3">&#9733;</span>
@@ -59,10 +59,10 @@
                 <button onclick="">&#8249;</button>
                 <button onclick="">&#8250;</button>
             </div>
-        
+
             <button class="wear-button" onclick="">Wear This Outfit</button> <!-- Onclick added -->
         </div>
-        
+
         <!-- Popup Wear -->
         <div id="popup-wear" class="popup-wear" style="display: none;">
             <div class="popup-wear-content">
@@ -73,12 +73,12 @@
                 <p>You look so cool!</p>
             </div>
         </div>
-        
-        
-                
-            
-                
-        
+
+
+
+
+
+
     </div>
 </body>
 
@@ -98,7 +98,7 @@
 
     //no pop up
     let popup=@json($popup);
-        
+
 
     //history(no show rating)
     let history=@json($history);
@@ -113,7 +113,7 @@
         document.querySelector('button.wear-button').style='display: block;';
     }
 
-    
+
 
     //setting the generated outfit
     let outfits=@json($outfits);
@@ -135,7 +135,7 @@
         document.querySelectorAll('div.item')[1].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
         document.querySelectorAll('div.item')[1].querySelector('p').innerHTML=outfits.shirts[0].category
         document.querySelectorAll('div.item')[1].querySelector('p.index').innerHTML= outfits.shirts[0].id;
-    
+
         if(outfits.pants[0]==null){
             document.querySelectorAll('div.item')[2].style='display: none;';
             document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML= null;
@@ -179,7 +179,7 @@
             document.querySelectorAll('div.item')[1].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
             document.querySelectorAll('div.item')[1].querySelector('p').innerHTML=outfits.shirts[scrollIndex].category
             document.querySelectorAll('div.item')[1].querySelector('p.index').innerHTML= outfits.shirts[scrollIndex].id;
-        
+
             if(outfits.pants[scrollIndex]==null){
                 document.querySelectorAll('div.item')[2].style='display: none;';
                 document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML= null;
@@ -193,7 +193,7 @@
         })
     }
 
-    
+
 
     //button untuk wear clothes
     document.querySelector('button.wear-button').addEventListener('click',function(){
@@ -259,7 +259,7 @@
         inputrate.name = "rate";
         inputrate.value = ratingValue;
         form.appendChild(inputrate);
-        
+
         document.body.appendChild(form);
         form.submit();
     })
@@ -470,12 +470,12 @@
                 ]
             },
             "Clouds": {
-                title: "Tips for Cloudy Weather",
-                video: "Asset/Homepage/cloudyvideo.mp4",
+                title: "Tips for Rainy Weather",
+                video: "Asset/Homepage/rainyvideo.mp4",
                 list: [
-                    "Bring a light jacket",
-                    "Expect cooler temperatures",
-                    "Sunlight may still be strong, wear sunscreen"
+                    "Carry an umbrella or raincoat",
+                    "Wear waterproof shoes",
+                    "Drive carefully and avoid slippery roads"
                 ]
             },
             "Thunderstorm": {
@@ -539,7 +539,7 @@
             }else{
                 tipsPopup.style.display = "none";
             }
-            
+
         } else {
             console.error("Cuaca tidak dikenali:", weatherCondition);
         }
@@ -629,7 +629,7 @@
             }
         });
 
-        
+
 
 </script>
 
