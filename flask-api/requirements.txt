@@ -1,0 +1,6 @@
+flask
+rembg
+scikit-learn
+pillow
+opencv-python
+onnxruntime
