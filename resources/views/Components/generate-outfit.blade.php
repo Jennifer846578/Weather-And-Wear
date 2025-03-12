@@ -1,13 +1,9 @@
 <button class="generate-button" onclick="">Generate Outfit</button>
-<<<<<<< HEAD
-
-=======
- 
 
 
 
 
->>>>>>> 27dedf92af9222ac58080c304ce6852a1a814fcf
+
 
 <!-- Popup Wear -->
 <div id="popup-wear" class="popup-wear" style="display: none;">
@@ -29,7 +25,7 @@ function showOutfit() {
 
     let phoneCard = document.querySelector('.phone-card');
     if (phoneCard) {
-        phoneCard.style.minHeight = '203vh'; // Perubahan tinggi
+        phoneCard.style.minHeight = '230vh'; // Perubahan tinggi
     }
 
     // Pastikan tombol Wear This Outfit juga tampil

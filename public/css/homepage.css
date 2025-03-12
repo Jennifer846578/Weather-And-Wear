@@ -45,7 +45,7 @@ body {
 
 .phone-card {
     width: 412px;
-    min-height: 150vh;
+    min-height: 230vh;
     background-color: #B2D3FF;
     display: flex;
     flex-direction: column;
@@ -451,6 +451,8 @@ h1 {
     display: none;
     text-align: center;
     margin-top: 20px;
+    justify-content: center;
+    align-items: center;
 }
 
 .outfit-display .item {
@@ -485,6 +487,9 @@ h1 {
 }
 
 .wear-button {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     background-color: #839de2;
     color: #ffffff;
     font-size: 16px;
@@ -494,7 +499,7 @@ h1 {
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin: 20px 0 0 0;
+    margin: 20px 0 0 8px;
 }
 
 .wear-button:hover {
