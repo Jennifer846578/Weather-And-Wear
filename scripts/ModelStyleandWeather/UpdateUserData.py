@@ -157,7 +157,7 @@ if __name__=="__main__":
         model_S.update_online_model(style_data_rate)
     for x in range(10):
         model_W.update_online_model(weather_data_rate)
-    # print("ga salah kok")
+    # print("ga salah kok")  
     
     recWeight=load_recWeight(userid)
     point_distribution(recWeight,10,np.clip(5-round(score),0,2))

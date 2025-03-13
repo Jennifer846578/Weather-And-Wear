@@ -69,11 +69,15 @@ if __name__ == "__main__":
     topId=[]
     bottom=[]
     bottomId=[]
+
+    dressid=[]
     
     outerCloth=["Blazer","Coat","Hoodie","Jacket","Sweater"]
     topCloth=["Shirt","Dress","TShirt"]
     for x in range(len(clothes)):
-        if(clothes[x]['category']=="TShirt"):
+        if(clothes[x]['category']=='Dress'):
+            dressid.append(clothes[x]['id'])
+        elif(clothes[x]['category']=="TShirt"):
             top.append("t-shirt")
             topId.append(clothes[x]['id'])
         elif(clothes[x]['category'] in topCloth):
@@ -88,8 +92,8 @@ if __name__ == "__main__":
     
     outer.append("none")
     outerId.append(None)
-    bottom.append("none")
-    bottomId.append(None)
+    # bottom.append("none")
+    # bottomId.append(None)
 
     outfits=[]
     outfitsId=[]
@@ -115,6 +119,11 @@ if __name__ == "__main__":
         outfit.pop()
         outfitId.pop()
     # print(json.dumps(outfits))
+    
+    #dress appends
+    for x in range(len(dressid)):
+        outfits.append(['none','dress','none'])
+        outfitsId.append(dressid[x])
 
     weather_data={
         "top":'none',

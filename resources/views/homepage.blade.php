@@ -29,6 +29,7 @@
         <x-style-selector></x-style-selector>
         <x-generate-outfit></x-generate-outfit>
         <p class="nocloth">No clothes yet, add them in your wardrobe!</p>
+        <p class="nopants" style="display: none;">No pants yet, get some pants</p>
 
         <div class="outfit-display" id="outfitDisplay">
             <div class="item">
@@ -144,6 +145,10 @@
             document.querySelectorAll('div.item')[2].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
             document.querySelectorAll('div.item')[2].querySelector('p').innerHTML=outfits.pants[0].category
             document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML= outfits.pants[0].id;
+        }
+    }else{
+        if(wardrobeitem!==null){
+            document.querySelector('p.nopants').style="display: block;";
         }
     }
 

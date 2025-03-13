@@ -341,7 +341,9 @@
     document.querySelector('p.tulisasnoutfitlist').remove();
     document.querySelector('div.outfitlist').remove();
     let outfits= @json($outfits);
+    
     if(outfits.length!=0){
+        outfits=outfits.reverse();
         console.log(outfits);
         for(let x=0;x<outfits.length;x++){
             dom_parent.appendChild(dom_one.cloneNode(true));

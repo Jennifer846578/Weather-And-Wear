@@ -6,6 +6,8 @@ use App\Models\wardrobe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function PHPUnit\Framework\isNull;
+
 class GeneratorController extends Controller
 {
     /**
@@ -24,6 +26,8 @@ class GeneratorController extends Controller
         $output = shell_exec($command);
         // return $output;  
         $decodedOutput = json_decode($output, true);
+        // return $decodedOutput;
+        // return $decodedOutput;
         $OutersIds=$decodedOutput[0];
         $ShirtsIds=$decodedOutput[1];
         $PantsIds=$decodedOutput[2];
@@ -65,6 +69,11 @@ class GeneratorController extends Controller
                 $outfits['pants'][$index] = null;
             }
         }
+        // return $outfits;
+        // return $outfits;
+        if(empty($outfits['shirts'])){
+            $outfits=null;
+        }
         session([
             'Outfits'=>$outfits,
             'PopUp'=>0,
@@ -72,6 +81,7 @@ class GeneratorController extends Controller
             'Style'=>$request->style,
             'Weather'=>$request->weather
         ]);
+        // return isNull($outfits);
 
         return redirect()->route('home');
 
