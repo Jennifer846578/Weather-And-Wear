@@ -29,6 +29,7 @@
         <x-style-selector></x-style-selector>
         <x-generate-outfit></x-generate-outfit>
         <p class="nocloth">No clothes yet, add them in your wardrobe!</p>
+        <p class="nopants" style="display: none;">No pants yet, get some pants</p>
 
         <div class="outfit-display" id="outfitDisplay">
             <div class="item">

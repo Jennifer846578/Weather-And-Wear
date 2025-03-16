@@ -39,8 +39,9 @@ class HistoryController extends Controller
             ];
             array_push($outfits,$historyid);
         }
-        // return view('history');
         return view('history',compact('outfits'));
+        // return view('history');
+        // return $outfits;
         
     }
 
