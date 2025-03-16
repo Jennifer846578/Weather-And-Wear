@@ -343,6 +343,7 @@
     let outfits= @json($outfits);
     
     if(outfits.length!=0){
+        document.querySelector('div.dvnHistoryboxcontent').style='height:auto; #8249'
         outfits=outfits.reverse();
         console.log(outfits);
         for(let x=0;x<outfits.length;x++){

@@ -6,6 +6,15 @@ p.coba {
     justify-content: center;
 }
 
+p#tulisan{
+    color: rgba(65, 111, 240, 0.6);
+    justify-content: center;
+    align-items: center;
+    /* margin: auto; */
+    display: flex   ;
+    text-align: center;
+    margin: 5vh 0;
+}
 
 
 

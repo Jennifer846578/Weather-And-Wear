@@ -28,8 +28,9 @@
         <h1 class="whattowear">What to Wear Today?</h1>
         <x-style-selector></x-style-selector>
         <x-generate-outfit></x-generate-outfit>
-        <p class="nocloth">No clothes yet, add them in your wardrobe!</p>
-        <p class="nopants" style="display: none;">No pants yet, get some pants</p>
+        <p class="nocloth" id="tulisan">No clothes yet, add them in your wardrobe!</p>
+        <p class="notnenoughclothes" style="display: none;" id="tulisan">Insufficient Clothes to Generate, add more in wardobe page!</p>
+        <p class="nopants" style="display: none;" id="tulisan">No pants yet, get some pants</p>
 
         <div class="outfit-display" id="outfitDisplay">
             <div class="item">
@@ -499,6 +500,7 @@
     //setting the generated outfit
     let outfits=@json($outfits);
     console.log('ini lagi lah bang',outfits);
+    console.log(outfits);
     if(outfits!==null){
         let imagepath;
         document.querySelector('div.outfit-display').style='display:block ;';
@@ -527,6 +529,14 @@
             document.querySelectorAll('div.item')[2].querySelector('p').innerHTML=outfits.pants[0].category
             document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML= outfits.pants[0].id;
         }
+    }else{
+        let wardrobes=@json($wardrobe);
+        if(wardrobes!=null  ){
+            document.querySelector('p.notnenoughclothes').style="display:block;";
+            
+            
+        }
+        // document.querySelector('p.notnenoughclothes').style="display:block;";
     }
 
     let indexClothes=0;
