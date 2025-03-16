@@ -30,21 +30,21 @@ document.addEventListener("DOMContentLoaded", function () {
         "/": "navbaricon-inhome.png",
         "/wardrobe": "navbaricon-inwardrobe.png",
         "/history": "navbaricon-inhistory.png",
-        "/profile": "navbaricon-inprofile.png"
+        "/profile": "navbaricon-inprofile.png",
     };
 
     navItems.forEach(item => {
         const linkPath = new URL(item.href, window.location.origin).pathname;
-        // console.log("Checking:", linkPath);
-
         const img = item.querySelector(".nav-icon");
 
-        if (currentPath === linkPath) {
+        // Jika halaman dalam wardrobe (misalnya `/wardrobe/subpage`)
+        if (currentPath.startsWith("/wardrobe") && linkPath === "/wardrobe") {
+            console.log(`Matched! Changing icon for wardrobe`);
+            img.src = `/build/assets/navbar/${iconMap["/wardrobe"]}`;
+        } else if (currentPath === linkPath) {
             console.log(`Matched! Changing icon for ${linkPath}`);
             img.src = `/build/assets/navbar/${iconMap[linkPath]}`;
-            console.log(img.src)
         }
     });
 });
-
 </script>

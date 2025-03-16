@@ -307,12 +307,12 @@
                 ]
             },
             "Clouds": {
-                title: "Tips for Rainy Weather",
-                video: "Asset/Homepage/rainyvideo.mp4",
+                title: "Tips for Clouds Weather",
+                video: "Asset/Homepage/cloudyvideo.mp4",
                 list: [
-                    "Carry an umbrella or raincoat",
-                    "Wear waterproof shoes",
-                    "Drive carefully and avoid slippery roads"
+                    "Carry a light jacket; it might get chilly",
+                    "It might feel sticky; wear breathable clothes",
+                    "Secure loose items; it could get gusty"
                 ]
             },
             "Thunderstorm": {
@@ -533,8 +533,8 @@
         let wardrobes=@json($wardrobe);
         if(wardrobes!=null  ){
             document.querySelector('p.notnenoughclothes').style="display:block;";
-            
-            
+
+
         }
         // document.querySelector('p.notnenoughclothes').style="display:block;";
     }
