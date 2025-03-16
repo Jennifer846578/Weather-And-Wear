@@ -40,7 +40,7 @@
             <div class="outfitlist">
                 <div class="outfitWore">
                     <div class="category">
-                        <div class="btn-fav-clothes">
+                        {{-- <div class="btn-fav-clothes">
                             <img class="no-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/gray-heart.png') }}" alt="no like">
                             <img class="yes-fav-clothes" src="{{ asset('Asset/Wardrobe/Heart icon/red-heart.png') }}" alt="yes like">
                         </div>
@@ -48,7 +48,7 @@
                             <a href="{{ route('editClothes_page') }}">
                                 <img src="{{ asset('Asset/Wardrobe/Blazer/edit icon.png') }}" alt="edit icon">
                             </a>
-                        </div>
+                        </div> --}}
                         <img src="{{ asset('Asset/Wardrobe/Blazer/Blazer.png') }}" class="category-icon-image">
                     </div>
                     <p>Style : Casual<br>Category : Blazzer</p>
@@ -85,9 +85,9 @@
                     </div>
                     <p>Style : Casual<br>Category : Blazzer</p>
                 </div>
-                
+
             </div>
-            
+
 
 
 
@@ -154,10 +154,10 @@
                     </div>
                     <p>Style : Casual<br>Category : Blazzer</p>
                 </div>
-                
+
             </div> --}}
 
-            
+
 
 
         </div>
@@ -205,7 +205,7 @@
                     </tbody>
                 </table>
             </div>
-   
+
             <button class="yes-button">✔</button>
         </div>
     </div>
@@ -396,7 +396,7 @@
             }
         }
 
-        
+
 
         let images=document.querySelectorAll('img.category-icon-image');
         for(let x=0;x<images.length;x++){
@@ -407,8 +407,8 @@
 
 
 
-    
+
 </script>
-    
+
 </body>
 </html>

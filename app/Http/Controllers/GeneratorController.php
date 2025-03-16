@@ -65,6 +65,11 @@ class GeneratorController extends Controller
                 $outfits['pants'][$index] = null;
             }
         }
+
+        if(empty($outfits['shirts'])){
+            $outfits=null;
+        }
+
         session([
             'Outfits'=>$outfits,
             'PopUp'=>0,

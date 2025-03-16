@@ -101,3 +101,26 @@ form{
 .invalid-feedback strong{
     margin: auto;
 }
+
+
+.gender-select {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-width: 0.5px;
+    border-radius: 10px;
+    outline: none;
+    width: 270px;
+    color: grey; /* Warna default */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="gray"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+}
+
+/* Warna berubah saat dipilih */
+.gender-select:valid {
+    color: black;
+}

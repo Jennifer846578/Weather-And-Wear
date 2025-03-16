@@ -86,215 +86,6 @@
 
 <script>
 
-    //no generate button
-    let wardrobeitem=@json($wardrobe);
-    if(wardrobeitem===null){
-        document.querySelector('button.generate-button').style='display: none;';
-        document.querySelector('p.nocloth').style='display:block;'
-    }else{
-        document.querySelector('button.generate-button').style='display: block;';
-        document.querySelector('p.nocloth').style='display:none;'
-    }
-
-    //no pop up
-    let popup=@json($popup);
-
-
-    //history(no show rating)
-    let history=@json($history);
-    if(history===1){
-        document.querySelector('div.rating').style='display: none;';
-        document.querySelector('div.navigation').style='display: none;';
-        document.querySelector('button.wear-button').style='display: none;';
-        showPopupWear();
-    }else{
-        document.querySelector('div.rating').style='display: block;';
-        document.querySelector('div.navigation').style='display: block;';
-        document.querySelector('button.wear-button').style='display: block;';
-    }
-
-
-
-    //setting the generated outfit
-    let outfits=@json($outfits);
-    if(outfits!==null){
-        let imagepath;
-        document.querySelector('div.outfit-display').style='display:block ;';
-
-        if(outfits.outers[0]==null){
-            document.querySelectorAll('div.item')[0].style='display: none;';
-            document.querySelectorAll('div.item')[0].querySelector('p.index').innerHTML= null;
-        }else{
-            imagepath=outfits.outers[0].imagePath;
-            document.querySelectorAll('div.item')[0].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
-            document.querySelectorAll('div.item')[0].querySelector('p').innerHTML=outfits.outers[0].category
-            document.querySelectorAll('div.item')[0].querySelector('p.index').innerHTML= outfits.outers[0].id;
-        }
-
-        imagepath=outfits.shirts[0].imagePath;
-        document.querySelectorAll('div.item')[1].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
-        document.querySelectorAll('div.item')[1].querySelector('p').innerHTML=outfits.shirts[0].category
-        document.querySelectorAll('div.item')[1].querySelector('p.index').innerHTML= outfits.shirts[0].id;
-
-        if(outfits.pants[0]==null){
-            document.querySelectorAll('div.item')[2].style='display: none;';
-            document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML= null;
-        }else{
-            imagepath=outfits.pants[0].imagePath;
-            document.querySelectorAll('div.item')[2].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
-            document.querySelectorAll('div.item')[2].querySelector('p').innerHTML=outfits.pants[0].category
-            document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML= outfits.pants[0].id;
-        }
-    }
-
-    let indexClothes=0;
-
-    let buttonsgenerateclothes=document.querySelector('div.navigation').querySelectorAll('button');
-    let scrollIndex=0;
-    for(let i=0;i<buttonsgenerateclothes.length;i++){
-        buttonsgenerateclothes[i].addEventListener('click',function(){
-            let outfits=@json($outfits);
-            let imagepath;
-            if(i==0){
-                if(scrollIndex!=0){
-                    scrollIndex-=1
-                }
-            }else{
-                if(scrollIndex!=outfits.shirts.length-1){
-                    scrollIndex+=1
-                }
-            }
-            if(outfits.outers[scrollIndex]==null){
-                document.querySelectorAll('div.item')[0].style='display: none;';
-                document.querySelectorAll('div.item')[0].querySelector('p.index').innerHTML= null;
-            }else{
-                document.querySelectorAll('div.item')[0].style='display: block;';
-                imagepath=outfits.outers[scrollIndex].imagePath;
-                document.querySelectorAll('div.item')[0].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
-                document.querySelectorAll('div.item')[0].querySelector('p').innerHTML=outfits.outers[scrollIndex].category
-                document.querySelectorAll('div.item')[0].querySelector('p.index').innerHTML= outfits.outers[scrollIndex].id;
-            }
-
-            imagepath=outfits.shirts[scrollIndex].imagePath;
-            document.querySelectorAll('div.item')[1].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
-            document.querySelectorAll('div.item')[1].querySelector('p').innerHTML=outfits.shirts[scrollIndex].category
-            document.querySelectorAll('div.item')[1].querySelector('p.index').innerHTML= outfits.shirts[scrollIndex].id;
-
-            if(outfits.pants[scrollIndex]==null){
-                document.querySelectorAll('div.item')[2].style='display: none;';
-                document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML= null;
-            }else{
-                document.querySelectorAll('div.item')[2].style='display: block;';
-                imagepath=outfits.pants[scrollIndex].imagePath;
-                document.querySelectorAll('div.item')[2].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
-                document.querySelectorAll('div.item')[2].querySelector('p').innerHTML=outfits.pants[scrollIndex].category
-                document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML= outfits.pants[scrollIndex].id;
-            }
-        })
-    }
-
-
-
-    //button untuk wear clothes
-    document.querySelector('button.wear-button').addEventListener('click',function(){
-        let form = document.createElement("form");
-        form.method = "POST";
-        form.action = "{{ route('UseOutfit') }}"; // Replace with your route name
-
-        // Add CSRF Token (required for Laravel POST requests)
-        let csrfToken = document.createElement("input");
-        csrfToken.type = "hidden";
-        csrfToken.name = "_token";
-        csrfToken.value = "{{ csrf_token() }}";
-        form.appendChild(csrfToken);
-
-        // Optional: Add additional data as hidden inputs
-        let inputWeather = document.createElement("input");
-        inputWeather.type = "hidden";
-        inputWeather.name = "weather";
-        inputWeather.value = @json($weather);
-        form.appendChild(inputWeather);
-
-        let inputStyle = document.createElement("input");
-        inputStyle.type = "hidden";
-        inputStyle.name = "style";
-        inputStyle.value = @json($style);
-        form.appendChild(inputStyle);
-
-        let inputidOuter = document.createElement("input");
-        inputidOuter.type = "hidden";
-        inputidOuter.name = "idOuter";
-        inputidOuter.value = document.querySelectorAll('div.item')[0].querySelector('p.index').innerHTML;
-        form.appendChild(inputidOuter);
-
-        let inputidShirt = document.createElement("input");
-        inputidShirt.type = "hidden";
-        inputidShirt.name = "idShirt";
-        inputidShirt.value = document.querySelectorAll('div.item')[1].querySelector('p.index').innerHTML;
-        form.appendChild(inputidShirt);
-
-        let inputidPant = document.createElement("input");
-        inputidPant.type = "hidden";
-        inputidPant.name = "idPant";
-        inputidPant.value = document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML;
-        form.appendChild(inputidPant);
-
-        let inputdt = document.createElement("input");
-        inputdt.type = "hidden";
-        inputdt.name = "dt";
-        inputdt.value = @json($fetchdata['dt']);
-        form.appendChild(inputdt);
-
-        rating=document.querySelectorAll('span.star');
-        ratingValue=null;
-        for(let x=rating.length-1;x>=0;x--){
-            if(rating[x].classList.contains('active')){
-                ratingValue=x+1;
-                break;
-            }
-        }
-        console.log(ratingValue)
-        let inputrate = document.createElement("input");
-        inputrate.type = "hidden";
-        inputrate.name = "rate";
-        inputrate.value = ratingValue;
-        form.appendChild(inputrate);
-
-        document.body.appendChild(form);
-        form.submit();
-    })
-
-    //button untuk generate clothes
-    document.querySelector('button.generate-button').addEventListener('click',function(){
-        let form = document.createElement("form");
-        form.method = "POST";
-        form.action = "{{ route('generatorPost') }}"; // Replace with your route name
-
-        // Add CSRF Token (required for Laravel POST requests)
-        let csrfToken = document.createElement("input");
-        csrfToken.type = "hidden";
-        csrfToken.name = "_token";
-        csrfToken.value = "{{ csrf_token() }}";
-        form.appendChild(csrfToken);
-
-        // Optional: Add additional data as hidden inputs
-        let inputWeather = document.createElement("input");
-        inputWeather.type = "hidden";
-        inputWeather.name = "weather";
-        inputWeather.value = document.querySelector('p.weathertext').innerHTML;
-        form.appendChild(inputWeather);
-
-        let inputStyle = document.createElement("input");
-        inputStyle.type = "hidden";
-        inputStyle.name = "style";
-        inputStyle.value = document.querySelector('select#style').value;
-        form.appendChild(inputStyle);
-
-        document.body.appendChild(form);
-        form.submit();
-    })
-
-
     // Variabel untuk menyimpan koordinat
     let latitude;
     let longitude;
@@ -331,39 +122,83 @@
     }
 
     // Fungsi untuk mengambil data cuaca dari API
-    async function getData(lat, lon) {
-        try {
-            let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=a98a0f5f5daa0606b7aa44514cc6cdf3&units=metric`);
-            let data = await response.json();
-            return data;
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            return null;
+    // async function getData(lat, lon) {
+    //     try {
+    //         // let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=a98a0f5f5daa0606b7aa44514cc6cdf3&units=metric`);
+    //         let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?&q=sentul&appid=a98a0f5f5daa0606b7aa44514cc6cdf3&units=metric`);
+    //         let data = await response.json();
+    //         return data;
+    //     } catch (error) {
+    //         console.error('Error fetching data:', error);
+    //         return null;
+    //     }
+    // }
+
+    // async function getData() {
+    //     try {
+    //         // let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=a98a0f5f5daa0606b7aa44514cc6cdf3&units=metric`);
+    //         let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?&q=sentul&appid=a98a0f5f5daa0606b7aa44514cc6cdf3&units=metric`);
+    //         let data = await response.json();
+    //         processWeatherData(data);
+    //     } catch (error) {
+    //         console.error('Error fetching data:', error);
+    //         return null;
+    //     }
+    // }
+    async function getData() {
+            try {
+                // let response = await fetch('https://api.openweathermap.org/data/2.5/forecast?q=sentul,id&appid=3282175a32c9ea3ccd6e541b9510f24c');
+                let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?&q=sentul&appid=a98a0f5f5daa0606b7aa44514cc6cdf3&units=metric`);
+                let data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
         }
-    }
+
+        getData().then(data => {
+            // if (!data || !data.list) {
+            //     console.error("Invalid data structure:", data);
+            //     return;
+            // }
+            console.log('ini data bang  ',data);
+            processWeatherData(data);
+        })
 
     // Fungsi utama untuk menjalankan aplikasi cuaca
-    async function startWeatherApp() {
+    // async function startWeatherApp() {
 
-        try {
-            // 1. Dapatkan lokasi pengguna
-            let location = await getUserLocation();
+    //     try {
+    //         // 1. Dapatkan lokasi pengguna
+    //         let location = await getUserLocation();
 
-            // 2. Gunakan lokasi untuk mengambil data cuaca
-            let weatherData = await getData(location.latitude, location.longitude);
+    //         // 2. Gunakan lokasi untuk mengambil data cuaca
+    //         let weatherData = await getData(location.latitude, location.longitude);
 
-            if (weatherData) {
-                console.log("Data Cuaca:", weatherData);
+    //         if (weatherData) {
+    //             console.log("Data Cuaca:", weatherData);
 
-                // 3. Jalankan Kode 1 setelah API berhasil
-                processWeatherData(weatherData);
-            } else {
-                console.error("Gagal mendapatkan data cuaca.");
-            }
-        } catch (error) {
-            console.error("Terjadi kesalahan:", error);
-        }
-    }
+    //             // 3. Jalankan Kode 1 setelah API berhasil
+    //             processWeatherData(weatherData);
+    //         } else {
+    //             console.error("Gagal mendapatkan data cuaca.");
+    //         }
+    //     } catch (error) {
+    //         console.error("Terjadi kesalahan:", error);
+    //     }
+    // }
+    // a=getData();
+    // console.log('a',a);
+    // if(a){
+    //     console.log(a);
+    //     processWeatherData(a);
+
+    // }else{
+    //     console.log('error nih bang')
+    // }
+    // async function startWeatherApp(){
+    //     let weatherData = getData()
+    // }
 
     // Fungsi untuk memproses data cuaca dan menampilkan di halaman
     function processWeatherData(data) {
@@ -560,13 +395,13 @@
     });
 
     // Jalankan program
-    startWeatherApp();
+    // startWeatherApp();
 
         // JS HOURLY FORECAST
         async function getData2() {
             try {
                 let response = await fetch('https://api.openweathermap.org/data/2.5/forecast?q=sentul,id&appid=3282175a32c9ea3ccd6e541b9510f24c');
-                console.log(latitude, longitude)
+                // console.log(latitude, longitude)
                 // let response = await fetch('https://api.openweathermap.org/data/2.5/forecast?lat='+latitude+'&lon='+longitude+'&appid=a98a0f5f5daa0606b7aa44514cc6cdf3');
                 let data = await response.json();
                 return data;
@@ -628,6 +463,218 @@
                 }
             }
         });
+
+
+
+    //no generate button
+    let wardrobeitem=@json($wardrobe);
+    if(wardrobeitem===null){
+        document.querySelector('button.generate-button').style='display: none;';
+        document.querySelector('p.nocloth').style='display:block;'
+    }else{
+        document.querySelector('button.generate-button').style='display: block;';
+        document.querySelector('p.nocloth').style='display:none;'
+    }
+
+    //no pop up
+    let popup=@json($popup);
+
+
+    //history(no show rating)
+    let history=@json($history);
+    if(history===1){
+        document.querySelector('div.rating').style='display: none;';
+        document.querySelector('div.navigation').style='display: none;';
+        document.querySelector('button.wear-button').style='display: none;';
+        showPopupWear();
+    }else{
+        document.querySelector('div.rating').style='display: block;';
+        document.querySelector('div.navigation').style='display: block;';
+        document.querySelector('button.wear-button').style='display: block;';
+    }
+
+
+
+    //setting the generated outfit
+    let outfits=@json($outfits);
+    console.log('ini lagi lah bang',outfits);
+    if(outfits!==null){
+        let imagepath;
+        document.querySelector('div.outfit-display').style='display:block ;';
+
+        if(outfits.outers[0]==null){
+            document.querySelectorAll('div.item')[0].style='display: none;';
+            document.querySelectorAll('div.item')[0].querySelector('p.index').innerHTML= null;
+        }else{
+            imagepath=outfits.outers[0].imagePath;
+            document.querySelectorAll('div.item')[0].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
+            document.querySelectorAll('div.item')[0].querySelector('p').innerHTML=outfits.outers[0].category
+            document.querySelectorAll('div.item')[0].querySelector('p.index').innerHTML= outfits.outers[0].id;
+        }
+
+        imagepath=outfits.shirts[0].imagePath;
+        document.querySelectorAll('div.item')[1].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
+        document.querySelectorAll('div.item')[1].querySelector('p').innerHTML=outfits.shirts[0].category
+        document.querySelectorAll('div.item')[1].querySelector('p.index').innerHTML= outfits.shirts[0].id;
+
+        if(outfits.pants[0]==null){
+            document.querySelectorAll('div.item')[2].style='display: none;';
+            document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML= null;
+        }else{
+            imagepath=outfits.pants[0].imagePath;
+            document.querySelectorAll('div.item')[2].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
+            document.querySelectorAll('div.item')[2].querySelector('p').innerHTML=outfits.pants[0].category
+            document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML= outfits.pants[0].id;
+        }
+    }
+
+    let indexClothes=0;
+
+    let buttonsgenerateclothes=document.querySelector('div.navigation').querySelectorAll('button');
+    let scrollIndex=0;
+    for(let i=0;i<buttonsgenerateclothes.length;i++){
+        buttonsgenerateclothes[i].addEventListener('click',function(){
+            let outfits=@json($outfits);
+            let imagepath;
+            if(i==0){
+                if(scrollIndex!=0){
+                    scrollIndex-=1
+                }
+            }else{
+                if(scrollIndex!=outfits.shirts.length-1){
+                    scrollIndex+=1
+                }
+            }
+            if(outfits.outers[scrollIndex]==null){
+                document.querySelectorAll('div.item')[0].style='display: none;';
+                document.querySelectorAll('div.item')[0].querySelector('p.index').innerHTML= null;
+            }else{
+                document.querySelectorAll('div.item')[0].style='display: block;';
+                imagepath=outfits.outers[scrollIndex].imagePath;
+                document.querySelectorAll('div.item')[0].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
+                document.querySelectorAll('div.item')[0].querySelector('p').innerHTML=outfits.outers[scrollIndex].category
+                document.querySelectorAll('div.item')[0].querySelector('p.index').innerHTML= outfits.outers[scrollIndex].id;
+            }
+
+            imagepath=outfits.shirts[scrollIndex].imagePath;
+            document.querySelectorAll('div.item')[1].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
+            document.querySelectorAll('div.item')[1].querySelector('p').innerHTML=outfits.shirts[scrollIndex].category
+            document.querySelectorAll('div.item')[1].querySelector('p.index').innerHTML= outfits.shirts[scrollIndex].id;
+
+            if(outfits.pants[scrollIndex]==null){
+                document.querySelectorAll('div.item')[2].style='display: none;';
+                document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML= null;
+            }else{
+                document.querySelectorAll('div.item')[2].style='display: block;';
+                imagepath=outfits.pants[scrollIndex].imagePath;
+                document.querySelectorAll('div.item')[2].querySelector('img').src=`{{ asset('Asset/Wardrobe/Images/${imagepath}') }}`
+                document.querySelectorAll('div.item')[2].querySelector('p').innerHTML=outfits.pants[scrollIndex].category
+                document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML= outfits.pants[scrollIndex].id;
+            }
+        })
+    }
+
+
+
+    //button untuk wear clothes
+    document.querySelector('button.wear-button').addEventListener('click',function(){
+        let form = document.createElement("form");
+        form.method = "POST";
+        form.action = "{{ route('UseOutfit') }}"; // Replace with your route name
+
+        // Add CSRF Token (required for Laravel POST requests)
+        let csrfToken = document.createElement("input");
+        csrfToken.type = "hidden";
+        csrfToken.name = "_token";
+        csrfToken.value = "{{ csrf_token() }}";
+        form.appendChild(csrfToken);
+
+        // Optional: Add additional data as hidden inputs
+        let inputWeather = document.createElement("input");
+        inputWeather.type = "hidden";
+        inputWeather.name = "weather";
+        inputWeather.value = @json($weather);
+        form.appendChild(inputWeather);
+
+        let inputStyle = document.createElement("input");
+        inputStyle.type = "hidden";
+        inputStyle.name = "style";
+        inputStyle.value = @json($style);
+        form.appendChild(inputStyle);
+
+        let inputidOuter = document.createElement("input");
+        inputidOuter.type = "hidden";
+        inputidOuter.name = "idOuter";
+        inputidOuter.value = document.querySelectorAll('div.item')[0].querySelector('p.index').innerHTML;
+        form.appendChild(inputidOuter);
+
+        let inputidShirt = document.createElement("input");
+        inputidShirt.type = "hidden";
+        inputidShirt.name = "idShirt";
+        inputidShirt.value = document.querySelectorAll('div.item')[1].querySelector('p.index').innerHTML;
+        form.appendChild(inputidShirt);
+
+        let inputidPant = document.createElement("input");
+        inputidPant.type = "hidden";
+        inputidPant.name = "idPant";
+        inputidPant.value = document.querySelectorAll('div.item')[2].querySelector('p.index').innerHTML;
+        form.appendChild(inputidPant);
+
+        let inputdt = document.createElement("input");
+        inputdt.type = "hidden";
+        inputdt.name = "dt";
+        inputdt.value = @json($fetchdata['dt']);
+        form.appendChild(inputdt);
+
+        rating=document.querySelectorAll('span.star');
+        ratingValue=null;
+        for(let x=rating.length-1;x>=0;x--){
+            if(rating[x].classList.contains('active')){
+                ratingValue=x+1;
+                break;
+            }
+        }
+        console.log(ratingValue)
+        let inputrate = document.createElement("input");
+        inputrate.type = "hidden";
+        inputrate.name = "rate";
+        inputrate.value = ratingValue;
+        form.appendChild(inputrate);
+
+        document.body.appendChild(form);
+        form.submit();
+    })
+
+    //button untuk generate clothes
+    document.querySelector('button.generate-button').addEventListener('click',function(){
+        let form = document.createElement("form");
+        form.method = "POST";
+        form.action = "{{ route('generatorPost') }}"; // Replace with your route name
+
+        // Add CSRF Token (required for Laravel POST requests)
+        let csrfToken = document.createElement("input");
+        csrfToken.type = "hidden";
+        csrfToken.name = "_token";
+        csrfToken.value = "{{ csrf_token() }}";
+        form.appendChild(csrfToken);
+
+        // Optional: Add additional data as hidden inputs
+        let inputWeather = document.createElement("input");
+        inputWeather.type = "hidden";
+        inputWeather.name = "weather";
+        inputWeather.value = document.querySelector('p.weathertext').innerHTML;
+        form.appendChild(inputWeather);
+
+        let inputStyle = document.createElement("input");
+        inputStyle.type = "hidden";
+        inputStyle.name = "style";
+        inputStyle.value = document.querySelector('select#style').value;
+        form.appendChild(inputStyle);
+
+        document.body.appendChild(form);
+        form.submit();
+    })
+
 
 
 
