@@ -28,8 +28,8 @@
         <h1 class="whattowear">What to Wear Today?</h1>
         <x-style-selector></x-style-selector>
         <x-generate-outfit></x-generate-outfit>
-        <p class="nocloth" id="tulisan">No clothes yet, add them in your wardrobe!</p>
-        <p class="notnenoughclothes" style="display: none;" id="tulisan">Insufficient Clothes to Generate, add more in wardobe page!</p>
+        <p class="nocloth" id="tulisan">⛔No clothes yet, add them in your wardrobe!⛔</p>
+        <p class="notnenoughclothes" style="display: none;" id="tulisan">⛔Insufficient Clothes, add more in wardobe page!⛔</p>
         <p class="nopants" style="display: none;" id="tulisan">⛔No pants yet, get some pants⛔</p>
         <div class="outfit-display" id="outfitDisplay">
             <div class="item">

@@ -61,3 +61,15 @@ document.getElementById('profilePicInput').addEventListener('change', function(e
         reader.readAsDataURL(file);
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const genderSelect = document.getElementById("gender");
+    const selectedGender = genderSelect.options[0].text.trim(); // Ambil nilai terpilih (yang pertama)
+
+    // Loop melalui semua opsi dan sembunyikan yang sesuai
+    for (let i = 1; i < genderSelect.options.length; i++) {
+        if (genderSelect.options[i].text.trim() === selectedGender) {
+            genderSelect.options[i].style.display = "none";
+        }
+    }
+});
