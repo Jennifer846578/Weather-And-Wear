@@ -34,7 +34,7 @@
                     {{-- <p>{{ $events[0]->summary }}</p> --}}
                 @endif
             @else
-                <p class="coba">Exercise | 08:00 - 09:00</p>
+                <p class="schedule-item">19:00 - 20:00 Meeting With Client</p>
             @endif
         </div>
 

@@ -66,18 +66,24 @@ class ProfileController extends Controller
         $data=User::find($id);
         $data->gender=$request->gender;
         $data->name=$request->name;
-        // if($request->profileimage != NULL){
+        // if($request->profileimage !=  NULL){
             
         // }
         $request->validate([
             'profileimage'=>"image|mimes:png,jpeg|max:1024"
         ]);
-        if(file_exists(public_path('Asset/Profile/'.$data->profileimage))){
-            File::delete(public_path('Asset/Profile/'.$data->profileimage));
-        };
-        $imagePath=time().'.'.$request->profileimage->extension();
-        $request->profileimage->move(public_path('Asset/Profile'),$imagePath);
-        $data->profileimage=$imagePath;
+        // return $data->profileimage.$request->profileimage;
+        if($request->profileimage!=NULL && $data->profileimage!=$request->profileimage ){
+            if($data->profileimage!='noprofile.png'){
+                if(file_exists(public_path('Asset/Profile/'.$data->profileimage))){
+                    File::delete(public_path('Asset/Profile/'.$data->profileimage));
+                };
+            }
+            $imagePath=time().'.'.$request->profileimage->extension();
+            $request->profileimage->move(public_path('Asset/Profile'),$imagePath);
+            $data->profileimage=$imagePath;
+        }
+        
         
         // if(file_exists(public_path('Asset\Profile'.$data->profileimage))){
         //     File::delete(public_path('Asset/Profile/'.$data->profileimage));
