@@ -326,6 +326,8 @@
 
 
 <script>
+    let weatherDate;
+    let timeOnly;
     //kode elson
     let dom_parent=document.querySelector('div.dvnHistoryboxcontent');
     let dom_one=document.querySelector('div.dvnweatherhistory').cloneNode(true);
@@ -360,6 +362,10 @@
             let weather=outfits[x]['weather']
             let style=outfits[x]['style']
             let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            weatherDateTime = datedesc[x].querySelector('div.weatherDate').querySelector('p').innerHTML;
+            // timeOnly = weatherDateTime.split("<br>")[2]; // Ambil bagian waktu (baris ke-3)
+            // console.log(timeOnly);
+
 
             datedesc[x].querySelector('div.weatherDate').querySelector('p').innerHTML=`${days[date.getDay()]}<br>${date.toLocaleDateString("en-GB")}<br>${date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}`;
             datedesc[x].querySelector('div.weatherDesc').querySelector('p').classList.add('weathers');
@@ -367,11 +373,32 @@
             p.classList.add('desc');
             p.style="display: none";
             p.innerHTML=`${weather}`
+            timelah=document.createElement('p');
+            timelah.classList.add('timedesc');
+            timelah.style="display: none";
+            timelah.innerHTML=`${date.getHours()}`
+
             datedesc[x].querySelector('div.weatherDesc').appendChild(p.cloneNode(true))
+            datedesc[x].querySelector('div.weatherDesc').appendChild(timelah.cloneNode(true))
             datedesc[x].querySelector('div.weatherDesc').querySelector('p.weathers').innerHTML=`${weather} at ${date.toLocaleDateString("en-GB")} - ${date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}<br>Style Choosen : ${style}`;
             // datasec.querySelector('div.weatherDesc').querySelector('p.weathers');
+        }
 
 
+        // console.log(weatherDate, 'tests');
+
+        // console.log(timeOnly)
+        let imagess=document.querySelectorAll('div.weatherImages');
+        for(let x=0;x<imagess.length;x++){
+            weatherrn=imagess[x].parentNode.querySelector('p.desc').innerHTML;
+            // console.log(weatherrn,'ini')
+            isNight=imagess[x].parentNode.querySelector('p.timedesc').innerHTML;
+            if (["Rain", "Clear", "Thunderstorm"].includes(weatherrn)) {
+                imagePath = `Asset/Homepage/${weatherrn}_weather_${isNight ? 'malam' : 'siang'}.png`;
+            } else {
+                imagePath = `Asset/Homepage/${weatherrn}_weather.png`;
+            }
+            imagess[x].querySelector('img').src=imagePath;
         }
 
         imagepathes=[]
