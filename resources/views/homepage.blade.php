@@ -30,8 +30,7 @@
         <x-generate-outfit></x-generate-outfit>
         <p class="nocloth" id="tulisan">No clothes yet, add them in your wardrobe!</p>
         <p class="notnenoughclothes" style="display: none;" id="tulisan">Insufficient Clothes to Generate, add more in wardobe page!</p>
-        <p class="nopants" style="display: none;" id="tulisan">No pants yet, get some pants</p>
-
+        <p class="nopants" style="display: none;" id="tulisan">⛔No pants yet, get some pants⛔</p>
         <div class="outfit-display" id="outfitDisplay">
             <div class="item">
                 <img src="" class="category-icon-image">
@@ -64,7 +63,7 @@
 
             <button class="wear-button" onclick="">Wear This Outfit</button> <!-- Onclick added -->
         </div>
-
+        <div class="berkelas"></div>
         <!-- Popup Wear -->
         <div id="popup-wear" class="popup-wear" style="display: none;">
             <div class="popup-wear-content">
@@ -531,10 +530,32 @@
         }
     }else{
         let wardrobes=@json($wardrobe);
-        if(wardrobes!=null  ){
-            document.querySelector('p.notnenoughclothes').style="display:block;";
 
-
+        if(wardrobes!=null){
+            console.log(wardrobes)
+            bottom=['Cargo', 'Jeans', 'Jogger', 'Legging', 'Shorts', 'Skirt', 'Trousers']
+            tops=['Dress', 'Shirt','TShirt']
+            let flag1=1,flag2=1;
+            for(let x=0;x<wardrobes.length;x++){
+                if(bottom.includes(wardrobes[x]['category'])){
+                    flag1=0;
+                }
+                else if(tops.includes(wardrobes[x]['category'])){
+                    flag2=0;
+                }
+                else if(wardrobes[x]['category']=='Dress'){
+                    flag1=0;
+                    flag2=0;
+                }
+            }
+            console.log('flagnig',flag1,flag2)
+            if(flag1 && flag2){
+                document.querySelector('p.notnenoughclothes').style="display:block;";
+            }else if(flag2==0 && flag1==1){
+                document.querySelector('p.nopants').style="display:block;";
+            }
+        }else{
+            document.querySelector('p.nocloth').style="display:block;";
         }
         // document.querySelector('p.notnenoughclothes').style="display:block;";
     }
@@ -687,7 +708,9 @@
     })
 
 
-
+    document.querySelector('button.tips-button').addEventListener('click',function(){
+        document.querySelector('div.tips-popup').style="display:flex;"
+    })
 
 </script>
 

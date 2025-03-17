@@ -12,6 +12,47 @@ import numpy as np
 import math
 import random
 
+from colorsys import rgb_to_hsv
+
+
+def hex_to_rgb(hex_color):
+    hex_color = hex_color.lstrip("#")
+    return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+
+def color_similarity(color1, color2):
+    rgb1 = np.array(hex_to_rgb(color1)) / 255.0
+    rgb2 = np.array(hex_to_rgb(color2)) / 255.0
+    
+    hsv1 = rgb_to_hsv(*rgb1)
+    hsv2 = rgb_to_hsv(*rgb2)
+    
+    hue_diff = min(abs(hsv1[0] - hsv2[0]), 1 - abs(hsv1[0] - hsv2[0]))
+    sat_diff = abs(hsv1[1] - hsv2[1])
+    val_diff = abs(hsv1[2] - hsv2[2])
+    
+    similarity = 1 - (0.6 * hue_diff + 0.3 * sat_diff + 0.1 * val_diff)
+    return max(0, similarity)
+
+def outfit_color_match(top, top_color, bottom=None, bottom_color=None, outer=None, outer_color=None):
+    colors = [(top, top_color)]
+    if bottom and bottom_color:
+        colors.append((bottom, bottom_color))
+    if outer and outer_color:
+        colors.append((outer, outer_color))
+    
+    if len(colors) == 1:
+        return 1.0  # Jika hanya satu warna, dianggap cocok
+    
+    total_score = 0
+    comparisons = 0
+    for i in range(len(colors)):
+        for j in range(i + 1, len(colors)):
+            total_score += color_similarity(colors[i][1], colors[j][1])
+            comparisons += 1
+    
+    return total_score / comparisons if comparisons > 0 else 1.0
+
+
 def distribute_items(point, total_items=5):
     # Step 1: Normalize to 100%
     point = [p + 20 for p in point]  # Increase all values by 20
@@ -198,6 +239,7 @@ if __name__ == "__main__":
     for x in range(len(outfitsScore)):
         outfitByRatingId[str(round(outfitsScore[x]))].append(outfitsId[x])
     # print(outfitByRatingId)
+
     
     
 
@@ -246,6 +288,73 @@ if __name__ == "__main__":
                 botReturnList.append(outfitByRatingId[rating][index][2])
                 outfitByRatingId[rating].pop(index)
     outfitlistreturn=[outerReturnList,topReturnList,botReturnList]
+
+    # print(outfitlistreturn)
+    outerlastlistname=[]
+    toplastlistname=[]
+    bottomlastlistname=[]
+    colorouter=[]
+    colortop=[]
+    colorbottom=[]
+    for x in range(len(outfitlistreturn[0])):
+        if(outfitlistreturn[0][x]!=None):
+            for y in range(len(clothes)):
+                if(clothes[y]['id']==outfitlistreturn[0][x]):
+                    outerlastlistname.append(clothes[y]['category'])
+                    colorouter.append(clothes[y]['color'])
+        else:
+            outerlastlistname.append(None)
+            colorouter.append(None)
+        if(outfitlistreturn[2][x]!=None):
+            for y in range(len(clothes)):
+                if(clothes[y]['id']==outfitlistreturn[2][x]):
+                    bottomlastlistname.append(clothes[y]['category'])
+                    colorbottom.append(clothes[y]['color'])
+        else:
+            bottomlastlistname.append(None)
+            colorbottom.append(None)
+        for y in range(len(clothes)):
+            if(clothes[y]['id']==outfitlistreturn[1][x]):
+                toplastlistname.append(clothes[y]['category'])
+                colortop.append(clothes[y]['color'])
+
+    
+
+    outfitlast=[outerlastlistname,toplastlistname,bottomlastlistname]
+    coloroutfit=[colorouter,colortop,colorbottom]
+    # print(outfitlast,coloroutfit)
+    outfitscolorranks=[]
+    for x in range(len(outfitlast[1])):
+        outfitsrn=[]
+        outfitsrn.append(outfitlast[1][x].lower())
+        outfitsrn.append(coloroutfit[1][x])
+        if(outfitlast[2][x]!=None):
+            outfitsrn.append(outfitlast[2][x].lower())
+            outfitsrn.append(coloroutfit[2][x])
+        else:
+            outfitsrn.append(None)
+            outfitsrn.append(None)
+        if(outfitlast[0][x]!=None):
+            outfitsrn.append(outfitlast[0][x].lower())
+            outfitsrn.append(coloroutfit[0][x])
+        else:
+            outfitsrn.append(None)
+            outfitsrn.append(None)
+        # print(outfitsrn)
+        # print()
+        outfitscolorranks.append(outfit_color_match(outfitsrn[0],outfitsrn[1],outfitsrn[2],outfitsrn[3],outfitsrn[4],outfitsrn[5]))
+    # print(outfitlistreturn)
+    for i in range(len(outfitscolorranks)):
+        for j in range(0, len(outfitscolorranks) - i - 1):
+            if outfitscolorranks[j] > outfitscolorranks[j + 1]:  # Swap if the element is greater than the next
+                outfitscolorranks[j], outfitscolorranks[j + 1] = outfitscolorranks[j + 1], outfitscolorranks[j]
+                outfitlistreturn[0][j],outfitlistreturn[0][j+1]=outfitlistreturn[0][j+1],outfitlistreturn[0][j]
+    # print(outfitscolorranks)
+    # print(outfitlistreturn)
+
+    
+
+        
     print(json.dumps(outfitlistreturn))
         
 
