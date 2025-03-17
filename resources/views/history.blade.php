@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History Page</title>
-    <link rel="stylesheet" href="{{ asset('css/blazer.css') }}">
-
+    {{-- <link rel="stylesheet" href="{{ asset('css/blazer.css') }}"> --}}
     <link rel="stylesheet" href="css/history.css">
 </head>
 <body>
@@ -16,7 +15,13 @@
         <h3>History</h3>
         {{-- w --}}
         <div class="dvnHistoryboxcontent">
-            <p class="nohistory" style="display: none;" id = "tulisan">⛔No History Yet!⛔</p>
+            <div class="no-history-image-wrapper" style="display: none;">
+                <img src="{{ asset('Asset/History/no clothes.png') }}" class="no-history-image">
+            </div>
+            <p class="nohistory" style="display: none;" id = "tulisan">
+                {{-- ⛔No History Yet!⛔ --}}
+                No History Yet!
+            </p>
             <div class="dvnweatherhistory">
                 <div class="weatherImages">
                     <img src="Asset/History/2.png" width="114px">
@@ -430,6 +435,8 @@
         document.querySelector('div.dvnHistoryboxcontent').parentNode.appendChild(spaces)
     }else{
         document.querySelector('p.nohistory').style="display: block;";
+        document.querySelector('div.no-history-image-wrapper').style="display: flex;";
+        document.querySelector('div.no-history-image-wrapper').parentNode.style="justify-content: center;";
     }
 
 

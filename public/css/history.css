@@ -1,5 +1,18 @@
+.no-history-image-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* margin: auto; */
+}
+
+.no-history-image{
+    width: 200px;
+}
+
 p#tulisan{
-    color: red;
+    /* color: red; */
+    color: #6583AB;
     justify-content: center;
     align-items: center;
     /* margin: auto; */
@@ -7,6 +20,7 @@ p#tulisan{
     text-align: center;
     margin: 5vh 0;
     font-weight: bold;
+    font-size: 20px;
 }
 
 .berkelas{
@@ -38,19 +52,25 @@ body
 {
     display: flex;
     background-color: #B2D3FF;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
+}
+
+.dvnHistoryBox{
+    margin: none !important;
 }
 
 .dvnHistoryBox h3
 {
-    margin-top: 0px;
-    margin-left: 10px;
+    margin-top: -10px;
+    padding-top: 15px;
+    padding-left: 20px;
     margin-bottom: 30px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bold;
     font-size: 35px;
     color: #6583AB;
+    margin: none;
 }
 
 .dvnCalendar
@@ -91,7 +111,8 @@ body
     position: relative;
     z-index: -1;
     height: 55vh;
-    justify-content: center;
+    /* justify-content: center; */
+    min-height: 87vh;
 }
 
 
@@ -355,4 +376,316 @@ body
     margin-bottom: 15px; /* Jarak bawah dengan elemen lainnya */
     color: #6b89d4; /* Warna teks */
     font-size: 20px; /* Ukuran font header */
+}
+
+.phone-card {
+    position: relative;
+    width: 412px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgb(178, 211, 255);
+    overflow: auto;
+}
+
+.photo-atas{
+    width: 100%;
+    height: 35vh;
+}
+
+.clothes-wrapper-luar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -30px;
+}
+
+.clothes-wrapper{
+    width: 93%;
+    background-color: white;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    height: fit-content;
+    min-height: 65vh;
+    padding-bottom: 90px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.bottom-white{
+    width: 93%;
+    height: 30px;
+    background-color: white;
+}
+
+.judul-dan-fav-icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: -3px;
+}
+
+.judul-dan-fav-icon h1{
+    color: #6583AB;
+    padding-top: 5px;
+}
+
+.clothes-wrapper p{
+    text-align: justify;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+
+.BajuKosong {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 282px;
+    /* background-color: red; */
+    width: 100%;
+}
+
+.BajuKosong p{
+    text-align: center;
+    margin-top: 10px;
+    color: gray;
+    font-size: 14px;
+    opacity: 65%;
+}
+
+.BajuKosong img{
+    margin-top: 10px;
+    width: 150px;
+    height: 150px;
+    opacity: 65%;
+}
+
+.clothes-wrapper hr{
+    border-style: solid none none;
+    border-top: 2px solid gray;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.style-filter select {
+    width: 110px;
+    padding: 5px;
+    background: rgb(178, 211, 255);
+    border-color: transparent;
+    border-radius: 50px;
+    margin-bottom: 8px;
+}
+
+#style {
+    font-size: 15px;
+    outline: none;
+    color: #1e3c63;
+}
+
+#btn {
+    position: relative;
+    height: 27px;
+    width: 27px;
+    cursor: pointer;
+    margin-top: 8px;
+    margin-right: 8px;
+}
+
+#btn img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#btn #no {
+    opacity: 1;
+    z-index: 2;
+    visibility: visible;
+}
+
+#btn #yes {
+    z-index: 1;
+}
+
+.clothes-list{
+    height: fit-content;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.two-category-wrapper{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.two-category-wrapper .category:only-child { /* Mengatur posisi ke kiri jika hanya ada 1 item */
+    margin-right: auto; /* Tarik ke kiri */
+    margin-left: 0; /* Pastikan tidak ada margin kiri */
+}
+
+.category{
+    background-color: #F2F2F2;
+    width: 175px;
+    height: 175px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: rgba(0, 0, 0, 0.2) 4px 4px 8px; */
+    /* cursor: pointer; */
+    position: relative;
+}
+
+.category p{
+    color: #6583AB;
+}
+
+.category-icon-image{
+    width: auto;
+    height: 140px;
+    margin-top: 0px;
+}
+
+.btn-fav-clothes {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.editIcon img {
+    position: absolute;
+    top: 8px;
+    right: 30px;
+    /* left: 7px; */
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.btn-fav-clothes img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.btn-fav-clothes .no-fav-clothes {
+    opacity: 1;
+    z-index: 2;
+    visibility: visible;
+}
+
+.btn-fav-clothes .yes-fav-clothes {
+    z-index: 1;
+}
+
+.back-button {
+    position: fixed;
+    width: 35px;
+    height: 35px;
+    background-color: rgb(178, 211, 255);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: rgba(0, 0, 0, 0.4) 2px 2px 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.back-button img {
+    width: 20px;
+    height: 20px;
+}
+
+.scroll-top-button {
+    position: fixed; /* Tetap di tempat meskipun di-scroll */
+    bottom: 100px; /* Jarak dari bawah layar */
+    right: calc((100vw - 412px) / 2 + 10px); /* Tetap di dalam konteks phone-card (412px lebar card) */
+    width: 50px;
+    height: 50px;
+    background-color: rgb(178, 211, 255);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: rgba(0, 0, 0, 0.4) 2px 2px 5px;
+}
+
+.scroll-top-button img {
+    width: 30px;
+    height: 30px;
+}
+
+/* details Style alert for success */
+
+/* Modal container */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal content */
+.modal-content {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+}
+
+/* Modal body */
+.modal-body img {
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.modal-body p {
+    font-size: 18px;
+    color: #5FB643;
+    font-weight: bold;
+    margin: 0;
 }
