@@ -56,6 +56,7 @@ body {
 
 .wrapper-atas{
     display: flex;
+    margin: auto;
     justify-content: center;
     align-items: center;
 }
@@ -65,19 +66,23 @@ body {
     justify-content: center;
     align-items: center;
     position: sticky;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     width: 90%;
+    margin: 20px auto 0 auto;
 }
 
 .inputButton {
+    margin: 0 auto;
     position: relative; /* Tambahkan ini agar anak-anak elemennya bisa menyesuaikan */
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
     border: 2.3px dashed #6583AB;
-    width: 378px;
-    height: 72px;
+    max-width: 378px;
+    max-height: 72px;
+    width: 80vw;
+    height: 16vw;
     background-color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
 }
@@ -101,10 +106,15 @@ body {
 
 .wardrobe-header{
     position: fixed;
-    width: 412px;
+    width: 100vw;
+    max-width: 412px;
     padding-bottom: 10px;
     background-color: rgb(178, 211, 255);
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: auto;
 }
 
 .wardrobe-header h1 {
@@ -171,8 +181,10 @@ body {
 
 .category{
     background-color: #ffffffaf;
-    width: 175px;
-    height: 175px;
+    width: 42vw;
+    height: 42vw;
+    max-width: 175px;
+    max-height: 175px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
