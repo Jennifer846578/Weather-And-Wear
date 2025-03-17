@@ -83,7 +83,6 @@
 
 
 
-
             {{-- mulai disini
             <div class="dvnweatherhistory">
                 <div class="weatherImages">
@@ -149,9 +148,6 @@
                 </div>
 
             </div> --}}
-
-
-
 
         </div>
     </div>
