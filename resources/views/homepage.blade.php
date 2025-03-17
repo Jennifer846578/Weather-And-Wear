@@ -532,7 +532,7 @@
         let wardrobes=@json($wardrobe);
 
         if(wardrobes!=null){
-            console.log(wardrobes)
+            console.log('iawooawk',wardrobes)
             bottom=['Cargo', 'Jeans', 'Jogger', 'Legging', 'Shorts', 'Skirt', 'Trousers']
             tops=['Dress', 'Shirt','TShirt']
             let flag1=1,flag2=1;
@@ -543,7 +543,8 @@
                 else if(tops.includes(wardrobes[x]['category'])){
                     flag2=0;
                 }
-                else if(wardrobes[x]['category']=='Dress'){
+                if(wardrobes[x]['category']==='Dress'){
+                    // console.log('sini lah')
                     flag1=0;
                     flag2=0;
                 }
@@ -553,6 +554,9 @@
                 document.querySelector('p.notnenoughclothes').style="display:block;";
             }else if(flag2==0 && flag1==1){
                 document.querySelector('p.nopants').style="display:block;";
+            }else if(flag2==1){
+                document.querySelector('p.nopants').style="display:block;";
+                document.querySelector('p.nopants').innerHTML='⛔No shirt yet, put on shirt please⛔'
             }
         }else{
             document.querySelector('p.nocloth').style="display:block;";

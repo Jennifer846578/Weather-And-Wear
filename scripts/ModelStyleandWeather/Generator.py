@@ -22,14 +22,14 @@ def hex_to_rgb(hex_color):
 def color_similarity(color1, color2):
     rgb1 = np.array(hex_to_rgb(color1)) / 255.0
     rgb2 = np.array(hex_to_rgb(color2)) / 255.0
-    
+
     hsv1 = rgb_to_hsv(*rgb1)
     hsv2 = rgb_to_hsv(*rgb2)
-    
+
     hue_diff = min(abs(hsv1[0] - hsv2[0]), 1 - abs(hsv1[0] - hsv2[0]))
     sat_diff = abs(hsv1[1] - hsv2[1])
     val_diff = abs(hsv1[2] - hsv2[2])
-    
+
     similarity = 1 - (0.6 * hue_diff + 0.3 * sat_diff + 0.1 * val_diff)
     return max(0, similarity)
 
@@ -39,17 +39,17 @@ def outfit_color_match(top, top_color, bottom=None, bottom_color=None, outer=Non
         colors.append((bottom, bottom_color))
     if outer and outer_color:
         colors.append((outer, outer_color))
-    
+
     if len(colors) == 1:
         return 1.0  # Jika hanya satu warna, dianggap cocok
-    
+
     total_score = 0
     comparisons = 0
     for i in range(len(colors)):
         for j in range(i + 1, len(colors)):
             total_score += color_similarity(colors[i][1], colors[j][1])
             comparisons += 1
-    
+
     return total_score / comparisons if comparisons > 0 else 1.0
 
 
@@ -69,7 +69,7 @@ def distribute_items(point, total_items=5):
             allocated[max_idx] += 1
             remainders[max_idx] = -1  # Avoid selecting the same index again
     return allocated
-    
+
 def point_distribution(weight,point,index):
     point = 40 - weight[index] if weight[index] + point > 40 else point
     if(weight[2-int(index/2)*2]-point<0):
@@ -79,12 +79,12 @@ def point_distribution(weight,point,index):
 
 BASE_DIRECTORY = os.path.dirname(os.path.abspath(__file__))  # Get the script's directory
 def save_recWeight(data, user):
-    file = os.path.join(BASE_DIRECTORY, "recWeight", f"user{'0'*(3-len(str(user)))+str(user)}.pkl")  
+    file = os.path.join(BASE_DIRECTORY, "recWeight", f"user{'0'*(3-len(str(user)))+str(user)}.pkl")
     with open(file,"wb") as f:
         pickle.dump(data, f)
 
 def load_recWeight(user):
-    file = os.path.join(BASE_DIRECTORY, "recWeight", f"user{'0'*(3-len(str(user)))+str(user)}.pkl")  
+    file = os.path.join(BASE_DIRECTORY, "recWeight", f"user{'0'*(3-len(str(user)))+str(user)}.pkl")
     if not os.path.exists(file):
         # with open('Cscores/CscoreTemplate.pkl',"rb") as f:  # Ensure the file is created correctly
         #     return pickle.load(f)
@@ -98,6 +98,7 @@ if __name__ == "__main__":
     encoded_json = sys.argv[1]  # Get Base64-encoded string
     json_data = base64.b64decode(encoded_json).decode("utf-8")  # Decode Base64 to JSON
     clothes = json.loads(json_data)  # Convert JSON string to Python list
+    # print(clothes,'hi')
 
     weather=sys.argv[2]
     style=sys.argv[3]
@@ -112,7 +113,7 @@ if __name__ == "__main__":
     bottomId=[]
 
     dressid=[]
-    
+
     outerCloth=["Blazer","Coat","Hoodie","Jacket","Sweater"]
     topCloth=["Shirt","Dress","TShirt"]
     for x in range(len(clothes)):
@@ -130,7 +131,7 @@ if __name__ == "__main__":
         else:
             bottom.append(clothes[x]['category'].lower())
             bottomId.append(clothes[x]['id'])
-    
+
     outer.append("none")
     outerId.append(None)
     # bottom.append("none")
@@ -160,11 +161,11 @@ if __name__ == "__main__":
         outfit.pop()
         outfitId.pop()
     # print(json.dumps(outfits))
-    
+
     #dress appends
     for x in range(len(dressid)):
         outfits.append(['none','dress','none'])
-        outfitsId.append(dressid[x])
+        outfitsId.append([None,dressid[x],None])
 
     weather_data={
         "top":'none',
@@ -181,11 +182,13 @@ if __name__ == "__main__":
         "styleOuter":'none',
         "styleUser" : sys.argv[3].lower(),
     }
+    # print('sini')
     style_model=style_model(userid)
     weather_model=weather_model(userid)
     combi_model=combi_model(userid)
     predict=predict(userid)
-    
+
+    # print(outfits,style_data,weather_data)
     for x in range(len(outfits)):
 
         #combi data
@@ -202,15 +205,19 @@ if __name__ == "__main__":
         style_data['top']=outfits[x][1]
         style_data['bottom']=outfits[x][2]
         style_data['outer']=outfits[x][0]
+        # print('sinilah',outfitsId,style_data,clothes)
         for y in range(len(clothes)):
             if(clothes[y]['id']==outfitsId[x][0]):
                 style_data["styleOuter"]=clothes[y]['style'].lower()
             elif(clothes[y]['id']==outfitsId[x][1]):
+                # print('sini ya')
                 style_data["styleTop"]=clothes[y]['style'].lower()
             elif(clothes[y]['id']==outfitsId[x][2]):
                 style_data["styleBottom"]=clothes[y]['style'].lower()
-        
+        # print(style_data)
+
         C=combi_model.predict_score_C(outer,top,bottom)
+        # print('sini')
         if(style_data['styleUser']=='all'):
             S=0
             styles=['casual', 'formal', 'sporty', 'streetwear','vintage']
@@ -225,9 +232,10 @@ if __name__ == "__main__":
         else:
             S=style_model.predict_outfit_rating(style_data)
         W=weather_model.predict_outfit_rating(weather_data)
-        
+
         outfitsScore.append(predict.predict_score(C,S,W))
-    
+    # print(outfitsScore)
+
     outfitByRatingId={
         "1":[],
         "2":[],
@@ -235,16 +243,16 @@ if __name__ == "__main__":
         "4":[],
         "5":[],
     }
-    
+
     for x in range(len(outfitsScore)):
         outfitByRatingId[str(round(outfitsScore[x]))].append(outfitsId[x])
     # print(outfitByRatingId)
 
-    
-    
 
-    
-    
+
+
+
+
 
     distribution=load_recWeight(userid)
     distribution=distribute_items(distribution)
@@ -258,7 +266,7 @@ if __name__ == "__main__":
             distribution[x-1]+=distribution[x]-clothdistribution[x]
             distribution[x]-=distribution[x]-clothdistribution[x]
     distribution[0]=min(clothdistribution[0],distribution[0])
-    
+
     outerReturnList=[]
     topReturnList=[]
     botReturnList=[]
@@ -318,7 +326,7 @@ if __name__ == "__main__":
                 toplastlistname.append(clothes[y]['category'])
                 colortop.append(clothes[y]['color'])
 
-    
+
 
     outfitlast=[outerlastlistname,toplastlistname,bottomlastlistname]
     coloroutfit=[colorouter,colortop,colorbottom]
@@ -344,6 +352,7 @@ if __name__ == "__main__":
         # print()
         outfitscolorranks.append(outfit_color_match(outfitsrn[0],outfitsrn[1],outfitsrn[2],outfitsrn[3],outfitsrn[4],outfitsrn[5]))
     # print(outfitlistreturn)
+
     for i in range(len(outfitscolorranks)):
         for j in range(0, len(outfitscolorranks) - i - 1):
             if outfitscolorranks[j] > outfitscolorranks[j + 1]:  # Swap if the element is greater than the next
@@ -352,31 +361,31 @@ if __name__ == "__main__":
     # print(outfitscolorranks)
     # print(outfitlistreturn)
 
-    
 
-        
+
+
     print(json.dumps(outfitlistreturn))
-        
-
-
-        
 
 
 
-        
-        
-        
-    
 
 
-    
 
 
-                
-                
-            
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     # outerlist=[clothes[0]['id'],None]
@@ -392,4 +401,4 @@ if __name__ == "__main__":
     #     "style": style
     # }
 
-    # print(json.dumps(output)) 
+    # print(json.dumps(output))
