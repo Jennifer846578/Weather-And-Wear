@@ -16,6 +16,7 @@
         <h3>History</h3>
         {{-- w --}}
         <div class="dvnHistoryboxcontent">
+            <p class="nohistory" style="display: none;" id = "tulisan">⛔No History Yet!⛔</p>
             <div class="dvnweatherhistory">
                 <div class="weatherImages">
                     <img src="Asset/History/2.png" width="114px">
@@ -78,7 +79,6 @@
                     </div>
                     <p>Style : Casual<br>Category : Blazzer</p>
                 </div>
-
             </div>
 
 
@@ -151,10 +151,11 @@
             </div> --}}
 
 
-
-
         </div>
+
     </div>
+
+
 
     <div class="popup-background">
         <div class="popup">
@@ -341,7 +342,7 @@
     document.querySelector('p.tulisasnoutfitlist').remove();
     document.querySelector('div.outfitlist').remove();
     let outfits= @json($outfits);
-    
+
     if(outfits.length!=0){
         document.querySelector('div.dvnHistoryboxcontent').style='height:auto; #8249'
         outfits=outfits.reverse();
@@ -399,6 +400,11 @@
             images[x].src=imagepathes[x]
             images[x].parentNode.parentNode.querySelector('p').innerHTML=`Style : ${styles[x]}<br>Category : ${categories[x]}`
         }
+        spaces=document.createElement('div')
+        spaces.classList.add('berkelas')
+        document.querySelector('div.dvnHistoryboxcontent').parentNode.appendChild(spaces)
+    }else{
+        document.querySelector('p.nohistory').style="display: block;";
     }
 
 

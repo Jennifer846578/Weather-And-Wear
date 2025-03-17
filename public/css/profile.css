@@ -29,7 +29,7 @@ body {
 .profile-header {
     background-color: rgb(57, 38, 166);
     width: 412px;
-    height: 310px;
+    height: 270px;
     border-bottom-right-radius: 7%;
     border-bottom-left-radius: 7%;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 8px;
@@ -138,7 +138,7 @@ body {
     color: red;
     font-size: 14px;
 }
-    
+
 .btn-wrapper {
     width: 100%;
     display: flex;
