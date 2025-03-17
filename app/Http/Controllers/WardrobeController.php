@@ -116,7 +116,7 @@ class WardrobeController extends Controller
             if($style!=="All"){
                 $results=wardrobe::where('userid',Auth::user()->id)->where('category',$category)->where('style',$style)->get();
             }else{
-                
+
                 $results=wardrobe::where('userid',Auth::user()->id)->where('category',$category)->get();
             }
         }else{
@@ -131,10 +131,10 @@ class WardrobeController extends Controller
         // return $category.$favourite.$style;
         // return $style;
         // return view('blazer',compact('results','category','favourite','style'));
-        
+
         // return $category;
     }
-    
+
     public function favWardrobe(Request $request)
     {
         $data=wardrobe::findOrFail($request->id);
@@ -171,7 +171,7 @@ class WardrobeController extends Controller
         $data=wardrobe::findOrFail($request->id);
         $dataCopy=new wardrobe();
         $dataCopy->userid=$data->userid;
-        $dataCopy->style="Copy of id ".$data->id; 
+        $dataCopy->style="Copy of id ".$data->id;
         $dataCopy->imagePath=$data->imagePath;
         $dataCopy->category=$data->category;
         $dataCopy->color=$data->color;
@@ -231,7 +231,7 @@ class WardrobeController extends Controller
         $dataCopy=wardrobe::findOrFail($request->idCopy);
         $dataCopy->color=$request->color;
 
-        
+
 
         // $data=wardrobe::findOrFail($request->id);
         // if($request->top==="top"){
@@ -299,7 +299,7 @@ class WardrobeController extends Controller
         $dataCopy=wardrobe::findOrFail($request->idCopy);
         $data=wardrobe::findOrFail($request->id);
         $category=$data->category;
-        if($data->imagePath!==$dataCopy->imaagePath){
+        if($data->imagePath!==$dataCopy->imagePath){
             $imagepath=public_path('Asset/Wardrobe/Images/'.$data->imagePath);
             if(File::exists($imagepath)){
                 File::delete($imagepath);
