@@ -81,10 +81,10 @@
         inputStyle.value = @json($style);
         form.appendChild(inputStyle);
 
-        
+
 
         // Create file input and append the selected file
-       
+
 
         // Append form to body and submit
         document.body.appendChild(form);
@@ -123,12 +123,6 @@
         testCopyInput.value = @json($dataCopy->id);
         form.appendChild(testCopyInput);
 
-        let testInputOne = document.createElement("input");
-        testInputOne.type = "hidden";
-        testInputOne.name = "style";
-        testInputOne.value = style;
-        form.appendChild(testInputOne);
-
         let inputFav = document.createElement("input");
         inputFav.type = "hidden";
         inputFav.name = "favourite";
@@ -138,13 +132,13 @@
         let inputStyle = document.createElement("input");
         inputStyle.type = "hidden";
         inputStyle.name = "style";
-        inputStyle.value = @json($style);
+        inputStyle.value = style;
         form.appendChild(inputStyle);
 
         document.body.appendChild(form);
         form.submit();
     }
-        
+
 
     let buttons = document.querySelectorAll('button.category-btn');
     for(let i=0;i<buttons.length;i++){
@@ -164,7 +158,7 @@
             }
         })
     }
-    
+
     document.querySelector('div.continue button#continue-btn').addEventListener('click',function(){
         for(let i=0;i<buttons.length;i++){
             if(buttons[i].classList.contains('active')){
