@@ -243,7 +243,7 @@ class WardrobeController extends Controller
             $dataCopy->imagePath=$data->imagePath;
         }else{
             $request->validate([
-                'image'=>'required|image|mimes:png,jpeg|max:1024'
+                'image'=>'required|image|mimes:png,jpeg|max:131072'
             ]);
             $imagepath=time().'.'.$request->image->extension();
             $request->image->move(public_path('Asset/Wardrobe/Images'),$imagepath);
@@ -330,7 +330,7 @@ class WardrobeController extends Controller
         $data=new wardrobe();
         $data->userid=Auth::user()->id;
         $request->validate([
-            'image'=>'required|image|mimes:png,jpeg|max:1024'
+            'image'=>'required|image|mimes:png,jpeg|max:131072'
         ]);
         $imagepath=time().'.'.$request->image->extension();
         $originalImagePath = public_path('Asset/Wardrobe/Images/' . $imagepath);
