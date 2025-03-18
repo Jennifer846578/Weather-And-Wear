@@ -67,10 +67,10 @@ class ProfileController extends Controller
         $data->gender=$request->gender;
         $data->name=$request->name;
         // if($request->profileimage !=  NULL){
-            
+
         // }
         $request->validate([
-            'profileimage'=>"image|mimes:png,jpeg|max:1024"
+            'profileimage'=>"image|mimes:png,jpeg|max:131072"
         ]);
         // return $data->profileimage.$request->profileimage;
         if($request->profileimage!=NULL && $data->profileimage!=$request->profileimage ){
@@ -83,8 +83,8 @@ class ProfileController extends Controller
             $request->profileimage->move(public_path('Asset/Profile'),$imagePath);
             $data->profileimage=$imagePath;
         }
-        
-        
+
+
         // if(file_exists(public_path('Asset\Profile'.$data->profileimage))){
         //     File::delete(public_path('Asset/Profile/'.$data->profileimage));
         // }
