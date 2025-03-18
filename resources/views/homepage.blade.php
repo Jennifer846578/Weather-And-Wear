@@ -103,11 +103,11 @@
                         latitude = position.coords.latitude;
                         longitude = position.coords.longitude;
 
-                        console.log("Latitude:", latitude, "Longitude:", longitude);
+                        // console.log("Latitude:", latitude, "Longitude:", longitude);
                         resolve({ latitude, longitude }); // Kirim data lokasi setelah berhasil
                     },
                     function (error) {
-                        console.error("Error mendapatkan lokasi:", error);
+                        // console.error("Error mendapatkan lokasi:", error);
                         reject(error);
                     },
                     {
@@ -162,7 +162,6 @@
             //     console.error("Invalid data structure:", data);
             //     return;
             // }
-            console.log('ini data bang  ',data);
             processWeatherData(data);
         })
 
@@ -206,7 +205,7 @@
 
         // OTHERINFO
 
-        console.log('Fetched Data:', data); // Now the data is available
+        // console.log('Fetched Data:', data); // Now the data is available
         document.querySelector('p.location').innerHTML=data['sys']['country']+", "+data['name'];
         const timestamp = data['dt'] * 1000; // Convert seconds to milliseconds
         dt = new Date(timestamp);
@@ -226,7 +225,7 @@
         // document.querySelector('p.date').innerHTML=`${days[dt.getDay()]} ${dt.getHours()}:${dt.getMinutes()<10?0:''}${dt.getMinutes()}`
         // document.querySelector('div.weather-temp').querySelector('p').innerHTML=`${parseInt(parseFloat(data['main']['temp']))}°`
         document.querySelector('div.weather-temp').querySelector('p').innerHTML=`${parseInt(data['main']['temp'])}°`
-        console.log('akudisini',data)
+        // console.log('akudisini',data)
         document.querySelector('p.temp-range').innerHTML=`Humidity: ${data['main']['humidity']}%`
 
         let weatherId = data.weather[0].id;
@@ -234,13 +233,13 @@
         let weatherCondition = data.weather[0].main;
 
 
-        console.log(`ID Cuaca: ${weatherId}, Temperatur: ${temperature}°C, Kondisi: ${weatherCondition}`);
+        // console.log(`ID Cuaca: ${weatherId}, Temperatur: ${temperature}°C, Kondisi: ${weatherCondition}`);
 
         let weatherTextElement = document.querySelector('p.weathertext');
         let weatherImageElement = document.querySelector('div.weather-dynamic img');
 
         if (!weatherTextElement || !weatherImageElement) {
-            console.error("Elemen cuaca tidak ditemukan.");
+            // console.error("Elemen cuaca tidak ditemukan.");
             return;
         }
 
@@ -277,7 +276,7 @@
         }
 
         weatherImageElement.src = imagePath;
-        console.log("Gambar cuaca diperbarui:", imagePath);
+        // console.log("Gambar cuaca diperbarui:", imagePath);
 
         // Jalankan fungsi updateTips setelah cuaca ditampilkan
         updateTips(weatherText);
@@ -353,7 +352,7 @@
         };
 
         if (tipsData[weatherCondition]) {
-            console.log(`Menampilkan tips untuk cuaca: ${weatherCondition}`);
+            // console.log(`Menampilkan tips untuk cuaca: ${weatherCondition}`);
 
             // Perbarui judul modal
             closePopupTips.innerText = tipsData[weatherCondition].title;
@@ -377,7 +376,7 @@
             }
 
         } else {
-            console.error("Cuaca tidak dikenali:", weatherCondition);
+            // console.error("Cuaca tidak dikenali:", weatherCondition);
         }
     }
 
@@ -498,12 +497,24 @@
 
     //setting the generated outfit
     let outfits=@json($outfits);
-    console.log('ini lagi lah bang',outfits);
-    console.log(outfits);
+    // console.log('ini lagi lah bang',outfits);
+    // console.log(outfits);
+    
+    // console.log('ini style',gaya)
     if(outfits!==null){
         let imagepath;
         document.querySelector('div.outfit-display').style='display:block ;';
-
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            const styleSelect = document.getElementById("style");
+            
+            let gaya=@json($style);
+            if(gaya===null){
+                gaya='All';
+            }
+            styleSelect.value = gaya;
+            
+        });
         if(outfits.outers[0]==null){
             document.querySelectorAll('div.item')[0].style='display: none;';
             document.querySelectorAll('div.item')[0].querySelector('p.index').innerHTML= null;
@@ -532,7 +543,6 @@
         let wardrobes=@json($wardrobe);
 
         if(wardrobes!=null){
-            console.log('iawooawk',wardrobes)
             bottom=['Cargo', 'Jeans', 'Jogger', 'Legging', 'Shorts', 'Skirt', 'Trousers']
             tops=['Dress', 'Shirt','TShirt']
             let flag1=1,flag2=1;
@@ -544,12 +554,10 @@
                     flag2=0;
                 }
                 if(wardrobes[x]['category']==='Dress'){
-                    // console.log('sini lah')
                     flag1=0;
                     flag2=0;
                 }
             }
-            console.log('flagnig',flag1,flag2)
             if(flag1 && flag2){
                 document.querySelector('p.notnenoughclothes').style="display:block;";
             }else if(flag2==0 && flag1==1){
@@ -670,7 +678,6 @@
                 break;
             }
         }
-        console.log(ratingValue)
         let inputrate = document.createElement("input");
         inputrate.type = "hidden";
         inputrate.name = "rate";
@@ -715,6 +722,8 @@
     document.querySelector('button.tips-button').addEventListener('click',function(){
         document.querySelector('div.tips-popup').style="display:flex;"
     })
+
+
 
 </script>
 
